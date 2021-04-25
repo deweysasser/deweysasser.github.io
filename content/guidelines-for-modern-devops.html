@@ -1,0 +1,370 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Guidelines for Modern DevOps - DeweySasser.com</title>
+<meta name="description" content="A list of guidelines for good DevOps, presented in the spirit of Shuhari  Write your success criteria first. That way you know when you’re done.  If you can’t write it down then you don’t really know what you’re doing.  Make a computer do the work. …">
+
+
+  <meta name="author" content="Dewey Sasser">
+  
+  <meta property="article:author" content="Dewey Sasser">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="DeweySasser.com">
+<meta property="og:title" content="Guidelines for Modern DevOps">
+<meta property="og:url" content="https://www.deweysasser.com/content/guidelines-for-modern-devops">
+
+
+  <meta property="og:description" content="A list of guidelines for good DevOps, presented in the spirit of Shuhari  Write your success criteria first. That way you know when you’re done.  If you can’t write it down then you don’t really know what you’re doing.  Make a computer do the work. …">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2018-03-14T00:00:00-04:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://www.deweysasser.com/content/guidelines-for-modern-devops">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "https://www.deweysasser.com/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="DeweySasser.com Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/graphics/Dewey%20Portrait-v3-s210x210.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          DeweySasser.com
+          
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Guidelines for Modern DevOps">
+    <meta itemprop="description" content="A list of guidelines for good DevOps, presented in the spirit of ShuhariWrite your success criteria first. That way you know when you’re done.  If you can’t write it down then you don’t really know what you’re doing.Make a computer do the work.…">
+    <meta itemprop="datePublished" content="2018-03-14T00:00:00-04:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Guidelines for Modern DevOps
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#start-at-the-end">Start at the end</a></li><li><a href="#make-a-computer-do-the-work">Make a computer do the work.</a></li><li><a href="#automate-3-things--things-that-happen-frequently-things-that-happen-rarely-and-things-that-you-really-dont-want-to-mess-up">Automate 3 things:  things that happen frequently, things that happen rarely, and things that you really don’t want to mess up.</a></li><li><a href="#dont-start-with-perfect">Don’t start with perfect</a></li><li><a href="#what-is-the-simplest-thing-that-could-possibly-work">What is the simplest thing that could possibly work?</a></li><li><a href="#if-everything-is-top-priority-nothing-is-prioritized">If everything is top priority, nothing is prioritized</a></li><li><a href="#think-about-how-to-get-it">Think about how to get it</a></li><li><a href="#use-someone-elses-solution">Use someone else’s solution</a></li><li><a href="#the-size-of-your-solution-should-match-the-size-of-your-problem">The size of your solution should match the size of your problem</a></li><li><a href="#recognize-when-solutions-arent">Recognize when solutions aren’t</a></li><li><a href="#describe-what-you-want-not-how-to-get-it">Describe what you want, not how to get it</a></li><li><a href="#if-you-have-to-write-a-procedure-it-should-be-idempotent">If you have to write a procedure, it should be idempotent</a></li><li><a href="#whenever-possible-failed-procedures-should-be-resumable">Whenever possible, failed procedures should be resumable.</a></li><li><a href="#dont-allow-failure-to-be-a-habit">Don’t allow failure to be a habit</a></li><li><a href="#never-count-on-initialization-order">Never count on initialization order</a></li><li><a href="#if-explanations-become-work-then-theyre-too-complicated">If explanations become work then they’re too complicated</a></li><li><a href="#sufficiently-detailed-documentation-is-executable">Sufficiently detailed documentation is executable.</a></li><li><a href="#measure-it">Measure it</a></li><li><a href="#keep-an-eye-on-it-but-not-yours">Keep an eye on it, but not yours</a></li><li><a href="#dont-ignore-alerts">Don’t ignore alerts</a></li><li><a href="#if-everyone-owns-it-no-one-owns-it">If everyone owns it, no one owns it</a></li><li><a href="#keep-thinking">Keep Thinking</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h3 id="start-at-the-end">Start at the end</h3>
+
+<p>Write your success criteria first. That way you know when you’re done.  If you can’t write it down then you don’t really know what you’re doing.</p>
+
+<h3 id="make-a-computer-do-the-work">Make a computer do the work.</h3>
+
+<p>Humans should make decisions.  Computers should make them happen.</p>
+
+<p>Getting this backwards leads to sadness. (Maybe AI will flip this some day.)</p>
+
+<h3 id="automate-3-things--things-that-happen-frequently-things-that-happen-rarely-and-things-that-you-really-dont-want-to-mess-up">Automate 3 things:  things that happen frequently, things that happen rarely, and things that you really don’t want to mess up.</h3>
+
+<p>What should you not automate?  Thinking.</p>
+
+<h3 id="dont-start-with-perfect">Don’t start with perfect</h3>
+
+<p>“Perfect” means you don’t know enough about it to see the flaws.  You can always see more to do.</p>
+
+<h3 id="what-is-the-simplest-thing-that-could-possibly-work">What is the simplest thing that could possibly work?</h3>
+
+<p>Less is often more.  It should be as simple as possible, but no simpler.</p>
+
+<h3 id="if-everything-is-top-priority-nothing-is-prioritized">If everything is top priority, nothing is prioritized</h3>
+
+<p>Priority isn’t about what’s important, priority is about what do I do first.  Dividing tasks into high, medium, low works approximately for 10 tasks, poorly for 100 and not at all for 1000.</p>
+
+<p>Tasks should be ordered, not tagged.</p>
+
+<h3 id="think-about-how-to-get-it">Think about how to get it</h3>
+
+<p>If you can’t get there from here, you probably don’t want to go.  If you still want to go, you need to learn the way or find someone else who knows.</p>
+
+<h3 id="use-someone-elses-solution">Use someone else’s solution</h3>
+
+<p>Spend your time wisely.  You don’t have enough of it.  There’s a lot more cool stuff to do in the world than you could possibly do.</p>
+
+<h3 id="the-size-of-your-solution-should-match-the-size-of-your-problem">The size of your solution should match the size of your problem</h3>
+
+<p>Don’t use a sledge hammer to swat a fly.  Don’t use <a href="https://en.wikipedia.org/wiki/Common_Object_Request_Broker_Architecture">CORBA</a> to pass a message.</p>
+
+<h3 id="recognize-when-solutions-arent">Recognize when solutions aren’t</h3>
+
+<p>If a solution to your problem causes a bigger problem, it’s not a solution no matter how cool it is.</p>
+
+<h3 id="describe-what-you-want-not-how-to-get-it">Describe what you want, not how to get it</h3>
+
+<p>It’s more clear to think about what you want and it’s easier to reason about states than transitions.</p>
+
+<p>This works for both people problems and computer problems.</p>
+
+<p>Procedures obscure the goals.</p>
+
+<h3 id="if-you-have-to-write-a-procedure-it-should-be-idempotent">If you have to write a procedure, it should be idempotent</h3>
+
+<p>Did I do it already?  Who cares, just do it again.</p>
+
+<h3 id="whenever-possible-failed-procedures-should-be-resumable">Whenever possible, failed procedures should be resumable.</h3>
+
+<p>It broke half-way through.  Fix it and run it again. It shouldn’t have to do the same work twice.</p>
+
+<h3 id="dont-allow-failure-to-be-a-habit">Don’t allow failure to be a habit</h3>
+
+<p>Things should succeed.  If you have to run things many times until they finally succeed, it’s broken.</p>
+
+<h3 id="never-count-on-initialization-order">Never count on initialization order</h3>
+
+<p>There are too many moving parts to know exactly when they will move.</p>
+
+<h3 id="if-explanations-become-work-then-theyre-too-complicated">If explanations become work then they’re too complicated</h3>
+
+<p>Complex documentation indicates poor abstractions.  Fix the program and the documentation becomes easy to write.</p>
+
+<p>Detailed does not mean complex.  Intricate doesn’t, either.</p>
+
+<h3 id="sufficiently-detailed-documentation-is-executable">Sufficiently detailed documentation is executable.</h3>
+
+<p>Can a computer do it?  If not, you didn’t document it well enough.  You can’t document judgment calls, so a computer can’t do them.  You <em>can</em> fake it with a good heuristic but don’t mistake it for judgement.</p>
+
+<h3 id="measure-it">Measure it</h3>
+
+<p>Your guess is probably wrong.  Measure it, don’t guess.</p>
+
+<h3 id="keep-an-eye-on-it-but-not-yours">Keep an eye on it, but not yours</h3>
+
+<p>It’s not enough that it worked, it has to keep working.  Computers are good at watching things.  Humans aren’t.</p>
+
+<h3 id="dont-ignore-alerts">Don’t ignore alerts</h3>
+
+<p>Any time you get an alert, your goal should be to make sure you never get it again, one way or another.</p>
+
+<p>If you’re not going to fix it it should be on a status page, not an alert.  Alerts are for taking actions.</p>
+
+<h3 id="if-everyone-owns-it-no-one-owns-it">If everyone owns it, no one owns it</h3>
+
+<p>Make sure someone is accountable.  Make sure they have a backup (vacations, busses…)</p>
+
+<p>Team wide alerts train everyone to ignore issues.</p>
+
+<h3 id="keep-thinking">Keep Thinking</h3>
+
+<p>There are very few problems that are not better solved by stopping to think about the best solution first.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-03-14T00:00:00-04:00">March 14, 2018</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Guidelines+for+Modern+DevOps%20https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Fguidelines-for-modern-devops" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Fguidelines-for-modern-devops" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Fguidelines-for-modern-devops" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/content/herding-cats-in-cloud" class="pagination--pager" title="Herding cats in the Cloud
+">Previous</a>
+    
+    
+      <a href="/content/feeling-scrummy" class="pagination--pager" title="Feeling Scrummy?
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 DeweySasser.com. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

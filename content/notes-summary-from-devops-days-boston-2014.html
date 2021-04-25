@@ -1,0 +1,682 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Notes and Summary from DevOps Days Boston 2014 - DeweySasser.com</title>
+<meta name="description" content="These are my notes from DevOps Days Boston in 2014.  See the section entitled “Dewey’s Summary” for, well, just that.  The rest is pretty much raw notes.  I’m not expecting this page to be generally useful to the public but want to share it with some specific people.  If it is generally useful, bonus!">
+
+
+  <meta name="author" content="Dewey Sasser">
+  
+  <meta property="article:author" content="Dewey Sasser">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="DeweySasser.com">
+<meta property="og:title" content="Notes and Summary from DevOps Days Boston 2014">
+<meta property="og:url" content="https://www.deweysasser.com/content/notes-summary-from-devops-days-boston-2014">
+
+
+  <meta property="og:description" content="These are my notes from DevOps Days Boston in 2014.  See the section entitled “Dewey’s Summary” for, well, just that.  The rest is pretty much raw notes.  I’m not expecting this page to be generally useful to the public but want to share it with some specific people.  If it is generally useful, bonus!">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2014-09-23T00:00:00-04:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://www.deweysasser.com/content/notes-summary-from-devops-days-boston-2014">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "https://www.deweysasser.com/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="DeweySasser.com Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/graphics/Dewey%20Portrait-v3-s210x210.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          DeweySasser.com
+          
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Notes and Summary from DevOps Days Boston 2014">
+    <meta itemprop="description" content="These are my notes from DevOps Days Boston in 2014.  See the section entitled “Dewey’s Summary” for, well, just that.  The rest is pretty much raw notes.I’m not expecting this page to be generally useful to the public but want to share it with some specific people.  If it is generally useful, bonus!">
+    <meta itemprop="datePublished" content="2014-09-23T00:00:00-04:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Notes and Summary from DevOps Days Boston 2014
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#talks-day-1">Talks, Day 1</a><ul><li><a href="#the-value-of-feedback---johnryding">The Value of Feedback - JohnRyding</a></li><li><a href="#our-long-road-to-self-service-cloud-management--deployment---kevinamorin">Our long road to self service cloud management &amp; deployment - KevinAmorin</a></li><li><a href="#infrastructure-testing-grey-matter---anthonyspring">Infrastructure Testing: Grey Matter - AnthonySpring</a></li></ul></li><li><a href="#micro-talks">Micro talks</a><ul><li><a href="#driving-change">Driving change</a></li><li><a href="#maximize-terminal-information-density">Maximize terminal information density</a></li><li><a href="#shipbuilding-and-failed-software-projects">Shipbuilding and failed software projects</a></li><li><a href="#leadership-lessons-from-the-marines">Leadership lessons from the Marines</a></li><li><a href="#chef">Chef</a></li></ul></li></ul></li><li><a href="#breakout-sessions-day-1">Breakout Sessions, Day 1</a><ul><li><a href="#immutable-servers">Immutable servers</a></li><li><a href="#windows-devops-tools">Windows Devops Tools</a></li></ul></li></ul></li><li><a href="#talks-day-2">Talks, Day 2</a><ul><li><a href="#the-power-of-conflict---nikolaskatsimpras">The Power of Conflict - NikolasKatsimpras</a></li><li><a href="#intro-to-coreos-get-ahead-of-the-curve-new-ways-to-deploy-and-manage-applications-at-scale---kelseyhightower">Intro to CoreOS: Get Ahead of The Curve, New Ways to Deploy and Manage Applications at Scale - KelseyHightower</a></li><li><a href="#metrics-driven-development---davejosephson">Metrics Driven Development - DaveJosephson</a></li><li><a href="#running-graphite-at-scale---andrewkenney">Running Graphite at Scale - AndrewKenney</a></li></ul></li><li><a href="#breakout-sessions-day-2">Breakout Sessions, Day 2</a><ul><li><a href="#jenkins-ephemeral-builds">Jenkins ephemeral builds</a></li><li><a href="#the-devops-echo-chamber-do-we-spend-too-much-time-listening-to-ourselves">The Devops Echo chamber: do we spend too much time listening to ourselves?</a></li><li><a href="#config-tool-throwdown-chef-vs-puppet-vs-salt-vs-ansible">Config tool throwdown (Chef vs. Puppet vs. Salt vs Ansible)</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="executive-summary">Executive Summary</h1>
+
+<p>DevOps Days was 2 days divided into 2 parts each: mornings were programmed talks and afternoons were dynamically determined breakout sessions.</p>
+
+<p>It’s clear that DevOps is heavily Linux biased. There are places successfully doing Windows Devops. Ironically, despite Microsoft sponsoring the event by hosting it at the Microsoft Nerd Center in Cambridge, they did not have anyone presenting.</p>
+
+<p>The program and links to talks and slides are at: <a href="http://devopsdays.org/events/2014-boston/program/">http://devopsdays.org/events/2014-boston/program/</a></p>
+
+<p>Attached are my notes from the sessions. Look for the sections styled as</p>
+
+<p>Dewey’s Summary</p>
+
+<p>for a brief idea of my takeaways. Look for the lines in <strong>BOLD</strong> for particularly interesting thoughts or tools.</p>
+
+<p>I believe the best tools to investigate were given in</p>
+
+<ul>
+  <li>Tools</li>
+  <li>Immutable servers.</li>
+</ul>
+
+<p>The best overall culture concepts were in</p>
+
+<ul>
+  <li>Metrics Driven Development - DaveJosephson</li>
+  <li></li>
+</ul>
+
+<p>The best “culture change” ideas were in</p>
+
+<ul>
+  <li>Driving change,</li>
+  <li>Leadership lessons from the Marines</li>
+  <li>Metrics Driven Development - DaveJosephson</li>
+</ul>
+
+<p>Questions are welcome! Please emails me questions or start a discussion.</p>
+
+<h1 id="talks-day-1">Talks, Day 1</h1>
+
+<h2 id="the-value-of-feedback---johnryding"><a href="http://devopsdays.org/events/2014-boston/program/#talk2">The Value of Feedback - JohnRyding</a></h2>
+
+<p>Dewey’s summary: John is clearly working in a young company with fairly low experience developers. I think his solutions are good for that environment, but I don’t think they necessarily apply to a more experienced group.</p>
+
+<p>John presented his experience of DevOps at his company, focusing on feedback and collaboration <strong>.</strong></p>
+
+<p>Long feedback loops are a problem in devops cultures because it does not encourage collaboration.</p>
+
+<p><strong>They added automation testers to code review team</strong></p>
+
+<p>Code reviews are usually a good way to collaborate. Sometimes there are holy wars.</p>
+
+<p>Long branch bad code causes problems. Sometimes the code merge is refused and it strains the relationship between reviewer and developer.</p>
+
+<p>Change: do code review starting at the beginning. Add PR [pull request] when the branch is made. [Q: I wonder how much time they spend in code review?]</p>
+
+<p>UX Dailies – demo of active work. Rule is work demoed is between 25% &amp; 75% done. (Range is solid idea to still actively working.)</p>
+
+<p><strong>Suggests leading devops adoptions with collaboration and feedback.</strong></p>
+
+<p>[Interesting thought: continuous code review.]</p>
+
+<h2 id="our-long-road-to-self-service-cloud-management--deployment---kevinamorin"><a href="http://devopsdays.org/events/2014-boston/program/#talk3">Our long road to self service cloud management &amp; deployment - KevinAmorin</a></h2>
+
+<p>Dewey’s Summary: Overall a fairly straight forward process, though they’ve taken it further than we have.</p>
+
+<p>No walls between ops and dev.</p>
+
+<p>Do Value stream analysis. Identify the bottleneck. Hard to figure out the long term goal.</p>
+
+<p><strong>Every once in a while look for symptoms and cause. Usually more than a technical problem.</strong></p>
+
+<p>Mostly a walkthrough of setting up the obvious at his company (SCM, build, AWS)</p>
+
+<p>Use knife-ec2 to describe infrastructure</p>
+
+<p>Understanding state/in use of each system.</p>
+
+<p>Product: Atlas</p>
+
+<p><strong>Devops messaging: pitch a message and try to change thinking</strong></p>
+
+<h2 id="infrastructure-testing-grey-matter---anthonyspring"><a href="http://devopsdays.org/events/2014-boston/program/#talk4">Infrastructure Testing: Grey Matter - AnthonySpring</a></h2>
+
+<p>Dewey’s summary: Their particular environment involves managing a lot of servers that they do not control. They write ServerSpec scripts to verify these servers are suitable for use.</p>
+
+<p>We have tools for provisioning and tools for monitoring. Between we have “gray matter”</p>
+
+<p><strong>Tool: ServerSpec – used to verify servers match requirements</strong></p>
+
+<p><strong>Tools: Packer, racker, vagrant, docker,</strong></p>
+
+<h1 id="micro-talks">Micro talks</h1>
+
+<p>These were 3 minute presentations on various topics:</p>
+
+<h3 id="driving-change">Driving change</h3>
+
+<p>Dewey’s summary: a good approach to introducing devops.</p>
+
+<ul>
+  <li>
+    <p>start small</p>
+  </li>
+  <li>
+    <p>build prototypes (let the code talk)</p>
+  </li>
+  <li>
+    <p>market the results</p>
+  </li>
+  <li>
+    <p>use videos to make presentations</p>
+  </li>
+  <li>
+    <p>mentor early adopters</p>
+  </li>
+  <li>
+    <p>know your audience (some people don’t care about how Facebook ships code)</p>
+  </li>
+  <li>
+    <p>be the visionary</p>
+  </li>
+  <li>
+    <p>award people for their small achievements</p>
+  </li>
+  <li>
+    <p>don’t break windows – it takes a lot of effort</p>
+  </li>
+</ul>
+
+<h3 id="maximize-terminal-information-density">Maximize terminal information density</h3>
+
+<p>Dewey’s summary: A discussion of some specific Linux tools for productivity. This was much better for entry level sysadmin than seasoned engineers.</p>
+
+<ul>
+  <li>
+    <p>tmux (the new screen)</p>
+  </li>
+  <li>
+    <p>multitail</p>
+  </li>
+</ul>
+
+<h3 id="shipbuilding-and-failed-software-projects">Shipbuilding and failed software projects</h3>
+
+<p>Dewey’s summary: a very interesting talk about changing too much and lessons learned. No specific tools or techniques presented.</p>
+
+<p>Using construction of the Vasa as a metaphor for devops projects.</p>
+
+<h3 id="leadership-lessons-from-the-marines">Leadership lessons from the Marines</h3>
+
+<p>Dewey’s summary: This guy was clearly a Marine. I’m not sure it’s a good way to run projects in general because not everyone has been to Paris Island, but there are definitely some things they do well.</p>
+
+<ul>
+  <li>
+    <p>job first, then people</p>
+  </li>
+  <li>
+    <p>reward your people</p>
+  </li>
+  <li>
+    <p><strong>run disaster drills. You cannot have a highly functioning team without drills</strong></p>
+  </li>
+  <li>
+    <p>details matter</p>
+  </li>
+  <li>
+    <p>Clear and concise communication. Say it once well even if it takes longer</p>
+  </li>
+  <li>
+    <p><strong>encourage initiative</strong></p>
+  </li>
+  <li>
+    <p><strong>understand commander’s intent</strong> (context of the instructions)</p>
+  </li>
+  <li>
+    <p>failure is a team event</p>
+  </li>
+</ul>
+
+<h3 id="chef">Chef</h3>
+
+<p>Dewey’s summary: Chef has nothing special, yet. They’re partnering with MS and might be interesting, or might turn more MS –specific on Windows.</p>
+
+<p>They’re partnering with MS on DFC.</p>
+
+<h1 id="breakout-sessions-day-1">Breakout Sessions, Day 1</h1>
+
+<h3 id="immutable-servers">Immutable servers</h3>
+
+<p>Dewey’s summary: a giant round-table on the pros and cons of using “immutable server” patterns, what “immutable” was, where to use it and not use it.</p>
+
+<p><strong>Make the bad way inconvenient</strong></p>
+
+<p>Interesting tools:</p>
+
+<p>Hiroku database</p>
+
+<p>Pgpool to manage multimaster</p>
+
+<p>Pulp repository management</p>
+
+<p>MESOS for bare metal installation.</p>
+
+<p>Tools: vagrant, docker, packer, zookeeper, meals</p>
+
+<p>Interesting ideas:</p>
+
+<p>Use tripwire to make sure nothing changes</p>
+
+<h3 id="windows-devops-tools">Windows Devops Tools</h3>
+
+<p>Dewey’s Summary: A small round-table on specific tools that are used on Windows for DevOps. People have been successful buying into the (evidently very expensive) MS stack. There are other tools. Chocolaty seems like a good idea, as does Puppet for Windows. Chef is getting a lot of mindshare but it seems more because it fits a lot of developers than because it’s a better tool. It allows people to write Ruby programs to configure machines. It’s not so good at infrastructure “convergence”.</p>
+
+<p>Microsoft System center configuration management</p>
+
+<p>Team foundation server (TFS) for scm and build</p>
+
+<p><strong>Tool: Octopus deploy (good recommendation from one person)</strong></p>
+
+<p><strong>Tool: Boxstarter</strong></p>
+
+<p><strong>Tool: Chocolaty (yum for windows)</strong></p>
+
+<p>Puppet for windows</p>
+
+<ul>
+  <li>
+    <p>can unattended install sqlserver under puppet</p>
+  </li>
+  <li>
+    <p>puppet in windows works reasonably well</p>
+  </li>
+</ul>
+
+<p><strong>Vagrant runs on windows</strong></p>
+
+<p><strong>Allegedly chef on windows does something but isn’t great</strong></p>
+
+<p>MS DSC</p>
+
+<p>InRelease for installation (unbelievably expensive)</p>
+
+<p><strong>Stack exchange is all .net. They have online docs of their infrastructure [review their docus/blog entries]</strong></p>
+
+<p>BladeLogic works but it’s expensive</p>
+
+<p><strong>SyatemCenter not good for servers – not scalable. It’s good for desktops.</strong></p>
+
+<p>(Sensu)</p>
+
+<p>One fellow advocated that DevOps on Windows is just a skill set issue.</p>
+
+<p>This fellow spent 24 person months on puppet, then went to chef (because they got people with that skill set) (interesting fellow – Christopher Parker, Albany NY)</p>
+
+<p>Full ESX host is $35k incl licensing. Said “ESX Servers are cheap”.</p>
+
+<p><strong>Ancestry.com is a big windows chef shop. They have talks on YouTube.</strong></p>
+
+<h1 id="talks-day-2">Talks, Day 2</h1>
+
+<h2 id="the-power-of-conflict---nikolaskatsimpras"><a href="http://devopsdays.org/events/2014-boston/program/#talk5">The Power of Conflict - NikolasKatsimpras</a></h2>
+
+<p><a href="http://devopsdays.org/events/2014-boston/program/#talk5">Dewey’s</a> Summary: Excellent talk. Review the slides – there was way too much content for good notes. Review the slides and perhaps the video.</p>
+
+<p>There is a cultural transition pandemic of cross functional collaboration</p>
+
+<p>Difference between constructive vs destructive conflict.</p>
+
+<p>However, conflict is friction between people that produces something new. We need more productive conflict. Avoids groupthink.</p>
+
+<p>For most people the rest a gap between what they do and what they think they do.</p>
+
+<p><strong>Cognitive biases</strong> :</p>
+
+<p>Anchoring</p>
+
+<p>Fundamental</p>
+
+<p>Attribution error</p>
+
+<p>Selective perception (confirmation bias)</p>
+
+<p>Halo effect</p>
+
+<p>Memory bias</p>
+
+<p>Hindsight bias</p>
+
+<p>Perceptual bias</p>
+
+<p>Duplex perception (McGurk effect)</p>
+
+<p><strong>Adapt strategy to needs</strong> (presenter showed a graph of power vs cooperative style)</p>
+
+<p>…</p>
+
+<p><strong>Dev tends to promote new ideas, ops is conservative</strong> .</p>
+
+<p><strong>Devops is not a hard skills problem, its a soft skills problem</strong></p>
+
+<p><strong>Feedback loop mapping</strong></p>
+
+<p>Foster an environment that favors marginalized voices</p>
+
+<h2 id="intro-to-coreos-get-ahead-of-the-curve-new-ways-to-deploy-and-manage-applications-at-scale---kelseyhightower"><a href="http://devopsdays.org/events/2014-boston/program/#talk6">Intro to CoreOS: Get Ahead of The Curve, New Ways to Deploy and Manage Applications at Scale - KelseyHightower</a></h2>
+
+<p>Dewey’s Summary: This is a specific Linux platform for minimal platform issues that supports some containers (e.g. Docker)</p>
+
+<p>Have a better relationship with your infrastructure</p>
+
+<p>Self healing</p>
+
+<p>Systemd, cloud-init, update-engine (from chrome), docker, etcd, fleet</p>
+
+<p>Self healing</p>
+
+<p>Fleet allows you to forget about hostnames. Fleet manages scheduling across multiple machines.</p>
+
+<p>Tool: Etcd uses a semaphore to manage who is allowed to reboot. Make sure you don’t reboot all of your hosts at once.</p>
+
+<p>Coreos support stand alone exes and docker containers</p>
+
+<p>Going for order 100k nodes with order seconds conversion</p>
+
+<p>[Very interesting tool for managing large sets of machines]</p>
+
+<p>Coreos scheduling probably not good for large databases</p>
+
+<p>None of this live migrates. “It’s not VMware”</p>
+
+<h2 id="metrics-driven-development---davejosephson"><a href="http://devopsdays.org/events/2014-boston/program/#talk7">Metrics Driven Development - DaveJosephson</a></h2>
+
+<p>Dewey’s summary: 2 interesting things here: 1) is chatops culture, which works well for them.</p>
+
+<p><strong>The more interesting aspect is writing metrics and *assertions about metrics* as part of the development process. They view metrics as part of the programming contract, embed them in the code, effectively create monitors at *development* time.</strong></p>
+
+<p>“Chatops” – use of chatbots for status. Most interesting operations happens in chatrooms.</p>
+
+<p>They use google hangouts as a war room</p>
+
+<p><strong>Correlating metrics to aperiodic events. Heavily metric based troubleshooting</strong> . Pretty much all discussions about what’s going wrong are exchanges of hard data.</p>
+
+<p><strong>Monitoring isn’t a thing any more. It’s part of the development process.</strong></p>
+
+<p><strong>They’re writing pre and post conditions for all services and track those as metrics.</strong></p>
+
+<p><strong>“Interesting metrics prove system hypotheses”</strong></p>
+
+<p>Do this as part of the development process up front. “We’re committed to considering the operational requirements of our code up front.”</p>
+
+<p><strong>Instrumentation is NOT debugging.</strong></p>
+
+<p>Must use the metric system to drive monitoring because monitoring must alert on the same things.</p>
+
+<p>Librato has a blog about this</p>
+
+<p><a href="http://blog.librato.com/posts/2014/7/16/metrics-driven-development">http://blog.librato.com/posts/2014/7/16/metrics-driven-development</a></p>
+
+<h2 id="running-graphite-at-scale---andrewkenney"><a href="http://devopsdays.org/events/2014-boston/program/#talk8">Running Graphite at Scale - AndrewKenney</a></h2>
+
+<p>Dewey’s summary: Running graphite at this scale requires special deployments and modification of graphite. Their scale is 2-3 orders of magnitude greater than ours.</p>
+
+<p>Flypaper dashboard</p>
+
+<p>Grafana</p>
+
+<p>25 graphite servers globally, 650k metrics</p>
+
+<p>event horizon to put system metrics in graphite.</p>
+
+<p>Cassandra as back end for graphite instead of Whisper</p>
+
+<p>They have devops and ops. Devops is building the tools and is 3rd or 4th level support</p>
+
+<h1 id="breakout-sessions-day-2">Breakout Sessions, Day 2</h1>
+
+<h2 id="jenkins-ephemeral-builds">Jenkins ephemeral builds</h2>
+
+<p>Dewey’s summary: The interesting idea is to not care about state on a Jenkins Master – all build pipelines are described in a domain-specific language and generated into the Jenkins Master. Thus, they can run multiple masters, spin up and throw away build masters, etc.</p>
+
+<p>Jenkins starts as the wild west but becomes mission critical and unmanageable.</p>
+
+<p>What can we do to source control build pipelines.</p>
+
+<p>Using artifactory to store artifacts.</p>
+
+<p>They don’t promote, they just complete a pipeline or not. If not, the build is broken.</p>
+
+<p>Allows Jenkins server for each team. Jenkins servers are no longer mission critical. Jenkins servers can be burned down and recreated easily – all interesting state is in Artifactory or SCM.</p>
+
+<p>[Assumptions: build slave configuration is well defined and build slaves are elastic. Artifacts are not stored in Jenkins. May require a pipeline model instead of a promotion model, or that may be an artifact of artifactory]</p>
+
+<h2 id="the-devops-echo-chamber-do-we-spend-too-much-time-listening-to-ourselves">The Devops Echo chamber: do we spend too much time listening to ourselves?</h2>
+
+<p>Dewey’s Summary: A conclusive Maybe.</p>
+
+<p>Tools: Rundeck, sensu</p>
+
+<h2 id="config-tool-throwdown-chef-vs-puppet-vs-salt-vs-ansible">Config tool throwdown (Chef vs. Puppet vs. Salt vs Ansible)</h2>
+
+<p>Dewey’s Summary: Puppet and Chef are both capable tools and the choice depends on how you think about your infrastructure. It seems most people moving from Puppet to Chef do so because they have Ruby developers who don’t want to learn the Puppet DSL.</p>
+
+<p>Puppet, chef good for end state. Ansible is good for orchestration.</p>
+
+<p>Chef has better local testing/dev frameworks. Test kitchen.</p>
+
+<p>There is a similar tool for puppet.</p>
+
+<p>There is a puppet provisioner for test kitchen.</p>
+
+<p><a href="https://github.com/aspring">https://github.com/aspring</a></p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2014-09-23T00:00:00-04:00">September 23, 2014</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Notes+and+Summary+from+DevOps+Days+Boston+2014%20https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Fnotes-summary-from-devops-days-boston-2014" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Fnotes-summary-from-devops-days-boston-2014" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Fnotes-summary-from-devops-days-boston-2014" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/content/git-svn-users-introduction" class="pagination--pager" title="GIT for SVN users:  An introduction
+">Previous</a>
+    
+    
+      <a href="/content/changing-username-on-technical-social-sites" class="pagination--pager" title="Changing Username on technical social sites
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 DeweySasser.com. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

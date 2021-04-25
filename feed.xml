@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://www.deweysasser.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.deweysasser.com/" rel="alternate" type="text/html" /><updated>2021-04-25T14:57:44-04:00</updated><id>https://www.deweysasser.com/feed.xml</id><title type="html">DeweySasser.com</title><subtitle>Software Engineering, Systems Engineering, and other geek pursuits</subtitle><author><name>Dewey Sasser</name></author><entry><title type="html">2021 Site Refresh</title><link href="https://www.deweysasser.com/content/2021-site-refresh" rel="alternate" type="text/html" title="2021 Site Refresh" /><published>2021-04-25T00:00:00-04:00</published><updated>2021-04-25T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/2021%20site%20refresh</id><content type="html" xml:base="https://www.deweysasser.com/content/2021-site-refresh">&lt;p&gt;It’s been a while since I set up the technology behind this site, and times have changed.&lt;/p&gt;
+
+&lt;p&gt;So, I’m moving it form Drupal to something else.&lt;/p&gt;
+
+&lt;p&gt;I’m not yet sure what the “something else” will be. Right now it’s a &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;
+generated static site. I’m not sure if that’s the right long term solution or not. We’ll see. But, I
+needed something now, and it’s something.&lt;/p&gt;
+
+&lt;p&gt;If you have an option on what I should use (or, better yet, what features I should support), please
+let me know.&lt;/p&gt;
+
+&lt;p&gt;Some thoughts are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;discussions&lt;/li&gt;
+  &lt;li&gt;a more wiki-like structure with nice cross-links&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Dewey Sasser</name></author><summary type="html">I'm refreshing this site. Please stand by.</summary></entry><entry><title type="html">Resetting a git-crypt system</title><link href="https://www.deweysasser.com/content/resetting-git-crypt-system" rel="alternate" type="text/html" title="Resetting a git-crypt system" /><published>2020-05-12T00:00:00-04:00</published><updated>2020-05-12T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/resetting%20git-crypt%20system</id><content type="html" xml:base="https://www.deweysasser.com/content/resetting-git-crypt-system">&lt;h1 id=&quot;the-problem&quot;&gt;The Problem&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/AGWA/git-crypt&quot;&gt;git-crypt&lt;/a&gt; is pretty awesome, but I’ve managed to do enough evil things to bork 
+the decryption keys.  Here’s how to fix it.&lt;/p&gt;
+
+&lt;!--break--&gt;
+
+&lt;h1 id=&quot;the-background&quot;&gt;The Background&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/AGWA/git-crypt&quot;&gt;git-crypt&lt;/a&gt; allows you to encrypt some of the files in a git repository.  It supports adding other users’ GPG keys so they will be able to encrypt/decrypt the file.  It’s pretty clever, and I like it.&lt;/p&gt;
+
+&lt;p&gt;The basic operation is that it creates a single symmetric key (which it stores in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.git/git-crypt/keys/default&lt;/code&gt;), then
+on request will use GPG to encrypt that key to the public key IDs you specify, and those are stored in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.git-crypt//keys/default/0&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;However, if you do sufficiently evil things in git repos, like using &lt;a href=&quot;https://github.com/newren/git-filter-repo&quot;&gt;git filter-repo&lt;/a&gt; (another pretty awesome tool), it’s possible to drive &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git crypt&lt;/code&gt; into a pathological state where your keys are wrong and you can’t do anything.&lt;/p&gt;
+
+&lt;p&gt;In order to recover from this situation, make sure you have unencrypted copies of the files around somewhere, then:&lt;/p&gt;
+
+&lt;h1 id=&quot;the-fix&quot;&gt;The Fix&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;create a fresh clone of your repo.  In that clone, do…&lt;/li&gt;
+  &lt;li&gt;save the IDs of all keys&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; .git-crypt/keys/default/0/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.gpg | xargs &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 1 &lt;span class=&quot;nt&quot;&gt;-I&lt;/span&gt; F &lt;span class=&quot;nb&quot;&gt;basename &lt;/span&gt;F .gpg&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Remove the existing encrypted keys&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; .git-crypt
+&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; .git/git-crypt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Reinitialize the encryption&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git crypt init&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Re-add the public keys which should access the encrypted files&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;k &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;git crypt add-gpg user &lt;span class=&quot;nv&quot;&gt;$k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;COPY in fresh, unencrypted copies of all previously encrypted files, however you do that&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;(Optional) rebase so that all of this stuff occurs in a single commit&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git rebase &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; origin/master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Note that the VI magic to “fixup” all commits into the first one is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2,$ s/pick/fixup/&lt;/code&gt;&lt;/p&gt;</content><author><name>Dewey Sasser</name></author><category term="git" /><summary type="html">The Problem git-crypt is pretty awesome, but I’ve managed to do enough evil things to bork the decryption keys. Here’s how to fix it. The Background git-crypt allows you to encrypt some of the files in a git repository. It supports adding other users’ GPG keys so they will be able to encrypt/decrypt the file. It’s pretty clever, and I like it. The basic operation is that it creates a single symmetric key (which it stores in .git/git-crypt/keys/default), then on request will use GPG to encrypt that key to the public key IDs you specify, and those are stored in .git-crypt//keys/default/0. However, if you do sufficiently evil things in git repos, like using git filter-repo (another pretty awesome tool), it’s possible to drive git crypt into a pathological state where your keys are wrong and you can’t do anything. In order to recover from this situation, make sure you have unencrypted copies of the files around somewhere, then: The Fix create a fresh clone of your repo. In that clone, do… save the IDs of all keys keys=$(ls .git-crypt/keys/default/0/*.gpg | xargs -n 1 -I F basename F .gpg) Remove the existing encrypted keys git rm -r .git-crypt rm -rf .git/git-crypt Reinitialize the encryption git crypt init Re-add the public keys which should access the encrypted files for k in $keys; do git crypt add-gpg user $k; done COPY in fresh, unencrypted copies of all previously encrypted files, however you do that (Optional) rebase so that all of this stuff occurs in a single commit git rebase -i origin/master Note that the VI magic to “fixup” all commits into the first one is 2,$ s/pick/fixup/</summary></entry><entry><title type="html">The 2nd Crypto Wars</title><link href="https://www.deweysasser.com/content/2nd-crypto-wars" rel="alternate" type="text/html" title="The 2nd Crypto Wars" /><published>2019-08-15T00:00:00-04:00</published><updated>2019-08-15T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/2nd%20crypto%20wars</id><content type="html" xml:base="https://www.deweysasser.com/content/2nd-crypto-wars">&lt;p&gt;This has been invisible to most people, but we’re now in what I call the “2nd Crypto Wars”. This is important, and your world will be impacted by it.&lt;/p&gt;
+
+&lt;p&gt;The current battleground is that the Government wants the ability to see your banking communication, your chats, your Alexa snippets…  They won’t do that, of course.  They’ll only use it on the bad guys, they promise.  You should be happy that they can see everything because they’ll protect you from [insert boogie-man du jour].&lt;/p&gt;
+
+&lt;p&gt;The occasional criminal who breaks the system and vacuums out a few bank accounts is a small price to pay for allowing the government to pursue terrorists, drug dealers, and child pornographers. (They always seem to use child porn as a boogie man.  After all, there’s no one who can stand up and defend it, not even Roy Moore.). Government abuse of this system is, of course, not something to worry about at all.&lt;/p&gt;
+
+&lt;p&gt;After all, we’re talking about iPhones and nanny cams, not nuclear launch codes.&lt;/p&gt;
+
+&lt;p&gt;The problem with this is that, actually, no — much the same technology secures it all, from your Facebook Messenger to political communications between legislators to military communications.  The DoD may buy $500 hammers, but they buy off-the-shelf communication equipment from Cisco, GE, etc. (because, frankly, that stuff is damn good and they can’t really do better with a bespoke system).  I use this technology daily to secure everything from political information to credit cards.  When something breaks in these systems, whole companies can fail and real people are out of jobs.&lt;/p&gt;
+
+&lt;p&gt;The DoJ keeps has always maintained that we can put in a backdoor that only they can use, and only when their motivations and pure and just and on the side of right.&lt;/p&gt;
+
+&lt;p&gt;A.G. Barr has recently shown a change in Government strategy, and that’s progress.  He’s given up on the delusion that you can have your cake while he eats it. His speech admitted some of the consequences (less security for you) instead of pretending they don’t exist, and he’s claiming it’s worth the cost to get the result (more security for you). So, we can now at least discuss things in the  world of reality instead of fantasy.&lt;/p&gt;
+
+&lt;p&gt;Big Brother may be watching over you, but Big Brother can’t see everywhere.  One of the primary purposes of Government (in the modern world) is to provide security for its citizens, so this is a legitimate concern.  How much do you want him to and what does it cost you?  That’s now the discussion.&lt;/p&gt;
+
+&lt;p&gt;For further reading, &lt;a href=&quot;https://en.wikipedia.org/wiki/Bruce_Schneier&quot;&gt;Bruce Schneier&lt;/a&gt; has his own &lt;a href=&quot;https://www.schneier.com/blog/archives/2019/08/attorney_genera.html&quot;&gt;take&lt;/a&gt;.&lt;/p&gt;</content><author><name>Dewey Sasser</name></author><category term="crypto" /><summary type="html">This has been invisible to most people, but we’re now in what I call the “2nd Crypto Wars”. This is important, and your world will be impacted by it. The current battleground is that the Government wants the ability to see your banking communication, your chats, your Alexa snippets… They won’t do that, of course. They’ll only use it on the bad guys, they promise. You should be happy that they can see everything because they’ll protect you from [insert boogie-man du jour]. The occasional criminal who breaks the system and vacuums out a few bank accounts is a small price to pay for allowing the government to pursue terrorists, drug dealers, and child pornographers. (They always seem to use child porn as a boogie man. After all, there’s no one who can stand up and defend it, not even Roy Moore.). Government abuse of this system is, of course, not something to worry about at all. After all, we’re talking about iPhones and nanny cams, not nuclear launch codes. The problem with this is that, actually, no — much the same technology secures it all, from your Facebook Messenger to political communications between legislators to military communications. The DoD may buy $500 hammers, but they buy off-the-shelf communication equipment from Cisco, GE, etc. (because, frankly, that stuff is damn good and they can’t really do better with a bespoke system). I use this technology daily to secure everything from political information to credit cards. When something breaks in these systems, whole companies can fail and real people are out of jobs. The DoJ keeps has always maintained that we can put in a backdoor that only they can use, and only when their motivations and pure and just and on the side of right. A.G. Barr has recently shown a change in Government strategy, and that’s progress. He’s given up on the delusion that you can have your cake while he eats it. His speech admitted some of the consequences (less security for you) instead of pretending they don’t exist, and he’s claiming it’s worth the cost to get the result (more security for you). So, we can now at least discuss things in the world of reality instead of fantasy. Big Brother may be watching over you, but Big Brother can’t see everywhere. One of the primary purposes of Government (in the modern world) is to provide security for its citizens, so this is a legitimate concern. How much do you want him to and what does it cost you? That’s now the discussion. For further reading, Bruce Schneier has his own take.</summary></entry><entry><title type="html">Staying Sane with IaC</title><link href="https://www.deweysasser.com/content/staying-sane-with-iac" rel="alternate" type="text/html" title="Staying Sane with IaC" /><published>2018-10-01T00:00:00-04:00</published><updated>2018-10-01T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/staying%20sane%20with%20iac</id><content type="html" xml:base="https://www.deweysasser.com/content/staying-sane-with-iac">&lt;p&gt;Infrastructure as Code is all the rage, but suffers the same problems as any other code:  it can easily become an unmanageable plate of spaghetti.  Organizing your IaC is critical but the methods are different than traditional program code.  We present an organizational pattern for IaC that has proven itself across multiple technologies in multiple cloud systems to allow isolation of concerns, stability, and controlled rollouts and maintain your sanity while doing so.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.google.com/presentation/d/1jzpibs9zXzMdHQJ4mK6P7w7m2aRUMFtH6q67ncXKIw/edit?usp=sharing&quot;&gt;Slides for a presentation today&lt;/a&gt;&lt;/p&gt;</content><author><name>Dewey Sasser</name></author><summary type="html">Infrastructure as Code is all the rage, but suffers the same problems as any other code: it can easily become an unmanageable plate of spaghetti. Organizing your IaC is critical but the methods are different than traditional program code. We present an organizational pattern for IaC that has proven itself across multiple technologies in multiple cloud systems to allow isolation of concerns, stability, and controlled rollouts and maintain your sanity while doing so. Slides for a presentation today</summary></entry><entry><title type="html">Google Next: Networking</title><link href="https://www.deweysasser.com/content/google-next-networking" rel="alternate" type="text/html" title="Google Next: Networking" /><published>2018-07-26T00:00:00-04:00</published><updated>2018-07-26T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/google%20next:%20networking</id><content type="html" xml:base="https://www.deweysasser.com/content/google-next-networking">&lt;p&gt;Google thinks about networking in a way that is truly revolutionary.&lt;/p&gt;
+
+&lt;p&gt;Instead of their network models having physical representation it appears to be more like a compiler:  a process assembles the networking implementation and pushes it as far down the stack as possible.&lt;/p&gt;
+
+&lt;p&gt;The result is that there is very little in the data path and so it’s very low latency.  They can also easily change implementations.  E.g. AWS took 2+ years of “its almost done” for cross region VPC peering but Google appears to have rolled out VPC sharing (ability to create your own instances attached to someone else’s VPC) in 6ish months.&lt;/p&gt;
+
+&lt;p&gt;The result is that their current network and organizational models are much better for the reality of large scale deployments.&lt;/p&gt;
+
+&lt;p&gt;No, this isn’t really surprising but it’s still amazing.&lt;/p&gt;</content><author><name>Dewey Sasser</name></author><summary type="html">Google thinks about networking in a way that is truly revolutionary. Instead of their network models having physical representation it appears to be more like a compiler: a process assembles the networking implementation and pushes it as far down the stack as possible. The result is that there is very little in the data path and so it’s very low latency. They can also easily change implementations. E.g. AWS took 2+ years of “its almost done” for cross region VPC peering but Google appears to have rolled out VPC sharing (ability to create your own instances attached to someone else’s VPC) in 6ish months. The result is that their current network and organizational models are much better for the reality of large scale deployments. No, this isn’t really surprising but it’s still amazing.</summary></entry><entry><title type="html">Terraform Workspaces vs SCM Branches</title><link href="https://www.deweysasser.com/content/terraform-workspaces-vs-scm-branches" rel="alternate" type="text/html" title="Terraform Workspaces vs SCM Branches" /><published>2018-04-09T00:00:00-04:00</published><updated>2018-04-09T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/terraform%20workspaces%20vs%20scm%20branches</id><content type="html" xml:base="https://www.deweysasser.com/content/terraform-workspaces-vs-scm-branches">&lt;p&gt;TL;DR:  Workspaces and branches serve different purposes.  An SCM
+branch is an alternet set of code.  A Terraform workspace is an
+alternate location to apply code.&lt;/p&gt;
+
+&lt;h3 id=&quot;overview&quot;&gt;Overview&lt;/h3&gt;
+
+&lt;p&gt;At first glance, terraform workspaces look like just a poor repeat of
+branches in your SCM tool.  So, why do you need them?&lt;/p&gt;
+
+&lt;p&gt;Because they’re about branching a different thing.&lt;/p&gt;
+
+&lt;p&gt;Yes, you could achieve similar results using only SCM branches but
+you’d be folding 2 different concepts into the same mechanism, making
+keeping track of the result error prone and complicated.&lt;/p&gt;
+
+&lt;h3 id=&quot;assumptions&quot;&gt;Assumptions&lt;/h3&gt;
+
+&lt;p&gt;This thinking assumes that you test (or at least want to test) all
+changes in a non-production location (hereafter called a “sandbox”).
+It assumes that changes are developed and evaluated and only applied
+to actual production once the full consequences are understood.&lt;/p&gt;
+
+&lt;p&gt;One common practice is to have a special sandbox called “staging” that
+is designed to be as much like production as possible and provides a
+final verification that changes for production will
+work.&lt;/p&gt;
+
+&lt;h3 id=&quot;scm-branches&quot;&gt;SCM Branches&lt;/h3&gt;
+
+&lt;p&gt;The purpose of SCM branches are to create an alternate set of source
+code.  It appears that each set of source code might correspond to a
+target environment, but that’s not true for 2 reasons:&lt;/p&gt;
+
+&lt;p&gt;1) you might want to develop different features in different SCM branches,
+and those features will eventually be applied to the same target
+location (or locations).&lt;/p&gt;
+
+&lt;p&gt;2) You want application of your production changes to be fully
+exercised in a sandbox first.  Using SCM branches for this creates a
+greater possibility that the code is different, resulting in surprises
+in production.  Effectively, ensuring that code is not
+(unintentionally) different in sandbox and production environments
+becomes a manual process.&lt;/p&gt;
+
+&lt;p&gt;Of course, you need a way of distinguishing your sandbox from your
+production, and differences can creep in anyway.&lt;/p&gt;
+
+&lt;h3 id=&quot;terraform-workspaces&quot;&gt;Terraform Workspaces&lt;/h3&gt;
+
+&lt;p&gt;Terraform workspaces are branches in the &lt;em&gt;target&lt;/em&gt; environment.
+Functionally, you’re using a separate Terraform state file, which can
+be shared between several users (or could be entirely separate).
+Semantically, you’re separating out the location to which the
+terraform templates are applied and tested.&lt;/p&gt;
+
+&lt;p&gt;Also, I’ve found it useful to use a different variables file across
+different workspaces, to account for differences in e.g. IP blocks or
+target DNS zones.&lt;/p&gt;
+
+&lt;h3 id=&quot;an-example-of-a-practical-difference&quot;&gt;An example of a practical difference&lt;/h3&gt;
+
+&lt;p&gt;Here’s how things can go, using workspaces and branches for separate
+concepts.&lt;/p&gt;
+
+&lt;p&gt;NOTE:  in this section I’m using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git&lt;/code&gt; conventions for SCM but the
+concepts are equally applicable to other SCM tools.&lt;/p&gt;
+
+&lt;p&gt;You have a production branch of code (we’ll call this &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; branch).  You
+want to make a change, so you make a branch (we’ll call this
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;feature&lt;/code&gt;).  You develop your changes on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;feature&lt;/code&gt; and apply it to the
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sandbox&lt;/code&gt; &lt;em&gt;workspace&lt;/em&gt;, mutating some infrastructure that is local to
+your development effort.&lt;/p&gt;
+
+&lt;p&gt;At this point you have changes in branch &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;feature&lt;/code&gt; that have been
+validated in a private &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sandbox&lt;/code&gt; deployment.&lt;/p&gt;
+
+&lt;p&gt;When you’re happy with how things are working out in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sandbox&lt;/code&gt; branch
+area, you commit (or merge) your code to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; branch.  It is
+now queued for production.&lt;/p&gt;
+
+&lt;p&gt;You then change to the ‘staging’ &lt;em&gt;workspace&lt;/em&gt; and apply your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt;
+branch to make changes.  You can observe the behaviors in staging to
+both verify that it does what you want and verify how it will impact
+your production services availability.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Staging&lt;/code&gt; differs from the previous develop sandbox in that it is, as
+much as possible, a clean duplicate of production (without any cruft
+caused by testing multiple development attempts, and perhaps with a
+more production like set of data).&lt;/p&gt;
+
+&lt;p&gt;Changes applied in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;staging&lt;/code&gt; are a good predictor for how they will
+work in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;production&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;At this point you have changes in branch &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; that have been
+validated in a private &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;staging&lt;/code&gt; &lt;em&gt;workspace&lt;/em&gt; (e.g. a deployment).
+You’re about to apply the exact same changes to your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;production&lt;/code&gt;
+&lt;em&gt;workspace&lt;/em&gt;.  You know they’re the same because they’re produced by
+the &lt;em&gt;exact&lt;/em&gt; same code (of course, conditionals based on different
+variables can produce different results.  It behooves you to minimize
+conditionals for this reason.)&lt;/p&gt;
+
+&lt;p&gt;At this point you can (if necessary) schedule maintenance and apply
+your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; branch to your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;production&lt;/code&gt; &lt;em&gt;workspace&lt;/em&gt;, which
+presumably makes the changes available to end users.&lt;/p&gt;</content><author><name>Dewey Sasser</name></author><summary type="html">TL;DR: Workspaces and branches serve different purposes. An SCM branch is an alternet set of code. A Terraform workspace is an alternate location to apply code. You should use the difference to...</summary></entry><entry><title type="html">Feeling Scrummy?</title><link href="https://www.deweysasser.com/content/feeling-scrummy" rel="alternate" type="text/html" title="Feeling Scrummy?" /><published>2018-03-26T00:00:00-04:00</published><updated>2018-03-26T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/feeling%20scrummy</id><content type="html" xml:base="https://www.deweysasser.com/content/feeling-scrummy">&lt;p&gt;This was originally written for an infrastructure engineering team.
+The team was split between systems engineering tasks and operaitons
+responsibilities.&lt;/p&gt;
+
+&lt;p&gt;We successfully implemented this SCRUM process and, in conjunction
+with some accountability/build process changes, substantially improved
+our work quality and predictability.&lt;/p&gt;
+
+&lt;h1 id=&quot;feeling-scrummy&quot;&gt;Feeling Scrummy?&lt;/h1&gt;
+
+&lt;h2 id=&quot;tldr&quot;&gt;TL;DR&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Stories have the user, goal, motivation and acceptance criteria, or
+we don’t start them&lt;/li&gt;
+  &lt;li&gt;Sprint planning turns stories into tasks.  We work on tasks, not
+stories.  Finding new tasks after planning is not goodness.&lt;/li&gt;
+  &lt;li&gt;We never work on something that’s not a task.y&lt;/li&gt;
+  &lt;li&gt;We reserve 20% of our time for “unplanned work” (break/fix tasks)&lt;/li&gt;
+  &lt;li&gt;Tasks have success criteria and a max duration of 8 hours (you can
+split into 2)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There’s a lot in here that will seem uncomfortable a first.  It’s
+motivated by making a predictable, manageable process.  Management is
+important.  Deal.&lt;/p&gt;
+
+&lt;h2 id=&quot;contents&quot;&gt;Contents&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Motivation and Intention&lt;/li&gt;
+  &lt;li&gt;What we get out of it&lt;/li&gt;
+  &lt;li&gt;A note on process
+    &lt;ul&gt;
+      &lt;li&gt;Work Processes: Time boxing and success criteria&lt;/li&gt;
+      &lt;li&gt;Responsibilities
+        &lt;ul&gt;
+          &lt;li&gt;The Team&lt;/li&gt;
+          &lt;li&gt;The Backlog Owner&lt;/li&gt;
+          &lt;li&gt;The Scrum Master&lt;/li&gt;
+          &lt;li&gt;Management&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;How we get it
+    &lt;ul&gt;
+      &lt;li&gt;Stories and Task and “Done”, Oh My!
+        &lt;ul&gt;
+          &lt;li&gt;Stories&lt;/li&gt;
+          &lt;li&gt;Tasks&lt;/li&gt;
+          &lt;li&gt;Done and “Done Done”&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Some notes on scheduling&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Our Process
+    &lt;ul&gt;
+      &lt;li&gt;Sprints (time boxed)&lt;/li&gt;
+      &lt;li&gt;Daily Standups (time boxed) &amp;amp; Discussions (criteria based)&lt;/li&gt;
+      &lt;li&gt;Estimation Meetings (time boxed)&lt;/li&gt;
+      &lt;li&gt;Sprint Planning (criteria based)&lt;/li&gt;
+      &lt;li&gt;Sprint retrospective (time boxed)&lt;/li&gt;
+      &lt;li&gt;Sprint review (time boxed)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;motivation-and-intention&quot;&gt;Motivation and Intention&lt;/h2&gt;
+
+&lt;p&gt;We need to change our process.  We’ve been operating in something that
+resembles semi-controlled chaos dressed in scrum clothes.  (OK,
+perhaps a bit better than that.  Still…)&lt;/p&gt;
+
+&lt;p&gt;I believe it will be better for all stakeholders (us, our peer groups
+in the company, our managers who are measured on what we get done, and
+ultimately the people who pay us) to improve our progress by adding
+more scrummish rigor (rigor-scrumtis?) to our process.&lt;/p&gt;
+
+&lt;p&gt;We need 3 things from a development process:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;productivity&lt;/li&gt;
+  &lt;li&gt;predictability&lt;/li&gt;
+  &lt;li&gt;transparency&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We need to add manageability to our process, so this document lays out
+a series of conditions that we will agree we MUST meet.  Also, we MUST
+meet them in spirit as well as letter.  This is not to say that we
+can’t do other things and that we can’t deal with exceptions, but that
+we’re going to be doing this &lt;em&gt;for real&lt;/em&gt; and not just for appearances.&lt;/p&gt;
+
+&lt;p&gt;I’m not going to get into the basics of scrum.  I’m going to describe
+how we should make it work here.  If something doesn’t make sense,
+please Google until it does (or come back and say “Dewey, you’re an
+idiot and here’s why” and we can have a productive conversation about
+it).&lt;/p&gt;
+
+&lt;p&gt;What I’m describing here is &lt;em&gt;NOT&lt;/em&gt; the fullest, most complete Scrum
+process it’s possible to do.  I’m describing the simplest things that
+must be done to have a successful process instead of having success
+despite a process.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-we-get-out-of-it&quot;&gt;What we get out of it&lt;/h2&gt;
+
+&lt;p&gt;When we have predictable velocity, it makes it easy for the backlog
+owner to manage our backlog and future work, show the rest of the
+company that we’re valuable, and know when we need to add capacity to
+the team.&lt;/p&gt;
+
+&lt;p&gt;When we’re working on tasks, it makes it easy to for managers to tell
+what we’re doing and where we are and have confidence that we’re going
+to get things done.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-note-on-process&quot;&gt;A note on process&lt;/h2&gt;
+
+&lt;h3 id=&quot;work-processes--time-boxing-and-success-criteria&quot;&gt;Work Processes:  Time boxing and success criteria&lt;/h3&gt;
+&lt;p&gt;All processes in scrum are either&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;time boxed (meaning you spent a fixed amount of time and you get
+what you get)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;criteria driven (meaning you’re not done until it’s met success
+criteria done).&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It’s important to understand the difference and &lt;em&gt;stick to it&lt;/em&gt;.
+If we find something that’s time boxed that consistently doesn’t have
+enough time, we change the &lt;em&gt;process&lt;/em&gt;, not push the envelope in
+individual tasks or meetings.&lt;/p&gt;
+
+&lt;p&gt;One frustration with time-boxed meetings is that you often don’t get
+to everything.  That’s not a bug, that’s a feature.  It prevents
+“beating a dead horse”.  If something is important, it’s going to come
+up at the next time-boxed meeting anyway so there’s no worry.  It
+enable and enforces prioritization.&lt;/p&gt;
+
+&lt;h3 id=&quot;responsibilities&quot;&gt;Responsibilities&lt;/h3&gt;
+
+&lt;h4 id=&quot;the-team&quot;&gt;The Team&lt;/h4&gt;
+
+&lt;p&gt;The scrum team owns the tasks.  This means that the team is
+responsible for getting them done as they’ve committed.&lt;/p&gt;
+
+&lt;p&gt;In scrum, management does &lt;em&gt;NOT&lt;/em&gt; tell a team what they must do, only
+what must be done first.  The team commits to getting things done.&lt;/p&gt;
+
+&lt;p&gt;As this is fundamentally foreign to the way people reflexively manage,
+there is a cost to this, which is: commitments MUST be met.&lt;/p&gt;
+
+&lt;p&gt;The &lt;em&gt;TEAM&lt;/em&gt; commits, not individuals.  There is no “My stuff is done,
+you suck”.&lt;/p&gt;
+
+&lt;p&gt;The team owns estimates, but the backlog owner has to make sure the
+team has good data on which to estimate.  The backlog owner owns the
+priorities, but the team must give good estimates so the backlog owner
+can prioritize.&lt;/p&gt;
+
+&lt;h4 id=&quot;the-backlog-owner&quot;&gt;The Backlog Owner&lt;/h4&gt;
+
+&lt;p&gt;The backlog owner, um, owns the backlog.
+Ownership means that she gets to decide what’s on it and in what order
+– deciding what is important to do.  (The team has &lt;em&gt;input&lt;/em&gt; but not
+ownership.)&lt;/p&gt;
+
+&lt;p&gt;The backlog owner owns backlog quality, but the team is responsible
+for doing the best estimates it can on the basis of the known data
+(which &lt;em&gt;will&lt;/em&gt; change over time).&lt;/p&gt;
+
+&lt;h4 id=&quot;the-scrum-master&quot;&gt;The Scrum Master&lt;/h4&gt;
+
+&lt;p&gt;The scrum master is responsible for making sure we scrum correctly and
+keeping track of all of the various items.  (This is not an enviable
+job.  This can be “herding cats” at it’s finest.  Buy her flowers
+and/or booze.)&lt;/p&gt;
+
+&lt;h4 id=&quot;management&quot;&gt;Management&lt;/h4&gt;
+
+&lt;p&gt;In a well running scrum process, managers do very little day to day.
+What is traditionally software “management” is actually backlog
+management and task assignement.&lt;/p&gt;
+
+&lt;p&gt;In a SCRUM process, management is about creating a productive
+environemnt and getting blockers out of the way that’s beyond tam
+scope.  Basically, everything around getting things done”: staffing,
+facilities, etc.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-we-get-it&quot;&gt;How we get it&lt;/h2&gt;
+
+&lt;h3 id=&quot;stories-and-task-and-done-oh-my&quot;&gt;Stories and Task and “Done”, Oh My!&lt;/h3&gt;
+
+&lt;h4 id=&quot;stories&quot;&gt;Stories&lt;/h4&gt;
+
+&lt;p&gt;The purpose of a story is to understand the target so you can aim
+properly.  Ultimately, a story consists of the 5 Ws (and you thought
+writing had no place in STEM).&lt;/p&gt;
+
+&lt;p&gt;The critical parts are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A “Role” (or a “User”):  this describes the perspective to address.&lt;/li&gt;
+  &lt;li&gt;A goal:  what the user is trying to accomplish.&lt;/li&gt;
+  &lt;li&gt;A motivation:  Why they are trying to achieve this goal&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I find it’s also a &lt;em&gt;great&lt;/em&gt; idea to explicitly and separately state
+success criteria (also called “Acceptance Criteria”.&lt;/p&gt;
+
+&lt;p&gt;Before we can start on a story (i.e. before it can be accepted for
+work during a sprint) it must have all 4 of these.  Yes, sometimes
+they’re obvious.  Great, that means they’ll be easy to write.&lt;/p&gt;
+
+&lt;p&gt;I don’t care if it’s the whole, stilted, formal “As a Driver, I want
+my car to go faster when I press the accelerator” or just a set of
+key/value pairs.&lt;/p&gt;
+
+&lt;p&gt;We’ll estimate stories in “Story Points” with the goal of measuring
+our velocity.  “Story Points” allow the backlog owner to tell other
+people (management, other teams), roughly when we’ll complete things.
+Story points are an artificial measurement that isn’t tied directly to
+time – the velocity is measured.&lt;/p&gt;
+
+&lt;h4 id=&quot;tasks&quot;&gt;Tasks&lt;/h4&gt;
+
+&lt;p&gt;Notice that you can’t actually do a story!  Stories are not
+actionable.  In order to enable a story, we must break it into tasks
+(“install accelerator petal”, “connect petal to throttle”, etc).&lt;/p&gt;
+
+&lt;p&gt;“Sprint Planning” does 2 things:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;You figure out how much you’re going to do in a sprint&lt;/li&gt;
+  &lt;li&gt;You decide what tasks are necessary to implement a story (if you
+ haven’t already).  Also, you estimate these tasks.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Stories also have success criteria.  (Otherwise, how do you know when you’re done?)&lt;/p&gt;
+
+&lt;p&gt;Tasks are estimated in hours.  Like story points, we’ll have a task
+velocity, but unlike story points our goal is to achieve a 1:1
+(average) correlation with real time.&lt;/p&gt;
+
+&lt;p&gt;Note that it’s possible to have a time boxed task for exploratory
+work.  If so, &lt;em&gt;stick to the time box.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;done-and-done-done&quot;&gt;Done and “Done Done”&lt;/h4&gt;
+
+&lt;p&gt;Really, truely done – I mean “Done” done – means 2 things:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;You’ve achieved your success criteria&lt;/li&gt;
+  &lt;li&gt;Your User can execute their story.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This last is the hard part.  How do you know it’s possible?&lt;/p&gt;
+
+&lt;p&gt;Hint: the best way is to actually &lt;em&gt;watch&lt;/em&gt; a real user do it.&lt;/p&gt;
+
+&lt;p&gt;Until a real user has done it, you don’t know that you’re actually
+done.  The best you can say is “I believe it will work but I can’t
+know that until we get it in front of the user.”&lt;/p&gt;
+
+&lt;h3 id=&quot;some-notes-on-scheduling&quot;&gt;Some notes on scheduling&lt;/h3&gt;
+
+&lt;p&gt;You don’t plan to work nights and weekends.  If you do that, you’re
+being a hero and getting more done.  This is great.  It’s also not
+sustainable, you’ll burn out, and your velocity will suffer later.
+It’s sometimes necessary to achieve short term goals.  It’s always has
+a price from the future.  Interest compounds.&lt;/p&gt;
+
+&lt;h2 id=&quot;our-process&quot;&gt;Our Process&lt;/h2&gt;
+
+&lt;h3 id=&quot;sprints-time-boxed&quot;&gt;Sprints (time boxed)&lt;/h3&gt;
+
+&lt;p&gt;We’ll use 2 week sprints (what we’re doing now).  I suggest we
+start/end on Wednesdays to stay away from the weekend and minimize the
+impact of holidays/long weekends/etc on our processes.&lt;/p&gt;
+
+&lt;p&gt;We’ll measure velocity in “Story Points per Week” in case we want to
+change the size of the box down the road.&lt;/p&gt;
+
+&lt;h3 id=&quot;daily-standups-time-boxed--discussions-criteria-based&quot;&gt;Daily Standups (time boxed) &amp;amp; Discussions (criteria based)&lt;/h3&gt;
+
+&lt;p&gt;Once we have actual tasks, the daily stand ups will turn into “what
+I’ve just done, any changes, and what I’m doing next”.  All discussion
+should be deferred until post-standup (often called “parking lot
+items”)&lt;/p&gt;
+
+&lt;p&gt;Separating status from discussion makes for much cleaner, more
+understandable meetings and allows people who are uninterested in
+parts of the discussion to leave.&lt;/p&gt;
+
+&lt;p&gt;We should time-box our status to 15 minutes max.  Discussions can then
+take time as appropriate, because they are &lt;em&gt;contributing to the tasks
+we’re doing&lt;/em&gt;.  Discussions are done when they’re done.&lt;/p&gt;
+
+&lt;h3 id=&quot;estimation-meetings-time-boxed&quot;&gt;Estimation Meetings (time boxed)&lt;/h3&gt;
+
+&lt;p&gt;Estimate upcoming (post-current-sprint) stories in story points.  Top
+of the backlog is most important, working down.  If anything changes
+(up to the point where it’s accepted into the current sprint), we
+re-estimate.&lt;/p&gt;
+
+&lt;h3 id=&quot;sprint-planning-criteria-based&quot;&gt;Sprint Planning (criteria based)&lt;/h3&gt;
+
+&lt;p&gt;If a story does not have the 4 required parts, it can’t be planned.
+If we can’t break it into a series of doable tasks, it can’t be
+planned.&lt;/p&gt;
+
+&lt;p&gt;Sprint planning turns stories into tasks and commits to achieving a
+set number of success criteria. If we’re playing pool, this means
+we’re calling our shots.&lt;/p&gt;
+
+&lt;p&gt;Sprint planning ends when&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;We are willing to commit to a set of stories for the upcoming sprint&lt;/li&gt;
+  &lt;li&gt;All of the committed stories are broken up into tasks of no more
+than 8 hours&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;sprint-retrospective-time-boxed&quot;&gt;Sprint retrospective (time boxed)&lt;/h3&gt;
+
+&lt;p&gt;Yup, I’m sneaking this one in because we’re not going to do it for
+about 3 sprints.  This is the place where &lt;em&gt;improvements&lt;/em&gt; happen – we
+take a look back and the sprint and figure out what worked and what
+didn’t and make things better.&lt;/p&gt;
+
+&lt;p&gt;We’ll start this around late August and it will take significant time
+for about the next 4 sprints, then will stabilize out.&lt;/p&gt;
+
+&lt;h3 id=&quot;sprint-review-time-boxed&quot;&gt;Sprint review (time boxed)&lt;/h3&gt;
+
+&lt;p&gt;Present what we did.  We’ll keep this one off the radar until we
+decide we need it.&lt;/p&gt;</content><author><name>Dewey Sasser</name></author><summary type="html">Description of a successfully implemented, fairly light-weight SCRUM process.</summary></entry><entry><title type="html">Guidelines for Modern DevOps</title><link href="https://www.deweysasser.com/content/guidelines-for-modern-devops" rel="alternate" type="text/html" title="Guidelines for Modern DevOps" /><published>2018-03-14T00:00:00-04:00</published><updated>2018-03-14T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/guidelines%20for%20modern%20devops</id><content type="html" xml:base="https://www.deweysasser.com/content/guidelines-for-modern-devops">&lt;h3 id=&quot;start-at-the-end&quot;&gt;Start at the end&lt;/h3&gt;
+
+&lt;p&gt;Write your success criteria first. That way you know when you’re done.  If you can’t write it down then you don’t really know what you’re doing.&lt;/p&gt;
+
+&lt;h3 id=&quot;make-a-computer-do-the-work&quot;&gt;Make a computer do the work.&lt;/h3&gt;
+
+&lt;p&gt;Humans should make decisions.  Computers should make them happen.&lt;/p&gt;
+
+&lt;p&gt;Getting this backwards leads to sadness. (Maybe AI will flip this some day.)&lt;/p&gt;
+
+&lt;h3 id=&quot;automate-3-things--things-that-happen-frequently-things-that-happen-rarely-and-things-that-you-really-dont-want-to-mess-up&quot;&gt;Automate 3 things:  things that happen frequently, things that happen rarely, and things that you really don’t want to mess up.&lt;/h3&gt;
+
+&lt;p&gt;What should you not automate?  Thinking.&lt;/p&gt;
+
+&lt;h3 id=&quot;dont-start-with-perfect&quot;&gt;Don’t start with perfect&lt;/h3&gt;
+
+&lt;p&gt;“Perfect” means you don’t know enough about it to see the flaws.  You can always see more to do.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-the-simplest-thing-that-could-possibly-work&quot;&gt;What is the simplest thing that could possibly work?&lt;/h3&gt;
+
+&lt;p&gt;Less is often more.  It should be as simple as possible, but no simpler.&lt;/p&gt;
+
+&lt;h3 id=&quot;if-everything-is-top-priority-nothing-is-prioritized&quot;&gt;If everything is top priority, nothing is prioritized&lt;/h3&gt;
+
+&lt;p&gt;Priority isn’t about what’s important, priority is about what do I do first.  Dividing tasks into high, medium, low works approximately for 10 tasks, poorly for 100 and not at all for 1000.&lt;/p&gt;
+
+&lt;p&gt;Tasks should be ordered, not tagged.&lt;/p&gt;
+
+&lt;h3 id=&quot;think-about-how-to-get-it&quot;&gt;Think about how to get it&lt;/h3&gt;
+
+&lt;p&gt;If you can’t get there from here, you probably don’t want to go.  If you still want to go, you need to learn the way or find someone else who knows.&lt;/p&gt;
+
+&lt;h3 id=&quot;use-someone-elses-solution&quot;&gt;Use someone else’s solution&lt;/h3&gt;
+
+&lt;p&gt;Spend your time wisely.  You don’t have enough of it.  There’s a lot more cool stuff to do in the world than you could possibly do.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-size-of-your-solution-should-match-the-size-of-your-problem&quot;&gt;The size of your solution should match the size of your problem&lt;/h3&gt;
+
+&lt;p&gt;Don’t use a sledge hammer to swat a fly.  Don’t use &lt;a href=&quot;https://en.wikipedia.org/wiki/Common_Object_Request_Broker_Architecture&quot;&gt;CORBA&lt;/a&gt; to pass a message.&lt;/p&gt;
+
+&lt;h3 id=&quot;recognize-when-solutions-arent&quot;&gt;Recognize when solutions aren’t&lt;/h3&gt;
+
+&lt;p&gt;If a solution to your problem causes a bigger problem, it’s not a solution no matter how cool it is.&lt;/p&gt;
+
+&lt;h3 id=&quot;describe-what-you-want-not-how-to-get-it&quot;&gt;Describe what you want, not how to get it&lt;/h3&gt;
+
+&lt;p&gt;It’s more clear to think about what you want and it’s easier to reason about states than transitions.&lt;/p&gt;
+
+&lt;p&gt;This works for both people problems and computer problems.&lt;/p&gt;
+
+&lt;p&gt;Procedures obscure the goals.&lt;/p&gt;
+
+&lt;h3 id=&quot;if-you-have-to-write-a-procedure-it-should-be-idempotent&quot;&gt;If you have to write a procedure, it should be idempotent&lt;/h3&gt;
+
+&lt;p&gt;Did I do it already?  Who cares, just do it again.&lt;/p&gt;
+
+&lt;h3 id=&quot;whenever-possible-failed-procedures-should-be-resumable&quot;&gt;Whenever possible, failed procedures should be resumable.&lt;/h3&gt;
+
+&lt;p&gt;It broke half-way through.  Fix it and run it again. It shouldn’t have to do the same work twice.&lt;/p&gt;
+
+&lt;h3 id=&quot;dont-allow-failure-to-be-a-habit&quot;&gt;Don’t allow failure to be a habit&lt;/h3&gt;
+
+&lt;p&gt;Things should succeed.  If you have to run things many times until they finally succeed, it’s broken.&lt;/p&gt;
+
+&lt;h3 id=&quot;never-count-on-initialization-order&quot;&gt;Never count on initialization order&lt;/h3&gt;
+
+&lt;p&gt;There are too many moving parts to know exactly when they will move.&lt;/p&gt;
+
+&lt;h3 id=&quot;if-explanations-become-work-then-theyre-too-complicated&quot;&gt;If explanations become work then they’re too complicated&lt;/h3&gt;
+
+&lt;p&gt;Complex documentation indicates poor abstractions.  Fix the program and the documentation becomes easy to write.&lt;/p&gt;
+
+&lt;p&gt;Detailed does not mean complex.  Intricate doesn’t, either.&lt;/p&gt;
+
+&lt;h3 id=&quot;sufficiently-detailed-documentation-is-executable&quot;&gt;Sufficiently detailed documentation is executable.&lt;/h3&gt;
+
+&lt;p&gt;Can a computer do it?  If not, you didn’t document it well enough.  You can’t document judgment calls, so a computer can’t do them.  You &lt;em&gt;can&lt;/em&gt; fake it with a good heuristic but don’t mistake it for judgement.&lt;/p&gt;
+
+&lt;h3 id=&quot;measure-it&quot;&gt;Measure it&lt;/h3&gt;
+
+&lt;p&gt;Your guess is probably wrong.  Measure it, don’t guess.&lt;/p&gt;
+
+&lt;h3 id=&quot;keep-an-eye-on-it-but-not-yours&quot;&gt;Keep an eye on it, but not yours&lt;/h3&gt;
+
+&lt;p&gt;It’s not enough that it worked, it has to keep working.  Computers are good at watching things.  Humans aren’t.&lt;/p&gt;
+
+&lt;h3 id=&quot;dont-ignore-alerts&quot;&gt;Don’t ignore alerts&lt;/h3&gt;
+
+&lt;p&gt;Any time you get an alert, your goal should be to make sure you never get it again, one way or another.&lt;/p&gt;
+
+&lt;p&gt;If you’re not going to fix it it should be on a status page, not an alert.  Alerts are for taking actions.&lt;/p&gt;
+
+&lt;h3 id=&quot;if-everyone-owns-it-no-one-owns-it&quot;&gt;If everyone owns it, no one owns it&lt;/h3&gt;
+
+&lt;p&gt;Make sure someone is accountable.  Make sure they have a backup (vacations, busses…)&lt;/p&gt;
+
+&lt;p&gt;Team wide alerts train everyone to ignore issues.&lt;/p&gt;
+
+&lt;h3 id=&quot;keep-thinking&quot;&gt;Keep Thinking&lt;/h3&gt;
+
+&lt;p&gt;There are very few problems that are not better solved by stopping to think about the best solution first.&lt;/p&gt;</content><author><name>Dewey Sasser</name></author><summary type="html">A list of guidelines for good DevOps, presented in the spirit of [Shuhari](https://en.wikipedia.org/wiki/Shuhari) Write your success criteria first. That way you know when you're done. If you can't write it down then you don't really know what you're doing. Make a computer do the work. ...</summary></entry><entry><title type="html">Herding cats in the Cloud</title><link href="https://www.deweysasser.com/content/herding-cats-in-cloud" rel="alternate" type="text/html" title="Herding cats in the Cloud" /><published>2017-01-25T00:00:00-05:00</published><updated>2017-01-25T00:00:00-05:00</updated><id>https://www.deweysasser.com/content/herding%20cats%20in%20cloud</id><content type="html" xml:base="https://www.deweysasser.com/content/herding-cats-in-cloud">&lt;p&gt;I gave my “Herding Cats…” talk at the 2017 New England VTUG Winter Warmer.&lt;/p&gt;
+
+&lt;p&gt;The talk covers technical, social and organizational issues for fast, agile development at large scale (~1k machines, 10ks of TPS, ~500TB transfer) in a cloud environment.&lt;/p&gt;
+
+&lt;p&gt;See the &lt;a href=&quot;http://www.slideshare.net/DeweySasser/herding-cats-in-the-cloud&quot;&gt;slides&lt;/a&gt; on SlideShare.net.&lt;/p&gt;
+
+&lt;p&gt;In conjunction with this talk I was interviewed by Silicon Angle for theCube.  See the segment &lt;a href=&quot;https://www.youtube.com/watch?v=Cyzv7jaSkOM&amp;amp;feature=youtu.be&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;</content><author><name>Dewey Sasser</name></author><category term="devops" /><category term="aws" /><summary type="html">I gave my “Herding Cats…” talk at the 2017 New England VTUG Winter Warmer. The talk covers technical, social and organizational issues for fast, agile development at large scale (~1k machines, 10ks of TPS, ~500TB transfer) in a cloud environment. See the slides on SlideShare.net. In conjunction with this talk I was interviewed by Silicon Angle for theCube. See the segment here.</summary></entry><entry><title type="html">Project: Makessl</title><link href="https://www.deweysasser.com/content/project-makessl" rel="alternate" type="text/html" title="Project: Makessl" /><published>2015-08-12T00:00:00-04:00</published><updated>2015-08-12T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/project:%20makessl</id><content type="html" xml:base="https://www.deweysasser.com/content/project-makessl">&lt;p&gt;Makessl is a Makefile for GNU make that assists you in generating SSL keys, certificate requests, and (optionally) certificates.&lt;/p&gt;
+
+&lt;p&gt;Using it is as simple as:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git clone https://github.com/deweysasser/makessl
+ cd makessl
+ vi ssl-data.txt # set the certificate data to your own information
+ mkdir -p hosts/www.example.com
+ make
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The result is that an RSA key and certificate request will be left in that subdirectory.  If, instead of ‘make’, you use:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; make certs
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It will create a CA key and a certificate for you.  This, for example, is terribly useful for maintaining OpenVPN certificates – just give the ovpn server the root CA and chain and then make client certs with abandon!&lt;/p&gt;
+
+&lt;p&gt;Project is available on Github at:  &lt;a href=&quot;https://github.com/deweysasser/makessl&quot;&gt;https://github.com/deweysasser/makessl&lt;/a&gt;&lt;/p&gt;</content><author><name>Dewey Sasser</name></author><summary type="html">Makessl is a Makefile for GNU make that assists you in generating SSL keys, certificate requests, and (optionally) certificates. Using it is as simple as: git clone https://github.com/deweysasser/makessl cd makessl vi ssl-data.txt # set the certificate data to your own information mkdir -p hosts/www.example.com make The result is that an RSA key and certificate request will be left in that subdirectory. If, instead of ‘make’, you use: make certs It will create a CA key and a certificate for you. This, for example, is terribly useful for maintaining OpenVPN certificates – just give the ovpn server the root CA and chain and then make client certs with abandon! Project is available on Github at: https://github.com/deweysasser/makessl</summary></entry></feed>
