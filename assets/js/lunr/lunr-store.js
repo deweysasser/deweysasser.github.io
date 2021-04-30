@@ -162,7 +162,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Google Next:  Networking",
-        "excerpt":"Google thinks about networking in a way that is truly revolutionary. Instead of their network models having physical representation it appears to be more like a compiler: a process assembles the networking implementation and pushes it as far down the stack as possible. The result is that there is very...","categories": [],
+        "excerpt":"Google thinks about networking in a way that is truly revolutionary. Instead of their network models having physical representation it appears to be more like a compiler: a process assembles the networking implementation and pushes it as far down the stack as possible. The result is that there is very...","categories": ["gcp"],
         "tags": [],
         "url": "/content/google-next-networking",
         "teaser": null
@@ -185,8 +185,14 @@ var store = [{
         "url": "/content/resetting-git-crypt-system",
         "teaser": null
       },{
+        "title": "Computer Architect",
+        "excerpt":"Something that often surprises people about a Software Architect1 role: it’s a people job. Technical competence is table stakes. To actually play the game, it’s all about communication, advocacy, communication, evangelism, communication, persuasion, communication, relationships, and communication. There’s no point in designing the perfect cat tree if you can’t convince...","categories": [],
+        "tags": [],
+        "url": "/content/computer-architect",
+        "teaser": null
+      },{
         "title": "2021 Site Refresh",
-        "excerpt":"It’s been a while since I set up the technology behind this site, and times have changed. So, I’m moving it form Drupal to something else. I’m not yet sure what the “something else” will be. Right now it’s a Jekyll generated static site. I’m not sure if that’s the...","categories": [],
+        "excerpt":"It’s been a while since I set up the technology behind this site, and times have changed. So, I’m moving it form Drupal to something else. I’m trying out Jekyll to statically generate, and it’s pretty cool. I’m not sure if that’s the right long term solution or not. We’ll...","categories": [],
         "tags": [],
         "url": "/content/2021-site-refresh",
         "teaser": null
