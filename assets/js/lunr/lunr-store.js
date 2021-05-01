@@ -191,6 +191,18 @@ var store = [{
         "url": "/content/computer-architect",
         "teaser": null
       },{
+        "title": "Gnarly Sed",
+        "excerpt":"Last night I wrote a script to compute a Table of Contents for Markdown documents and insert it into the document. It handles both syntaxes for heading blocks. (I also wrote a git hook to run this script on commit.) It contains what is probably the most gnarly sed script...","categories": ["sed","shell"],
+        "tags": [],
+        "url": "/content/gnarly-sed",
+        "teaser": null
+      },{
+        "title": "Markdown Toc",
+        "excerpt":"Introducing Markdown Tables of Contents. This project contains a script and makefile to maintain a table of contents in your markdown documents, along with an optional git pre-commit hook to keep it up to date. I find it useful for either long documents or long READMEs for github projects. #...","categories": ["tools","shell"],
+        "tags": [],
+        "url": "/content/markdown-toc",
+        "teaser": null
+      },{
         "title": "2021 Site Refresh",
         "excerpt":"It’s been a while since I set up the technology behind this site, and times have changed. So, I’m moving it form Drupal to something else. I’m trying out Jekyll to statically generate, and it’s pretty cool. I’m not sure if that’s the right long term solution or not. We’ll...","categories": [],
         "tags": [],

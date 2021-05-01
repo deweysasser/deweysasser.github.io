@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://www.deweysasser.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.deweysasser.com/" rel="alternate" type="text/html" /><updated>2021-04-29T22:43:02-04:00</updated><id>https://www.deweysasser.com/feed.xml</id><title type="html">DeweySasser.com</title><subtitle>Software Engineering, Systems Engineering, and other geek pursuits</subtitle><author><name>Dewey Sasser</name></author><entry><title type="html">2021 Site Refresh</title><link href="https://www.deweysasser.com/content/2021-site-refresh" rel="alternate" type="text/html" title="2021 Site Refresh" /><published>2021-04-25T00:00:00-04:00</published><updated>2021-04-25T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/2021%20site%20refresh</id><content type="html" xml:base="https://www.deweysasser.com/content/2021-site-refresh">&lt;p&gt;It’s been a while since I set up the technology behind this site, and times have changed.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://www.deweysasser.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.deweysasser.com/" rel="alternate" type="text/html" /><updated>2021-04-30T23:08:46-04:00</updated><id>https://www.deweysasser.com/feed.xml</id><title type="html">DeweySasser.com</title><subtitle>Software Engineering, Systems Engineering, and other geek pursuits</subtitle><author><name>Dewey Sasser</name></author><entry><title type="html">2021 Site Refresh</title><link href="https://www.deweysasser.com/content/2021-site-refresh" rel="alternate" type="text/html" title="2021 Site Refresh" /><published>2021-04-25T00:00:00-04:00</published><updated>2021-04-25T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/2021%20site%20refresh</id><content type="html" xml:base="https://www.deweysasser.com/content/2021-site-refresh">&lt;p&gt;It’s been a while since I set up the technology behind this site, and times have changed.&lt;/p&gt;
 
 &lt;p&gt;So, I’m moving it form Drupal to something else.&lt;/p&gt;
 
@@ -14,7 +14,104 @@ let me know.&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;discussions (could use disqus.com or commento.io)&lt;/li&gt;
   &lt;li&gt;a more wiki-like structure with nice cross-links (probably dokuwiki)&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Dewey Sasser</name></author><summary type="html">It’s been a while since I set up the technology behind this site, and times have changed. So, I’m moving it form Drupal to something else. I’m trying out Jekyll to statically generate, and it’s pretty cool. I’m not sure if that’s the right long term solution or not. We’ll see. But, I needed something now, and it’s something. If you have an option on what I should use (or, better yet, what features I should support), please let me know. Some thoughts are: discussions (could use disqus.com or commento.io) a more wiki-like structure with nice cross-links (probably dokuwiki)</summary></entry><entry><title type="html">Computer Architect</title><link href="https://www.deweysasser.com/content/computer-architect" rel="alternate" type="text/html" title="Computer Architect" /><published>2021-02-03T00:00:00-05:00</published><updated>2021-02-03T00:00:00-05:00</updated><id>https://www.deweysasser.com/content/computer-architect</id><content type="html" xml:base="https://www.deweysasser.com/content/computer-architect">&lt;p&gt;Something that often surprises people about a Software Architect&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; role:  it’s a people job.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Dewey Sasser</name></author><summary type="html">It’s been a while since I set up the technology behind this site, and times have changed. So, I’m moving it form Drupal to something else. I’m trying out Jekyll to statically generate, and it’s pretty cool. I’m not sure if that’s the right long term solution or not. We’ll see. But, I needed something now, and it’s something. If you have an option on what I should use (or, better yet, what features I should support), please let me know. Some thoughts are: discussions (could use disqus.com or commento.io) a more wiki-like structure with nice cross-links (probably dokuwiki)</summary></entry><entry><title type="html">Markdown Toc</title><link href="https://www.deweysasser.com/content/markdown-toc" rel="alternate" type="text/html" title="Markdown Toc" /><published>2021-02-24T00:00:00-05:00</published><updated>2021-02-24T00:00:00-05:00</updated><id>https://www.deweysasser.com/content/markdown-toc</id><content type="html" xml:base="https://www.deweysasser.com/content/markdown-toc">&lt;p&gt;Introducing &lt;a href=&quot;https://github.com/deweysasser/markdown-doc&quot;&gt;Markdown Tables of Contents&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This project contains a script and makefile to maintain a table of contents in your markdown
+documents, along with an optional git &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pre-commit&lt;/code&gt; hook to keep it up to date.&lt;/p&gt;
+
+&lt;p&gt;I find it useful for either long documents or long READMEs for github projects.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Markdown-doc
+
+Add tables of contents to all markdown files in this repo.
+
+## Contents
+
+* [Markdown-doc](#markdown-doc)
+  * [Contents](#contents)
+  * [Features](#features)
+  * [Usage](#usage)
+    * [Generate tables of contents](#generate-tables-of-contents)
+    * [Bulk html generation](#bulk-html-generation)
+  * [Author and Bug Reports](#author-and-bug-reports)
+  * [Notes](#notes)
+  * [TODO](#todo)
+
+## Features
+
+* Generate Tables of Contents
+* bulk translate to HTML
+* ...
+
+## Usage
+
+### Generate tables of contents
+When run on a file with a section (any level) titled &quot;Contents&quot; (as above), the scripts here will enable you to automatically generate and insert a Table of Contents.
+
+If no Contents section is found, the files will not be updated.
+
+This also provides git hooks to update the ToC on commit (WARNING:  the way it does so will make `git add -p` pretty useless.  Feel free to modify the hook to better suit your needs if this 
+one doesn't work for you.)
+
+To (manually) update the table of contents for all markdown files in this directory, run
+
+     make contents
+
+(or just run `make`)
+
+To set up the git hooks for this repository so that ToCs are updatted on commit, run.
+
+     make hooks
+
+### Bulk html generation
+
+`make html`
+
+all markdown files will be rendered into HTML using 'markdown' and placed in `generated/html`
+
+## Author and Bug Reports
+
+Please use GitHub issues for any bug reports or change requests
+
+## Notes
+
+The script uses `sed` and `awk` for maximum system compatability.  It was developed on MacOS, so it's expected to run anywhere with a `sed` and `awk` more recent than 1990 or so.
+
+It's also about the gnarliest piece of `sed` that I ever want to write, and could be used as the example on a slide for &quot;why modern interpreted languages exist&quot;.
+
+## TODO
+
+* use pandoc to generate arbitrary formats
+* use a static web site generator to generate a site?
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Dewey Sasser</name></author><category term="tools" /><category term="shell" /><summary type="html">Introducing Markdown Tables of Contents. This project contains a script and makefile to maintain a table of contents in your markdown documents, along with an optional git pre-commit hook to keep it up to date. I find it useful for either long documents or long READMEs for github projects. # Markdown-doc Add tables of contents to all markdown files in this repo. ## Contents * [Markdown-doc](#markdown-doc) * [Contents](#contents) * [Features](#features) * [Usage](#usage) * [Generate tables of contents](#generate-tables-of-contents) * [Bulk html generation](#bulk-html-generation) * [Author and Bug Reports](#author-and-bug-reports) * [Notes](#notes) * [TODO](#todo) ## Features * Generate Tables of Contents * bulk translate to HTML * ... ## Usage ### Generate tables of contents When run on a file with a section (any level) titled &quot;Contents&quot; (as above), the scripts here will enable you to automatically generate and insert a Table of Contents. If no Contents section is found, the files will not be updated. This also provides git hooks to update the ToC on commit (WARNING: the way it does so will make `git add -p` pretty useless. Feel free to modify the hook to better suit your needs if this one doesn't work for you.) To (manually) update the table of contents for all markdown files in this directory, run make contents (or just run `make`) To set up the git hooks for this repository so that ToCs are updatted on commit, run. make hooks ### Bulk html generation `make html` all markdown files will be rendered into HTML using 'markdown' and placed in `generated/html` ## Author and Bug Reports Please use GitHub issues for any bug reports or change requests ## Notes The script uses `sed` and `awk` for maximum system compatability. It was developed on MacOS, so it's expected to run anywhere with a `sed` and `awk` more recent than 1990 or so. It's also about the gnarliest piece of `sed` that I ever want to write, and could be used as the example on a slide for &quot;why modern interpreted languages exist&quot;. ## TODO * use pandoc to generate arbitrary formats * use a static web site generator to generate a site?</summary></entry><entry><title type="html">Gnarly Sed</title><link href="https://www.deweysasser.com/content/gnarly-sed" rel="alternate" type="text/html" title="Gnarly Sed" /><published>2021-02-21T00:00:00-05:00</published><updated>2021-02-21T00:00:00-05:00</updated><id>https://www.deweysasser.com/content/gnarly-sed</id><content type="html" xml:base="https://www.deweysasser.com/content/gnarly-sed">&lt;p&gt;Last night I wrote a script to compute a Table of Contents for Markdown documents and insert it into
+the document. It handles both syntaxes for heading blocks.  (I also wrote a git hook to run this
+script on commit.)&lt;/p&gt;
+
+&lt;p&gt;It contains what is probably the most gnarly sed script I’ve ever written. I am &lt;em&gt;so&lt;/em&gt; glad we’ve
+moved beyond sed.&lt;/p&gt;
+
+&lt;p&gt;(However, sed is also everywhere without having to install other tools on almost any system, which
+is why I used sed and awk instead of something more modern.)&lt;/p&gt;
+
+&lt;p&gt;Anyway, for your reading pleasure (or torture), here it is:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/^#/ &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        s/^&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;#*\) */\1|/&lt;/span&gt;
+        p
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        /^--&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;/ &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        x
+        s/^/##|/
+        p
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        /^&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;/ &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        x
+        s/^/#|/
+        p
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        h
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Dewey Sasser</name></author><category term="sed" /><category term="shell" /><summary type="html">Last night I wrote a script to compute a Table of Contents for Markdown documents and insert it into the document. It handles both syntaxes for heading blocks. (I also wrote a git hook to run this script on commit.) It contains what is probably the most gnarly sed script I’ve ever written. I am so glad we’ve moved beyond sed. (However, sed is also everywhere without having to install other tools on almost any system, which is why I used sed and awk instead of something more modern.) Anyway, for your reading pleasure (or torture), here it is: /^#/ { s/^\(#*\) */\1|/ p } /^--*/ { x s/^/##|/ p } /^==*/ { x s/^/#|/ p } h</summary></entry><entry><title type="html">Computer Architect</title><link href="https://www.deweysasser.com/content/computer-architect" rel="alternate" type="text/html" title="Computer Architect" /><published>2021-02-03T00:00:00-05:00</published><updated>2021-02-03T00:00:00-05:00</updated><id>https://www.deweysasser.com/content/computer-architect</id><content type="html" xml:base="https://www.deweysasser.com/content/computer-architect">&lt;p&gt;Something that often surprises people about a Software Architect&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; role:  it’s a people job.&lt;/p&gt;
 
 &lt;p&gt;Technical competence is table stakes.&lt;/p&gt;
 
@@ -557,110 +654,4 @@ for about the next 4 sprints, then will stabilize out.&lt;/p&gt;
 &lt;h3 id=&quot;sprint-review-time-boxed&quot;&gt;Sprint review (time boxed)&lt;/h3&gt;
 
 &lt;p&gt;Present what we did.  We’ll keep this one off the radar until we
-decide we need it.&lt;/p&gt;</content><author><name>Dewey Sasser</name></author><summary type="html">Description of a successfully implemented, fairly light-weight SCRUM process.</summary></entry><entry><title type="html">Guidelines for Modern DevOps</title><link href="https://www.deweysasser.com/content/guidelines-for-modern-devops" rel="alternate" type="text/html" title="Guidelines for Modern DevOps" /><published>2018-03-14T00:00:00-04:00</published><updated>2018-03-14T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/guidelines%20for%20modern%20devops</id><content type="html" xml:base="https://www.deweysasser.com/content/guidelines-for-modern-devops">&lt;h3 id=&quot;start-at-the-end&quot;&gt;Start at the end&lt;/h3&gt;
-
-&lt;p&gt;Write your success criteria first. That way you know when you’re done.  If you can’t write it down then you don’t really know what you’re doing.&lt;/p&gt;
-
-&lt;h3 id=&quot;make-a-computer-do-the-work&quot;&gt;Make a computer do the work.&lt;/h3&gt;
-
-&lt;p&gt;Humans should make decisions.  Computers should make them happen.&lt;/p&gt;
-
-&lt;p&gt;Getting this backwards leads to sadness. (Maybe AI will flip this some day.)&lt;/p&gt;
-
-&lt;h3 id=&quot;automate-3-things--things-that-happen-frequently-things-that-happen-rarely-and-things-that-you-really-dont-want-to-mess-up&quot;&gt;Automate 3 things:  things that happen frequently, things that happen rarely, and things that you really don’t want to mess up.&lt;/h3&gt;
-
-&lt;p&gt;What should you not automate?  Thinking.&lt;/p&gt;
-
-&lt;h3 id=&quot;dont-start-with-perfect&quot;&gt;Don’t start with perfect&lt;/h3&gt;
-
-&lt;p&gt;“Perfect” means you don’t know enough about it to see the flaws.  You can always see more to do.&lt;/p&gt;
-
-&lt;h3 id=&quot;what-is-the-simplest-thing-that-could-possibly-work&quot;&gt;What is the simplest thing that could possibly work?&lt;/h3&gt;
-
-&lt;p&gt;Less is often more.  It should be as simple as possible, but no simpler.&lt;/p&gt;
-
-&lt;h3 id=&quot;if-everything-is-top-priority-nothing-is-prioritized&quot;&gt;If everything is top priority, nothing is prioritized&lt;/h3&gt;
-
-&lt;p&gt;Priority isn’t about what’s important, priority is about what do I do first.  Dividing tasks into high, medium, low works approximately for 10 tasks, poorly for 100 and not at all for 1000.&lt;/p&gt;
-
-&lt;p&gt;Tasks should be ordered, not tagged.&lt;/p&gt;
-
-&lt;h3 id=&quot;think-about-how-to-get-it&quot;&gt;Think about how to get it&lt;/h3&gt;
-
-&lt;p&gt;If you can’t get there from here, you probably don’t want to go.  If you still want to go, you need to learn the way or find someone else who knows.&lt;/p&gt;
-
-&lt;h3 id=&quot;use-someone-elses-solution&quot;&gt;Use someone else’s solution&lt;/h3&gt;
-
-&lt;p&gt;Spend your time wisely.  You don’t have enough of it.  There’s a lot more cool stuff to do in the world than you could possibly do.&lt;/p&gt;
-
-&lt;h3 id=&quot;the-size-of-your-solution-should-match-the-size-of-your-problem&quot;&gt;The size of your solution should match the size of your problem&lt;/h3&gt;
-
-&lt;p&gt;Don’t use a sledge hammer to swat a fly.  Don’t use &lt;a href=&quot;https://en.wikipedia.org/wiki/Common_Object_Request_Broker_Architecture&quot;&gt;CORBA&lt;/a&gt; to pass a message.&lt;/p&gt;
-
-&lt;h3 id=&quot;recognize-when-solutions-arent&quot;&gt;Recognize when solutions aren’t&lt;/h3&gt;
-
-&lt;p&gt;If a solution to your problem causes a bigger problem, it’s not a solution no matter how cool it is.&lt;/p&gt;
-
-&lt;h3 id=&quot;describe-what-you-want-not-how-to-get-it&quot;&gt;Describe what you want, not how to get it&lt;/h3&gt;
-
-&lt;p&gt;It’s more clear to think about what you want and it’s easier to reason about states than transitions.&lt;/p&gt;
-
-&lt;p&gt;This works for both people problems and computer problems.&lt;/p&gt;
-
-&lt;p&gt;Procedures obscure the goals.&lt;/p&gt;
-
-&lt;h3 id=&quot;if-you-have-to-write-a-procedure-it-should-be-idempotent&quot;&gt;If you have to write a procedure, it should be idempotent&lt;/h3&gt;
-
-&lt;p&gt;Did I do it already?  Who cares, just do it again.&lt;/p&gt;
-
-&lt;h3 id=&quot;whenever-possible-failed-procedures-should-be-resumable&quot;&gt;Whenever possible, failed procedures should be resumable.&lt;/h3&gt;
-
-&lt;p&gt;It broke half-way through.  Fix it and run it again. It shouldn’t have to do the same work twice.&lt;/p&gt;
-
-&lt;h3 id=&quot;dont-allow-failure-to-be-a-habit&quot;&gt;Don’t allow failure to be a habit&lt;/h3&gt;
-
-&lt;p&gt;Things should succeed.  If you have to run things many times until they finally succeed, it’s broken.&lt;/p&gt;
-
-&lt;h3 id=&quot;never-count-on-initialization-order&quot;&gt;Never count on initialization order&lt;/h3&gt;
-
-&lt;p&gt;There are too many moving parts to know exactly when they will move.&lt;/p&gt;
-
-&lt;h3 id=&quot;if-explanations-become-work-then-theyre-too-complicated&quot;&gt;If explanations become work then they’re too complicated&lt;/h3&gt;
-
-&lt;p&gt;Complex documentation indicates poor abstractions.  Fix the program and the documentation becomes easy to write.&lt;/p&gt;
-
-&lt;p&gt;Detailed does not mean complex.  Intricate doesn’t, either.&lt;/p&gt;
-
-&lt;h3 id=&quot;sufficiently-detailed-documentation-is-executable&quot;&gt;Sufficiently detailed documentation is executable.&lt;/h3&gt;
-
-&lt;p&gt;Can a computer do it?  If not, you didn’t document it well enough.  You can’t document judgment calls, so a computer can’t do them.  You &lt;em&gt;can&lt;/em&gt; fake it with a good heuristic but don’t mistake it for judgement.&lt;/p&gt;
-
-&lt;h3 id=&quot;measure-it&quot;&gt;Measure it&lt;/h3&gt;
-
-&lt;p&gt;Your guess is probably wrong.  Measure it, don’t guess.&lt;/p&gt;
-
-&lt;h3 id=&quot;keep-an-eye-on-it-but-not-yours&quot;&gt;Keep an eye on it, but not yours&lt;/h3&gt;
-
-&lt;p&gt;It’s not enough that it worked, it has to keep working.  Computers are good at watching things.  Humans aren’t.&lt;/p&gt;
-
-&lt;h3 id=&quot;dont-ignore-alerts&quot;&gt;Don’t ignore alerts&lt;/h3&gt;
-
-&lt;p&gt;Any time you get an alert, your goal should be to make sure you never get it again, one way or another.&lt;/p&gt;
-
-&lt;p&gt;If you’re not going to fix it it should be on a status page, not an alert.  Alerts are for taking actions.&lt;/p&gt;
-
-&lt;h3 id=&quot;if-everyone-owns-it-no-one-owns-it&quot;&gt;If everyone owns it, no one owns it&lt;/h3&gt;
-
-&lt;p&gt;Make sure someone is accountable.  Make sure they have a backup (vacations, busses…)&lt;/p&gt;
-
-&lt;p&gt;Team wide alerts train everyone to ignore issues.&lt;/p&gt;
-
-&lt;h3 id=&quot;keep-thinking&quot;&gt;Keep Thinking&lt;/h3&gt;
-
-&lt;p&gt;There are very few problems that are not better solved by stopping to think about the best solution first.&lt;/p&gt;</content><author><name>Dewey Sasser</name></author><summary type="html">A list of guidelines for good DevOps, presented in the spirit of [Shuhari](https://en.wikipedia.org/wiki/Shuhari) Write your success criteria first. That way you know when you're done. If you can't write it down then you don't really know what you're doing. Make a computer do the work. ...</summary></entry><entry><title type="html">Herding cats in the Cloud</title><link href="https://www.deweysasser.com/content/herding-cats-in-cloud" rel="alternate" type="text/html" title="Herding cats in the Cloud" /><published>2017-01-25T00:00:00-05:00</published><updated>2017-01-25T00:00:00-05:00</updated><id>https://www.deweysasser.com/content/herding%20cats%20in%20cloud</id><content type="html" xml:base="https://www.deweysasser.com/content/herding-cats-in-cloud">&lt;p&gt;I gave my “Herding Cats…” talk at the 2017 New England VTUG Winter Warmer.&lt;/p&gt;
-
-&lt;p&gt;The talk covers technical, social and organizational issues for fast, agile development at large scale (~1k machines, 10ks of TPS, ~500TB transfer) in a cloud environment.&lt;/p&gt;
-
-&lt;p&gt;See the &lt;a href=&quot;http://www.slideshare.net/DeweySasser/herding-cats-in-the-cloud&quot;&gt;slides&lt;/a&gt; on SlideShare.net.&lt;/p&gt;
-
-&lt;p&gt;In conjunction with this talk I was interviewed by Silicon Angle for theCube.  See the segment &lt;a href=&quot;https://www.youtube.com/watch?v=Cyzv7jaSkOM&amp;amp;feature=youtu.be&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;</content><author><name>Dewey Sasser</name></author><category term="devops" /><category term="aws" /><summary type="html">I gave my “Herding Cats…” talk at the 2017 New England VTUG Winter Warmer. The talk covers technical, social and organizational issues for fast, agile development at large scale (~1k machines, 10ks of TPS, ~500TB transfer) in a cloud environment. See the slides on SlideShare.net. In conjunction with this talk I was interviewed by Silicon Angle for theCube. See the segment here.</summary></entry></feed>
+decide we need it.&lt;/p&gt;</content><author><name>Dewey Sasser</name></author><summary type="html">Description of a successfully implemented, fairly light-weight SCRUM process.</summary></entry></feed>
