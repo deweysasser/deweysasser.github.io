@@ -208,4 +208,10 @@ var store = [{
         "tags": [],
         "url": "/content/2021-site-refresh",
         "teaser": null
+      },{
+        "title": "Runbook Framework",
+        "excerpt":"Introducing runbook framework What is it? A shell framework for building runbooks which can start manually and gradually migrate to fully automated. Based on the clever concept of a Do Nothing Script, provide some structure for the script which allows &amp; encourages documentation and useful tracking at run time. You...","categories": ["shell","sysadmin","automation"],
+        "tags": [],
+        "url": "/content/runbook-framework",
+        "teaser": null
       }]

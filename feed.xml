@@ -1,4 +1,196 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://www.deweysasser.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.deweysasser.com/" rel="alternate" type="text/html" /><updated>2021-05-01T01:02:54-04:00</updated><id>https://www.deweysasser.com/feed.xml</id><title type="html">DeweySasser.com</title><subtitle>Software Engineering, Systems Engineering, and other geek pursuits</subtitle><author><name>Dewey Sasser</name></author><entry><title type="html">2021 Site Refresh</title><link href="https://www.deweysasser.com/content/2021-site-refresh" rel="alternate" type="text/html" title="2021 Site Refresh" /><published>2021-04-25T00:00:00-04:00</published><updated>2021-04-25T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/2021%20site%20refresh</id><content type="html" xml:base="https://www.deweysasser.com/content/2021-site-refresh">&lt;p&gt;It’s been a while since I set up the technology behind this site, and times have changed.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://www.deweysasser.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.deweysasser.com/" rel="alternate" type="text/html" /><updated>2021-05-01T01:37:49-04:00</updated><id>https://www.deweysasser.com/feed.xml</id><title type="html">DeweySasser.com</title><subtitle>Software Engineering, Systems Engineering, and other geek pursuits</subtitle><author><name>Dewey Sasser</name></author><entry><title type="html">Runbook Framework</title><link href="https://www.deweysasser.com/content/runbook-framework" rel="alternate" type="text/html" title="Runbook Framework" /><published>2021-05-01T00:00:00-04:00</published><updated>2021-05-01T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/runbook-framework</id><content type="html" xml:base="https://www.deweysasser.com/content/runbook-framework">&lt;h1 id=&quot;introducing-runbook-framework&quot;&gt;Introducing &lt;a href=&quot;https://github.com/deweysasser/runbook-framework&quot;&gt;runbook framework&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2 id=&quot;what-is-it&quot;&gt;What is it?&lt;/h2&gt;
+&lt;p&gt;A shell framework for building runbooks which can start manually and gradually migrate to fully automated.&lt;/p&gt;
+
+&lt;p&gt;Based on the clever concept of
+a &lt;a href=&quot;https://blog.danslimmon.com/2019/07/15/do-nothing-scripting-the-key-to-gradual-automation/&quot;&gt;Do Nothing Script&lt;/a&gt;,
+provide some structure for the script which allows &amp;amp; encourages documentation and useful tracking at run time.&lt;/p&gt;
+
+&lt;p&gt;You write this code:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;runbook&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  step &lt;span class=&quot;s2&quot;&gt;&quot;Step One&quot;&lt;/span&gt;
+  step &lt;span class=&quot;s2&quot;&gt;&quot;Step Two, on &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$env&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;set &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$env&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$version&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  step &lt;span class=&quot;s2&quot;&gt;&quot;Wait for something to happen&quot;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sleep &lt;/span&gt;10
+  step &lt;span class=&quot;s2&quot;&gt;&quot;Run a function&quot;&lt;/span&gt; run-function
+  step &lt;span class=&quot;s2&quot;&gt;&quot;Last thing we can do automatically&quot;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Version is &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$version&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  step &lt;span class=&quot;s2&quot;&gt;&quot;bring it on home&quot;&lt;/span&gt;
+  step &lt;span class=&quot;s2&quot;&gt;&quot;this one will fail&quot;&lt;/span&gt; fail_me
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And you can run it and get&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;runbooks-screenshot.png&quot; alt=&quot;runbook example&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Or if you just need to produce some documentation, you can get&lt;/p&gt;
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ./example-runbook --version=1.2.3 -doc
+1: Step One
+2: Step Two, on staging
+3: Wait for something to happen
+4: Run a function
+5: Last thing we can do automatically
+6: bring it on home
+7: this one will fail
+$
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;here-is-the-project-readme-from-github&quot;&gt;Here is the project README from github&lt;/h2&gt;
+&lt;h1 id=&quot;runbook-framework&quot;&gt;Runbook-framework&lt;/h1&gt;
+
+&lt;p&gt;“Any sufficiently detailed documentation is executable”
+– me&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-it-1&quot;&gt;What is it?&lt;/h2&gt;
+
+&lt;p&gt;A shell (bash) framework to implement run book scripts that help move from fully manual to fully
+automated processes.&lt;/p&gt;
+
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;I love automation, but often getting something “automated” is a long process, and you actually need
+to get something done now and don’t have the time to fully automate it.&lt;/p&gt;
+
+&lt;p&gt;A few years ago I read
+a &lt;a href=&quot;https://blog.danslimmon.com/2019/07/15/do-nothing-scripting-the-key-to-gradual-automation/&quot;&gt;blog post&lt;/a&gt;
+presenting a clever way to move from unautomated to automated processes.&lt;/p&gt;
+
+&lt;p&gt;The clever key:  start with a script that does nothing other than tell you what to do. A checklist.
+Then, as time evolves, you can automate one little piece. Since the script is walking you through a
+checklist, this becomes one step that’s done for you instead of you having to do it. This is one of
+those simple and amazingly insightful ways of getting things done.&lt;/p&gt;
+
+&lt;p&gt;This repository implements a small library of BASH functions to support runbooks in a consistent and
+useful way.&lt;/p&gt;
+
+&lt;h2 id=&quot;quickstart&quot;&gt;Quickstart&lt;/h2&gt;
+
+&lt;p&gt;Be sure to read the &lt;a href=&quot;#important-details&quot;&gt;“important details”&lt;/a&gt; section.&lt;/p&gt;
+
+&lt;h3 id=&quot;writing-the-script&quot;&gt;Writing the script&lt;/h3&gt;
+
+&lt;p&gt;Create a script that looks like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;runbook-framework.sh
+
+parameters p1 p2
+&lt;span class=&quot;nv&quot;&gt;p1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;some default value&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Here's where you put your actual runbook steps&lt;/span&gt;
+runbook&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  step &lt;span class=&quot;s2&quot;&gt;&quot;This is a manual step and you'll get a prompt&quot;&lt;/span&gt;
+  step &lt;span class=&quot;s2&quot;&gt;&quot;This is an automated step&quot;&lt;/span&gt; some-command
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# This must be the last line in your file&lt;/span&gt;
+main &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$@&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Of course, the steps should be doing whatever it is you need.  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;some-command&lt;/code&gt; can be a function you
+define (I suggest later in the file, so the file starts with your runbook).&lt;/p&gt;
+
+&lt;p&gt;If you leave out the command, you’ve just made a prompt. If you include the command, it will be
+executed. The status of all commands will be printed as they are executed.&lt;/p&gt;
+
+&lt;h3 id=&quot;running-the-script&quot;&gt;Running the script&lt;/h3&gt;
+
+&lt;p&gt;The framework provides some overall features, including&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;-help&lt;/td&gt;
+          &lt;td&gt;-h – show how to run this runbook, including the parameters&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;-doc – show the checklist &lt;em&gt;without&lt;/em&gt; executing it&lt;/li&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;-verbose&lt;/td&gt;
+          &lt;td&gt;-v – show the output of each command as it happens&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-happened-to-the-output&quot;&gt;What happened to the output?&lt;/h3&gt;
+
+&lt;p&gt;The output of each step is stored away and shown only on error or on request.&lt;/p&gt;
+
+&lt;h3 id=&quot;important-details&quot;&gt;Important Details&lt;/h3&gt;
+
+&lt;p&gt;The script sets up bash to be pretty paranoid, specifically:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-ueo&lt;/span&gt; pipefail
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The short form is:  unexpanded variables will be an error, any error (that’s not in a conditional)
+will stop the script, and it counts errors in the middle of a pipeline, not just the result of the
+last command in the pipeline.&lt;/p&gt;
+
+&lt;h2 id=&quot;passing-parameters&quot;&gt;Passing Parameters&lt;/h2&gt;
+
+&lt;p&gt;You can set the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;parameters&lt;/code&gt; variable to a list of parameters you want to use in your script. They
+will be set as (global) environment variables, exactly as you type them. All names that begin with
+an underscore (‘_’) are reserved.&lt;/p&gt;
+
+&lt;p&gt;When you call the script, you may pass these variables on the command line as command line options.
+If any of them are unset, the script will stop. So, if you want a default value, make sure you set
+it.&lt;/p&gt;
+
+&lt;h2 id=&quot;examples&quot;&gt;Examples&lt;/h2&gt;
+
+&lt;h3 id=&quot;just-try-to-run-it&quot;&gt;Just try to run it&lt;/h3&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./example-runbook
+Parameter &lt;span class=&quot;s1&quot;&gt;'version'&lt;/span&gt; required
+Usage: ./example-runbook &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt;|-help] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-show&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;VALUE] &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;VALUE 
+Defaults:
+   &lt;span class=&quot;nb&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; staging
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;get-some-documentation-on-the-process&quot;&gt;Get some documentation on the process&lt;/h3&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./example-runbook  &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1.2.3 &lt;span class=&quot;nt&quot;&gt;-doc&lt;/span&gt;
+1: Step One
+2: Step Two, on staging
+3: Wait &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;something to happen
+4: Run a &lt;span class=&quot;k&quot;&gt;function
+&lt;/span&gt;5: Last thing we can &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;automatically
+6: bring it on home
+7: this one will fail
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;actually-run-the-runbook&quot;&gt;Actually run the runbook&lt;/h3&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./example-runbook  &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1.2.3
+ 1: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;00:52&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; Step One...&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;press enter when &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;5 s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; DONE
+ 2: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;00:52&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; Step Two, on staging... &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0 s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; DONE
+ 3: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;00:52&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; Wait &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;something to happen... &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10 s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; DONE
+ 4: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;00:52&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; Run a &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;... &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0 s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; DONE
+ 5: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;00:52&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; Last thing we can &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;automatically... &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0 s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; DONE
+ 6: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;00:52&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bring it on home...&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;press enter when &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;12 s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; DONE
+ 7: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;00:53&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; this one will fail... &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0 s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; FAILED
+    &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; it&lt;span class=&quot;s1&quot;&gt;'s time we stop
+    &amp;gt;&amp;gt; Hey, what'&lt;/span&gt;s that sound
+    &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; Everybody look, what&lt;span class=&quot;s1&quot;&gt;'s going down?
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;the-future&quot;&gt;The Future&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;it would be really nifty to support a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-document&lt;/code&gt; argument that prints documentation about the
+runbook.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Dewey Sasser</name></author><category term="shell" /><category term="sysadmin" /><category term="automation" /><summary type="html">Introducing runbook framework What is it? A shell framework for building runbooks which can start manually and gradually migrate to fully automated. Based on the clever concept of a Do Nothing Script, provide some structure for the script which allows &amp;amp; encourages documentation and useful tracking at run time. You write this code: runbook() { step &quot;Step One&quot; step &quot;Step Two, on $env&quot; echo &quot;set $env=$version&quot; step &quot;Wait for something to happen&quot; sleep 10 step &quot;Run a function&quot; run-function step &quot;Last thing we can do automatically&quot; echo &quot;Version is $version&quot; step &quot;bring it on home&quot; step &quot;this one will fail&quot; fail_me } And you can run it and get Or if you just need to produce some documentation, you can get $ ./example-runbook --version=1.2.3 -doc 1: Step One 2: Step Two, on staging 3: Wait for something to happen 4: Run a function 5: Last thing we can do automatically 6: bring it on home 7: this one will fail $ Here is the project README from github Runbook-framework “Any sufficiently detailed documentation is executable” – me What is it? A shell (bash) framework to implement run book scripts that help move from fully manual to fully automated processes. Background I love automation, but often getting something “automated” is a long process, and you actually need to get something done now and don’t have the time to fully automate it. A few years ago I read a blog post presenting a clever way to move from unautomated to automated processes. The clever key: start with a script that does nothing other than tell you what to do. A checklist. Then, as time evolves, you can automate one little piece. Since the script is walking you through a checklist, this becomes one step that’s done for you instead of you having to do it. This is one of those simple and amazingly insightful ways of getting things done. This repository implements a small library of BASH functions to support runbooks in a consistent and useful way. Quickstart Be sure to read the “important details” section. Writing the script Create a script that looks like this: #!/bin/bash source runbook-framework.sh parameters p1 p2 p1=&quot;some default value&quot; # Here's where you put your actual runbook steps runbook() { step &quot;This is a manual step and you'll get a prompt&quot; step &quot;This is an automated step&quot; some-command } # This must be the last line in your file main &quot;$@&quot; Of course, the steps should be doing whatever it is you need. some-command can be a function you define (I suggest later in the file, so the file starts with your runbook). If you leave out the command, you’ve just made a prompt. If you include the command, it will be executed. The status of all commands will be printed as they are executed. Running the script The framework provides some overall features, including -help -h – show how to run this runbook, including the parameters -doc – show the checklist without executing it -verbose -v – show the output of each command as it happens What happened to the output? The output of each step is stored away and shown only on error or on request. Important Details The script sets up bash to be pretty paranoid, specifically: set -ueo pipefail The short form is: unexpanded variables will be an error, any error (that’s not in a conditional) will stop the script, and it counts errors in the middle of a pipeline, not just the result of the last command in the pipeline. Passing Parameters You can set the parameters variable to a list of parameters you want to use in your script. They will be set as (global) environment variables, exactly as you type them. All names that begin with an underscore (‘_’) are reserved. When you call the script, you may pass these variables on the command line as command line options. If any of them are unset, the script will stop. So, if you want a default value, make sure you set it. Examples Just try to run it $ ./example-runbook Parameter 'version' required Usage: ./example-runbook [-h|-help] [-show] [--env=VALUE] --version=VALUE Defaults: env = staging Get some documentation on the process $ ./example-runbook --version=1.2.3 -doc 1: Step One 2: Step Two, on staging 3: Wait for something to happen 4: Run a function 5: Last thing we can do automatically 6: bring it on home 7: this one will fail Actually run the runbook $ ./example-runbook --version=1.2.3 1: (00:52) Step One...(press enter when done) (5 s) DONE 2: (00:52) Step Two, on staging... (0 s) DONE 3: (00:52) Wait for something to happen... (10 s) DONE 4: (00:52) Run a function... (0 s) DONE 5: (00:52) Last thing we can do automatically... (0 s) DONE 6: (00:52) bring it on home...(press enter when done) (12 s) DONE 7: (00:53) this one will fail... (0 s) FAILED &amp;gt;&amp;gt; it's time we stop &amp;gt;&amp;gt; Hey, what's that sound &amp;gt;&amp;gt; Everybody look, what's going down? The Future it would be really nifty to support a -document argument that prints documentation about the runbook.</summary></entry><entry><title type="html">2021 Site Refresh</title><link href="https://www.deweysasser.com/content/2021-site-refresh" rel="alternate" type="text/html" title="2021 Site Refresh" /><published>2021-04-25T00:00:00-04:00</published><updated>2021-04-25T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/2021%20site%20refresh</id><content type="html" xml:base="https://www.deweysasser.com/content/2021-site-refresh">&lt;p&gt;It’s been a while since I set up the technology behind this site, and times have changed.&lt;/p&gt;
 
 &lt;p&gt;So, I’m moving it form Drupal to something else.&lt;/p&gt;
 
@@ -314,344 +506,4 @@ conditionals for this reason.)&lt;/p&gt;
 
 &lt;p&gt;At this point you can (if necessary) schedule maintenance and apply
 your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt; branch to your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;production&lt;/code&gt; &lt;em&gt;workspace&lt;/em&gt;, which
-presumably makes the changes available to end users.&lt;/p&gt;</content><author><name>Dewey Sasser</name></author><summary type="html">TL;DR: Workspaces and branches serve different purposes. An SCM branch is an alternet set of code. A Terraform workspace is an alternate location to apply code. You should use the difference to...</summary></entry><entry><title type="html">Feeling Scrummy?</title><link href="https://www.deweysasser.com/content/feeling-scrummy" rel="alternate" type="text/html" title="Feeling Scrummy?" /><published>2018-03-26T00:00:00-04:00</published><updated>2018-03-26T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/feeling%20scrummy</id><content type="html" xml:base="https://www.deweysasser.com/content/feeling-scrummy">&lt;p&gt;This was originally written for an infrastructure engineering team.
-The team was split between systems engineering tasks and operaitons
-responsibilities.&lt;/p&gt;
-
-&lt;p&gt;We successfully implemented this SCRUM process and, in conjunction
-with some accountability/build process changes, substantially improved
-our work quality and predictability.&lt;/p&gt;
-
-&lt;h1 id=&quot;feeling-scrummy&quot;&gt;Feeling Scrummy?&lt;/h1&gt;
-
-&lt;h2 id=&quot;tldr&quot;&gt;TL;DR&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Stories have the user, goal, motivation and acceptance criteria, or
-we don’t start them&lt;/li&gt;
-  &lt;li&gt;Sprint planning turns stories into tasks.  We work on tasks, not
-stories.  Finding new tasks after planning is not goodness.&lt;/li&gt;
-  &lt;li&gt;We never work on something that’s not a task.y&lt;/li&gt;
-  &lt;li&gt;We reserve 20% of our time for “unplanned work” (break/fix tasks)&lt;/li&gt;
-  &lt;li&gt;Tasks have success criteria and a max duration of 8 hours (you can
-split into 2)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;There’s a lot in here that will seem uncomfortable a first.  It’s
-motivated by making a predictable, manageable process.  Management is
-important.  Deal.&lt;/p&gt;
-
-&lt;h2 id=&quot;contents&quot;&gt;Contents&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Motivation and Intention&lt;/li&gt;
-  &lt;li&gt;What we get out of it&lt;/li&gt;
-  &lt;li&gt;A note on process
-    &lt;ul&gt;
-      &lt;li&gt;Work Processes: Time boxing and success criteria&lt;/li&gt;
-      &lt;li&gt;Responsibilities
-        &lt;ul&gt;
-          &lt;li&gt;The Team&lt;/li&gt;
-          &lt;li&gt;The Backlog Owner&lt;/li&gt;
-          &lt;li&gt;The Scrum Master&lt;/li&gt;
-          &lt;li&gt;Management&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;How we get it
-    &lt;ul&gt;
-      &lt;li&gt;Stories and Task and “Done”, Oh My!
-        &lt;ul&gt;
-          &lt;li&gt;Stories&lt;/li&gt;
-          &lt;li&gt;Tasks&lt;/li&gt;
-          &lt;li&gt;Done and “Done Done”&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;Some notes on scheduling&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Our Process
-    &lt;ul&gt;
-      &lt;li&gt;Sprints (time boxed)&lt;/li&gt;
-      &lt;li&gt;Daily Standups (time boxed) &amp;amp; Discussions (criteria based)&lt;/li&gt;
-      &lt;li&gt;Estimation Meetings (time boxed)&lt;/li&gt;
-      &lt;li&gt;Sprint Planning (criteria based)&lt;/li&gt;
-      &lt;li&gt;Sprint retrospective (time boxed)&lt;/li&gt;
-      &lt;li&gt;Sprint review (time boxed)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;motivation-and-intention&quot;&gt;Motivation and Intention&lt;/h2&gt;
-
-&lt;p&gt;We need to change our process.  We’ve been operating in something that
-resembles semi-controlled chaos dressed in scrum clothes.  (OK,
-perhaps a bit better than that.  Still…)&lt;/p&gt;
-
-&lt;p&gt;I believe it will be better for all stakeholders (us, our peer groups
-in the company, our managers who are measured on what we get done, and
-ultimately the people who pay us) to improve our progress by adding
-more scrummish rigor (rigor-scrumtis?) to our process.&lt;/p&gt;
-
-&lt;p&gt;We need 3 things from a development process:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;productivity&lt;/li&gt;
-  &lt;li&gt;predictability&lt;/li&gt;
-  &lt;li&gt;transparency&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We need to add manageability to our process, so this document lays out
-a series of conditions that we will agree we MUST meet.  Also, we MUST
-meet them in spirit as well as letter.  This is not to say that we
-can’t do other things and that we can’t deal with exceptions, but that
-we’re going to be doing this &lt;em&gt;for real&lt;/em&gt; and not just for appearances.&lt;/p&gt;
-
-&lt;p&gt;I’m not going to get into the basics of scrum.  I’m going to describe
-how we should make it work here.  If something doesn’t make sense,
-please Google until it does (or come back and say “Dewey, you’re an
-idiot and here’s why” and we can have a productive conversation about
-it).&lt;/p&gt;
-
-&lt;p&gt;What I’m describing here is &lt;em&gt;NOT&lt;/em&gt; the fullest, most complete Scrum
-process it’s possible to do.  I’m describing the simplest things that
-must be done to have a successful process instead of having success
-despite a process.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-we-get-out-of-it&quot;&gt;What we get out of it&lt;/h2&gt;
-
-&lt;p&gt;When we have predictable velocity, it makes it easy for the backlog
-owner to manage our backlog and future work, show the rest of the
-company that we’re valuable, and know when we need to add capacity to
-the team.&lt;/p&gt;
-
-&lt;p&gt;When we’re working on tasks, it makes it easy to for managers to tell
-what we’re doing and where we are and have confidence that we’re going
-to get things done.&lt;/p&gt;
-
-&lt;h2 id=&quot;a-note-on-process&quot;&gt;A note on process&lt;/h2&gt;
-
-&lt;h3 id=&quot;work-processes--time-boxing-and-success-criteria&quot;&gt;Work Processes:  Time boxing and success criteria&lt;/h3&gt;
-&lt;p&gt;All processes in scrum are either&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;time boxed (meaning you spent a fixed amount of time and you get
-what you get)&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;criteria driven (meaning you’re not done until it’s met success
-criteria done).&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;It’s important to understand the difference and &lt;em&gt;stick to it&lt;/em&gt;.
-If we find something that’s time boxed that consistently doesn’t have
-enough time, we change the &lt;em&gt;process&lt;/em&gt;, not push the envelope in
-individual tasks or meetings.&lt;/p&gt;
-
-&lt;p&gt;One frustration with time-boxed meetings is that you often don’t get
-to everything.  That’s not a bug, that’s a feature.  It prevents
-“beating a dead horse”.  If something is important, it’s going to come
-up at the next time-boxed meeting anyway so there’s no worry.  It
-enable and enforces prioritization.&lt;/p&gt;
-
-&lt;h3 id=&quot;responsibilities&quot;&gt;Responsibilities&lt;/h3&gt;
-
-&lt;h4 id=&quot;the-team&quot;&gt;The Team&lt;/h4&gt;
-
-&lt;p&gt;The scrum team owns the tasks.  This means that the team is
-responsible for getting them done as they’ve committed.&lt;/p&gt;
-
-&lt;p&gt;In scrum, management does &lt;em&gt;NOT&lt;/em&gt; tell a team what they must do, only
-what must be done first.  The team commits to getting things done.&lt;/p&gt;
-
-&lt;p&gt;As this is fundamentally foreign to the way people reflexively manage,
-there is a cost to this, which is: commitments MUST be met.&lt;/p&gt;
-
-&lt;p&gt;The &lt;em&gt;TEAM&lt;/em&gt; commits, not individuals.  There is no “My stuff is done,
-you suck”.&lt;/p&gt;
-
-&lt;p&gt;The team owns estimates, but the backlog owner has to make sure the
-team has good data on which to estimate.  The backlog owner owns the
-priorities, but the team must give good estimates so the backlog owner
-can prioritize.&lt;/p&gt;
-
-&lt;h4 id=&quot;the-backlog-owner&quot;&gt;The Backlog Owner&lt;/h4&gt;
-
-&lt;p&gt;The backlog owner, um, owns the backlog.
-Ownership means that she gets to decide what’s on it and in what order
-– deciding what is important to do.  (The team has &lt;em&gt;input&lt;/em&gt; but not
-ownership.)&lt;/p&gt;
-
-&lt;p&gt;The backlog owner owns backlog quality, but the team is responsible
-for doing the best estimates it can on the basis of the known data
-(which &lt;em&gt;will&lt;/em&gt; change over time).&lt;/p&gt;
-
-&lt;h4 id=&quot;the-scrum-master&quot;&gt;The Scrum Master&lt;/h4&gt;
-
-&lt;p&gt;The scrum master is responsible for making sure we scrum correctly and
-keeping track of all of the various items.  (This is not an enviable
-job.  This can be “herding cats” at it’s finest.  Buy her flowers
-and/or booze.)&lt;/p&gt;
-
-&lt;h4 id=&quot;management&quot;&gt;Management&lt;/h4&gt;
-
-&lt;p&gt;In a well running scrum process, managers do very little day to day.
-What is traditionally software “management” is actually backlog
-management and task assignement.&lt;/p&gt;
-
-&lt;p&gt;In a SCRUM process, management is about creating a productive
-environemnt and getting blockers out of the way that’s beyond tam
-scope.  Basically, everything around getting things done”: staffing,
-facilities, etc.&lt;/p&gt;
-
-&lt;h2 id=&quot;how-we-get-it&quot;&gt;How we get it&lt;/h2&gt;
-
-&lt;h3 id=&quot;stories-and-task-and-done-oh-my&quot;&gt;Stories and Task and “Done”, Oh My!&lt;/h3&gt;
-
-&lt;h4 id=&quot;stories&quot;&gt;Stories&lt;/h4&gt;
-
-&lt;p&gt;The purpose of a story is to understand the target so you can aim
-properly.  Ultimately, a story consists of the 5 Ws (and you thought
-writing had no place in STEM).&lt;/p&gt;
-
-&lt;p&gt;The critical parts are:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;A “Role” (or a “User”):  this describes the perspective to address.&lt;/li&gt;
-  &lt;li&gt;A goal:  what the user is trying to accomplish.&lt;/li&gt;
-  &lt;li&gt;A motivation:  Why they are trying to achieve this goal&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I find it’s also a &lt;em&gt;great&lt;/em&gt; idea to explicitly and separately state
-success criteria (also called “Acceptance Criteria”.&lt;/p&gt;
-
-&lt;p&gt;Before we can start on a story (i.e. before it can be accepted for
-work during a sprint) it must have all 4 of these.  Yes, sometimes
-they’re obvious.  Great, that means they’ll be easy to write.&lt;/p&gt;
-
-&lt;p&gt;I don’t care if it’s the whole, stilted, formal “As a Driver, I want
-my car to go faster when I press the accelerator” or just a set of
-key/value pairs.&lt;/p&gt;
-
-&lt;p&gt;We’ll estimate stories in “Story Points” with the goal of measuring
-our velocity.  “Story Points” allow the backlog owner to tell other
-people (management, other teams), roughly when we’ll complete things.
-Story points are an artificial measurement that isn’t tied directly to
-time – the velocity is measured.&lt;/p&gt;
-
-&lt;h4 id=&quot;tasks&quot;&gt;Tasks&lt;/h4&gt;
-
-&lt;p&gt;Notice that you can’t actually do a story!  Stories are not
-actionable.  In order to enable a story, we must break it into tasks
-(“install accelerator petal”, “connect petal to throttle”, etc).&lt;/p&gt;
-
-&lt;p&gt;“Sprint Planning” does 2 things:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;You figure out how much you’re going to do in a sprint&lt;/li&gt;
-  &lt;li&gt;You decide what tasks are necessary to implement a story (if you
- haven’t already).  Also, you estimate these tasks.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Stories also have success criteria.  (Otherwise, how do you know when you’re done?)&lt;/p&gt;
-
-&lt;p&gt;Tasks are estimated in hours.  Like story points, we’ll have a task
-velocity, but unlike story points our goal is to achieve a 1:1
-(average) correlation with real time.&lt;/p&gt;
-
-&lt;p&gt;Note that it’s possible to have a time boxed task for exploratory
-work.  If so, &lt;em&gt;stick to the time box.&lt;/em&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;done-and-done-done&quot;&gt;Done and “Done Done”&lt;/h4&gt;
-
-&lt;p&gt;Really, truely done – I mean “Done” done – means 2 things:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;You’ve achieved your success criteria&lt;/li&gt;
-  &lt;li&gt;Your User can execute their story.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;This last is the hard part.  How do you know it’s possible?&lt;/p&gt;
-
-&lt;p&gt;Hint: the best way is to actually &lt;em&gt;watch&lt;/em&gt; a real user do it.&lt;/p&gt;
-
-&lt;p&gt;Until a real user has done it, you don’t know that you’re actually
-done.  The best you can say is “I believe it will work but I can’t
-know that until we get it in front of the user.”&lt;/p&gt;
-
-&lt;h3 id=&quot;some-notes-on-scheduling&quot;&gt;Some notes on scheduling&lt;/h3&gt;
-
-&lt;p&gt;You don’t plan to work nights and weekends.  If you do that, you’re
-being a hero and getting more done.  This is great.  It’s also not
-sustainable, you’ll burn out, and your velocity will suffer later.
-It’s sometimes necessary to achieve short term goals.  It’s always has
-a price from the future.  Interest compounds.&lt;/p&gt;
-
-&lt;h2 id=&quot;our-process&quot;&gt;Our Process&lt;/h2&gt;
-
-&lt;h3 id=&quot;sprints-time-boxed&quot;&gt;Sprints (time boxed)&lt;/h3&gt;
-
-&lt;p&gt;We’ll use 2 week sprints (what we’re doing now).  I suggest we
-start/end on Wednesdays to stay away from the weekend and minimize the
-impact of holidays/long weekends/etc on our processes.&lt;/p&gt;
-
-&lt;p&gt;We’ll measure velocity in “Story Points per Week” in case we want to
-change the size of the box down the road.&lt;/p&gt;
-
-&lt;h3 id=&quot;daily-standups-time-boxed--discussions-criteria-based&quot;&gt;Daily Standups (time boxed) &amp;amp; Discussions (criteria based)&lt;/h3&gt;
-
-&lt;p&gt;Once we have actual tasks, the daily stand ups will turn into “what
-I’ve just done, any changes, and what I’m doing next”.  All discussion
-should be deferred until post-standup (often called “parking lot
-items”)&lt;/p&gt;
-
-&lt;p&gt;Separating status from discussion makes for much cleaner, more
-understandable meetings and allows people who are uninterested in
-parts of the discussion to leave.&lt;/p&gt;
-
-&lt;p&gt;We should time-box our status to 15 minutes max.  Discussions can then
-take time as appropriate, because they are &lt;em&gt;contributing to the tasks
-we’re doing&lt;/em&gt;.  Discussions are done when they’re done.&lt;/p&gt;
-
-&lt;h3 id=&quot;estimation-meetings-time-boxed&quot;&gt;Estimation Meetings (time boxed)&lt;/h3&gt;
-
-&lt;p&gt;Estimate upcoming (post-current-sprint) stories in story points.  Top
-of the backlog is most important, working down.  If anything changes
-(up to the point where it’s accepted into the current sprint), we
-re-estimate.&lt;/p&gt;
-
-&lt;h3 id=&quot;sprint-planning-criteria-based&quot;&gt;Sprint Planning (criteria based)&lt;/h3&gt;
-
-&lt;p&gt;If a story does not have the 4 required parts, it can’t be planned.
-If we can’t break it into a series of doable tasks, it can’t be
-planned.&lt;/p&gt;
-
-&lt;p&gt;Sprint planning turns stories into tasks and commits to achieving a
-set number of success criteria. If we’re playing pool, this means
-we’re calling our shots.&lt;/p&gt;
-
-&lt;p&gt;Sprint planning ends when&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;We are willing to commit to a set of stories for the upcoming sprint&lt;/li&gt;
-  &lt;li&gt;All of the committed stories are broken up into tasks of no more
-than 8 hours&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;sprint-retrospective-time-boxed&quot;&gt;Sprint retrospective (time boxed)&lt;/h3&gt;
-
-&lt;p&gt;Yup, I’m sneaking this one in because we’re not going to do it for
-about 3 sprints.  This is the place where &lt;em&gt;improvements&lt;/em&gt; happen – we
-take a look back and the sprint and figure out what worked and what
-didn’t and make things better.&lt;/p&gt;
-
-&lt;p&gt;We’ll start this around late August and it will take significant time
-for about the next 4 sprints, then will stabilize out.&lt;/p&gt;
-
-&lt;h3 id=&quot;sprint-review-time-boxed&quot;&gt;Sprint review (time boxed)&lt;/h3&gt;
-
-&lt;p&gt;Present what we did.  We’ll keep this one off the radar until we
-decide we need it.&lt;/p&gt;</content><author><name>Dewey Sasser</name></author><summary type="html">Description of a successfully implemented, fairly light-weight SCRUM process.</summary></entry></feed>
+presumably makes the changes available to end users.&lt;/p&gt;</content><author><name>Dewey Sasser</name></author><summary type="html">TL;DR: Workspaces and branches serve different purposes. An SCM branch is an alternet set of code. A Terraform workspace is an alternate location to apply code. You should use the difference to...</summary></entry></feed>
