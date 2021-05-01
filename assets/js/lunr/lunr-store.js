@@ -168,7 +168,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Staying Sane with IaC",
-        "excerpt":"Infrastructure as Code is all the rage, but suffers the same problems as any other code: it can easily become an unmanageable plate of spaghetti. Organizing your IaC is critical but the methods are different than traditional program code. We present an organizational pattern for IaC that has proven itself...","categories": [],
+        "excerpt":"Infrastructure as Code is all the rage, but suffers the same problems as any other code: it can easily become an unmanageable plate of spaghetti. Organizing your IaC is critical but the methods are different than traditional program code. I present an organizational pattern for IaC that has proven itself...","categories": ["aws"],
         "tags": [],
         "url": "/content/staying-sane-with-iac",
         "teaser": null
