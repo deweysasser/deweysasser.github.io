@@ -1,7 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://www.deweysasser.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.deweysasser.com/" rel="alternate" type="text/html" /><updated>2021-05-01T02:15:14-04:00</updated><id>https://www.deweysasser.com/feed.xml</id><title type="html">DeweySasser.com</title><subtitle>Software Engineering, Systems Engineering, and other geek pursuits</subtitle><author><name>Dewey Sasser</name></author><entry><title type="html">Runbook Framework</title><link href="https://www.deweysasser.com/content/runbook-framework" rel="alternate" type="text/html" title="Runbook Framework" /><published>2021-05-01T00:00:00-04:00</published><updated>2021-05-01T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/runbook-framework</id><content type="html" xml:base="https://www.deweysasser.com/content/runbook-framework">&lt;h1 id=&quot;introducing-runbook-framework&quot;&gt;Introducing &lt;a href=&quot;https://github.com/deweysasser/runbook-framework&quot;&gt;runbook framework&lt;/a&gt;&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://www.deweysasser.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.deweysasser.com/" rel="alternate" type="text/html" /><updated>2021-05-03T13:22:04-04:00</updated><id>https://www.deweysasser.com/feed.xml</id><title type="html">DeweySasser.com</title><subtitle>Software Engineering, Systems Engineering, and other geek pursuits</subtitle><author><name>Dewey Sasser</name></author><entry><title type="html">Runbook Framework</title><link href="https://www.deweysasser.com/content/runbook-framework" rel="alternate" type="text/html" title="Runbook Framework" /><published>2021-05-01T00:00:00-04:00</published><updated>2021-05-01T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/runbook-framework</id><content type="html" xml:base="https://www.deweysasser.com/content/runbook-framework">&lt;p&gt;&lt;a href=&quot;https://github.com/deweysasser/runbook-framework&quot;&gt;See Github Project&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;runbook-framework&quot;&gt;Runbook-framework&lt;/h1&gt;
+
+&lt;p&gt;“Any sufficiently detailed documentation is executable”
+– me&lt;/p&gt;
 
 &lt;h2 id=&quot;what-is-it&quot;&gt;What is it?&lt;/h2&gt;
-&lt;p&gt;A shell framework for building runbooks which can start manually and gradually migrate to fully automated.&lt;/p&gt;
+
+&lt;p&gt;A shell (bash) framework to implement runbook scripts that help move from fully manual to fully
+automated processes.&lt;/p&gt;
 
 &lt;p&gt;Based on the clever concept of
 a &lt;a href=&quot;https://blog.danslimmon.com/2019/07/15/do-nothing-scripting-the-key-to-gradual-automation/&quot;&gt;Do Nothing Script&lt;/a&gt;,
@@ -21,7 +29,7 @@ provide some structure for the script which allows &amp;amp; encourages document
 
 &lt;p&gt;And you can run it and get&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;runbooks-screenshot.png&quot; alt=&quot;runbook example&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://github.com/deweysasser/runbook-framework/blob/master/docs/runbooks-screenshot.png?raw=true&quot; alt=&quot;runbook example&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Or if you just need to produce some documentation, you can get&lt;/p&gt;
 &lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ./example-runbook --version=1.2.3 -doc
@@ -34,17 +42,6 @@ provide some structure for the script which allows &amp;amp; encourages document
 7: this one will fail
 $
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;here-is-the-project-readme-from-github&quot;&gt;Here is the project README from github&lt;/h2&gt;
-&lt;h1 id=&quot;runbook-framework&quot;&gt;Runbook-framework&lt;/h1&gt;
-
-&lt;p&gt;“Any sufficiently detailed documentation is executable”
-– me&lt;/p&gt;
-
-&lt;h2 id=&quot;what-is-it-1&quot;&gt;What is it?&lt;/h2&gt;
-
-&lt;p&gt;A shell (bash) framework to implement run book scripts that help move from fully manual to fully
-automated processes.&lt;/p&gt;
 
 &lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
 
@@ -189,8 +186,16 @@ Defaults:
 
 &lt;ul&gt;
   &lt;li&gt;the -doc argument should extract some documentation from the comment blocks and include it.&lt;/li&gt;
-  &lt;li&gt;can we do some kind of time estimate and make that useful information?&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Dewey Sasser</name></author><category term="shell" /><category term="sysadmin" /><category term="automation" /><summary type="html">A new a shell framework to construct manual and automated runbooks</summary></entry><entry><title type="html">2021 Site Refresh</title><link href="https://www.deweysasser.com/content/2021-site-refresh" rel="alternate" type="text/html" title="2021 Site Refresh" /><published>2021-04-25T00:00:00-04:00</published><updated>2021-04-25T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/2021%20site%20refresh</id><content type="html" xml:base="https://www.deweysasser.com/content/2021-site-refresh">&lt;p&gt;It’s been a while since I set up the technology behind this site, and times have changed.&lt;/p&gt;
+  &lt;li&gt;can we do some kind of time estimate and make that useful information? (&lt;a href=&quot;https://github.com/deweysasser/runbook-framework/discussions/9&quot;&gt;discussion here&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;documentation&quot;&gt;Documentation&lt;/h3&gt;
+
+&lt;p&gt;I’d like to make a “generate a fairly complete markdown document describing the process” be a feature.  The question is how to do that without obscuring the actual logic.  See &lt;a href=&quot;https://github.com/deweysasser/runbook-framework/discussions/6&quot;&gt;the github discussion&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;managing-state&quot;&gt;Managing state&lt;/h3&gt;
+
+&lt;p&gt;Would it be interesting to manage the current state of “a run”  in a persistent way, particularly so it could be resumed later if e.g. a step failed or something? (&lt;a href=&quot;https://github.com/deweysasser/runbook-framework/discussions/10&quot;&gt;discussion here&lt;/a&gt;)&lt;/p&gt;</content><author><name>Dewey Sasser</name></author><category term="shell" /><category term="sysadmin" /><category term="automation" /><summary type="html">A new a shell framework to construct manual and automated runbooks</summary></entry><entry><title type="html">2021 Site Refresh</title><link href="https://www.deweysasser.com/content/2021-site-refresh" rel="alternate" type="text/html" title="2021 Site Refresh" /><published>2021-04-25T00:00:00-04:00</published><updated>2021-04-25T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/2021%20site%20refresh</id><content type="html" xml:base="https://www.deweysasser.com/content/2021-site-refresh">&lt;p&gt;It’s been a while since I set up the technology behind this site, and times have changed.&lt;/p&gt;
 
 &lt;p&gt;So, I’m moving it form Drupal to something else.&lt;/p&gt;
 

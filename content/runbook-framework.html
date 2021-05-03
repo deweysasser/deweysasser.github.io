@@ -277,10 +277,18 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="introducing-runbook-framework">Introducing <a href="https://github.com/deweysasser/runbook-framework">runbook framework</a></h1>
+        <p><a href="https://github.com/deweysasser/runbook-framework">See Github Project</a></p>
+
+<hr />
+<h1 id="runbook-framework">Runbook-framework</h1>
+
+<p>“Any sufficiently detailed documentation is executable”
+– me</p>
 
 <h2 id="what-is-it">What is it?</h2>
-<p>A shell framework for building runbooks which can start manually and gradually migrate to fully automated.</p>
+
+<p>A shell (bash) framework to implement runbook scripts that help move from fully manual to fully
+automated processes.</p>
 
 <p>Based on the clever concept of
 a <a href="https://blog.danslimmon.com/2019/07/15/do-nothing-scripting-the-key-to-gradual-automation/">Do Nothing Script</a>,
@@ -300,7 +308,7 @@ provide some structure for the script which allows &amp; encourages documentatio
 
 <p>And you can run it and get</p>
 
-<p><img src="runbooks-screenshot.png" alt="runbook example" /></p>
+<p><img src="https://github.com/deweysasser/runbook-framework/blob/master/docs/runbooks-screenshot.png?raw=true" alt="runbook example" /></p>
 
 <p>Or if you just need to produce some documentation, you can get</p>
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./example-runbook --version=1.2.3 -doc
@@ -313,17 +321,6 @@ provide some structure for the script which allows &amp; encourages documentatio
 7: this one will fail
 $
 </code></pre></div></div>
-
-<h2 id="here-is-the-project-readme-from-github">Here is the project README from github</h2>
-<h1 id="runbook-framework">Runbook-framework</h1>
-
-<p>“Any sufficiently detailed documentation is executable”
-– me</p>
-
-<h2 id="what-is-it-1">What is it?</h2>
-
-<p>A shell (bash) framework to implement run book scripts that help move from fully manual to fully
-automated processes.</p>
 
 <h2 id="background">Background</h2>
 
@@ -468,8 +465,16 @@ Defaults:
 
 <ul>
   <li>the -doc argument should extract some documentation from the comment blocks and include it.</li>
-  <li>can we do some kind of time estimate and make that useful information?</li>
+  <li>can we do some kind of time estimate and make that useful information? (<a href="https://github.com/deweysasser/runbook-framework/discussions/9">discussion here</a>)</li>
 </ul>
+
+<h3 id="documentation">Documentation</h3>
+
+<p>I’d like to make a “generate a fairly complete markdown document describing the process” be a feature.  The question is how to do that without obscuring the actual logic.  See <a href="https://github.com/deweysasser/runbook-framework/discussions/6">the github discussion</a></p>
+
+<h3 id="managing-state">Managing state</h3>
+
+<p>Would it be interesting to manage the current state of “a run”  in a persistent way, particularly so it could be resumed later if e.g. a step failed or something? (<a href="https://github.com/deweysasser/runbook-framework/discussions/10">discussion here</a>)</p>
 
         
       </section>
