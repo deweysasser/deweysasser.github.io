@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>linux - DeweySasser.com</title>
+<!-- begin _includes/seo.html --><title>Projects - DeweySasser.com</title>
 <meta name="description" content="Software Engineering, Systems Engineering, and other geek pursuits">
 
 
@@ -20,8 +20,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="DeweySasser.com">
-<meta property="og:title" content="linux">
-<meta property="og:url" content="https://www.deweysasser.com/categories/linux/">
+<meta property="og:title" content="Projects">
+<meta property="og:url" content="https://www.deweysasser.com/page/projects">
 
 
   <meta property="og:description" content="Software Engineering, Systems Engineering, and other geek pursuits">
@@ -37,7 +37,7 @@
 
 
 
-<link rel="canonical" href="https://www.deweysasser.com/categories/linux/">
+<link rel="canonical" href="https://www.deweysasser.com/page/projects">
 
 
 
@@ -100,7 +100,7 @@
 
   </head>
 
-  <body class="layout--archive-taxonomy">
+  <body class="layout--single">
     <nav class="skip-links">
   <h2 class="screen-reader-text">Skip links</h2>
   <ul>
@@ -153,64 +153,86 @@
   
 
 
-  <div class="archive">
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Projects">
     
-      <h1 id="page-title" class="page__title">linux</h1>
     
     
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          
+
+
+        </header>
       
 
+      <section class="page__content" itemprop="text">
+        
+        <h1 id="my-open-source-projects">My Open Source Projects</h1>
+
+<p>(hosted on Github)</p>
+
+<h2 id="runbook-framework"><a href="https://github.com/deweysasser/runbook-framework">runbook-framework</a></h2>
+
+<p>Implement manual/automatic runbook checklist/scripts.</p>
+
+<h2 id="locksmith"><a href="https://github.com/deweysasser/locksmith">locksmith</a></h2>
+
+<p>Tool to inventory and manage SSH (and other) keys across multiple systems.</p>
+
+<h2 id="docker-xymon"><a href="https://github.com/deweysasser/docker-xymon">docker-xymon</a></h2>
+
+<p>A package of <a href="https://xymon.sourceforge.io/">Xymon server</a> in a container. Can run in kubernetes or 
+straight docker.</p>
+
+<p>I mostly like Xymon because it’s very easy to add network tests, and it’s great at hierarchical rollup of status.</p>
+
+<h2 id="docker-xymon-client"><a href="https://github.com/deweysasser/docker-xymon-client">docker-xymon-client</a></h2>
+
+<p>Containerize the docker xymon client.  This is suitable to run on every docker note to monitor the node
+and report to the above server</p>
+
+<h2 id="git-updater"><a href="https://github.com/deweysasser/git-updater">git-updater</a></h2>
+
+<p>A container to run a <code class="language-plaintext highlighter-rouge">git pull</code> to mirror files from a repository to another directory.  Good for automatically
+deploying software.   Thank <em>very</em> abbreviated gitops.</p>
+
+<h2 id="docker-restic"><a href="https://github.com/deweysasser/docker-restic">docker-restic</a></h2>
+
+<p>Add bandwidth control to the standard restic container.</p>
+
+<h2 id="markdown-doc"><a href="https://github.com/deweysasser/markdown-doc">markdown-doc</a></h2>
+
+<p>Generate tables of contents for Markdown files.</p>
+
+<h2 id="git-dirsync"><a href="https://github.com/deweysasser/git-dirsync">git-dirsync</a></h2>
+
+<p>Use GIT to synchronize directories across multiple machines.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
 
 
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
+        
+
+      </footer>
+
       
-        <a href="/content/lvm2-linux-boot-delays" rel="permalink">LVM2 and Linux boot delays
-</a>
+
       
-    </h2>
+    </div>
+
     
-
-
-    <p class="archive__item-excerpt" itemprop="description">In which I learn that sufficient logical volumes and/or snapshots can make a default Ubuntu Server installation unbootable, but there’s a very simple fix.
-</p>
   </article>
-</div>
 
-    
-      
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/content/snapshot" rel="permalink">Automount Snapshot
-</a>
-      
-    </h2>
-    
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-Summary: I present a method for transparently auto-creating lvm snapshots on use. 
-
-
-
-1) The problem 
-
-
-
-I'm using rsync to transfer a backup area to anothe...</p>
-  </article>
-</div>
-
-    
-  </div>
+  
+  
 </div>
 
     </div>

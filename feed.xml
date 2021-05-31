@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://www.deweysasser.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.deweysasser.com/" rel="alternate" type="text/html" /><updated>2021-05-03T13:22:04-04:00</updated><id>https://www.deweysasser.com/feed.xml</id><title type="html">DeweySasser.com</title><subtitle>Software Engineering, Systems Engineering, and other geek pursuits</subtitle><author><name>Dewey Sasser</name></author><entry><title type="html">Runbook Framework</title><link href="https://www.deweysasser.com/content/runbook-framework" rel="alternate" type="text/html" title="Runbook Framework" /><published>2021-05-01T00:00:00-04:00</published><updated>2021-05-01T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/runbook-framework</id><content type="html" xml:base="https://www.deweysasser.com/content/runbook-framework">&lt;p&gt;&lt;a href=&quot;https://github.com/deweysasser/runbook-framework&quot;&gt;See Github Project&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://www.deweysasser.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.deweysasser.com/" rel="alternate" type="text/html" /><updated>2021-05-31T19:49:06-04:00</updated><id>https://www.deweysasser.com/feed.xml</id><title type="html">DeweySasser.com</title><subtitle>Software Engineering, Systems Engineering, and other geek pursuits</subtitle><author><name>Dewey Sasser</name></author><entry><title type="html">Runbook Framework</title><link href="https://www.deweysasser.com/content/runbook-framework" rel="alternate" type="text/html" title="Runbook Framework" /><published>2021-05-01T00:00:00-04:00</published><updated>2021-05-01T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/runbook-framework</id><content type="html" xml:base="https://www.deweysasser.com/content/runbook-framework">&lt;p&gt;&lt;a href=&quot;https://github.com/deweysasser/runbook-framework&quot;&gt;See Github Project&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 &lt;h1 id=&quot;runbook-framework&quot;&gt;Runbook-framework&lt;/h1&gt;
@@ -96,27 +96,9 @@ executed. The status of all commands will be printed as they are executed.&lt;/p
 &lt;p&gt;The framework provides some overall features, including&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;table&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td&gt;-help&lt;/td&gt;
-          &lt;td&gt;-h – show how to run this runbook, including the parameters&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-  &lt;/li&gt;
+  &lt;li&gt;-help or -h – show how to run this runbook, including the parameters&lt;/li&gt;
   &lt;li&gt;-doc – show the checklist &lt;em&gt;without&lt;/em&gt; executing it&lt;/li&gt;
-  &lt;li&gt;
-    &lt;table&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td&gt;-verbose&lt;/td&gt;
-          &lt;td&gt;-v – show the output of each command as it happens&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-  &lt;/li&gt;
+  &lt;li&gt;-verbose or -v – show the output of each command as it happens&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;what-happened-to-the-output&quot;&gt;What happened to the output?&lt;/h3&gt;
