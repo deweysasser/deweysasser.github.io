@@ -209,27 +209,21 @@ var store = [{
         "url": "/content/2021-site-refresh",
         "teaser": null
       },{
+        "title": "Principles Of Design",
+        "excerpt":"Principles of Design Some random thoughts on designing systems put the processing where the knowledge is, don’t move the knowledge to the processing Where there’s 2, there’s N Be more general keep it in the problem space as long as possible Sufficiently detailed documentation is executable DRY is good *...","categories": [],
+        "tags": [],
+        "url": "/content/principles-of-design",
+        "teaser": null
+      },{
         "title": "Runbook Framework",
         "excerpt":"See Github Project Runbook-framework “Any sufficiently detailed documentation is executable” – me What is it? A shell (bash) framework to implement runbook scripts that help move from fully manual to fully automated processes. Based on the clever concept of a Do Nothing Script, provide some structure for the script which...","categories": ["shell","sysadmin","automation"],
         "tags": [],
         "url": "/content/runbook-framework",
         "teaser": null
       },{
-        "title": "Git Repo Inheritance",
-        "excerpt":"– slug: did you know that you can “inherit” files from other git repos, and keep them up to date? Here’s how. categories: git TL;DR Git can merge from branches that have unrelated history. Once it’s merged, they’re no longer unrelated, and you can merge diffs You can use this...","categories": [],
-        "tags": [],
-        "url": "/content/git-repo-inheritance",
-        "teaser": null
-      },{
-        "title": "Design Principles",
-        "excerpt":"   Sufficiently detailed documentation is executable   Put your processing where the data lives.  Don’t try to take data to the processing.   Where there’s 2, there’s N   Keep your system DRY   Keep your solutions in the problem domain as long as possible   (more will be added, along with explanations)  ","categories": ["architecutre","design"],
-        "tags": [],
-        "url": "/content/design-principles",
-        "teaser": null
-      },{
-        "title": "Second System Effect Traefik",
+        "title": "Second System Effect Impacts Traefik",
         "excerpt":"Ahhh, the Second System Effect, a perennial project killer. For some years, this site has run in a Kubernetes cluster with several others, and used Traefik Proxy, which has been an excellent piece of code, to multiplex sites through one load balancer. For better or worse, my provider has just...","categories": ["admin"],
         "tags": [],
-        "url": "/content/second-system-effect-traefik",
+        "url": "/content/second-system-effect-impacts-traefik",
         "teaser": null
       }]
