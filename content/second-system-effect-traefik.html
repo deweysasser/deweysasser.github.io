@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>LVM2 and Linux boot delays - DeweySasser.com</title>
-<meta name="description" content="In which I learn that sufficient logical volumes and/or snapshots can make a default Ubuntu Server installation unbootable, but there’s a very simple fix.">
+<!-- begin _includes/seo.html --><title>Second System Effect Traefik - DeweySasser.com</title>
+<meta name="description" content="Traefik has changed everything, breaking TLS for this site.">
 
 
   <meta name="author" content="Dewey Sasser">
@@ -22,26 +22,26 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="DeweySasser.com">
-<meta property="og:title" content="LVM2 and Linux boot delays">
-<meta property="og:url" content="https://www.deweysasser.com/content/lvm2-linux-boot-delays">
+<meta property="og:title" content="Second System Effect Traefik">
+<meta property="og:url" content="https://www.deweysasser.com/content/second-system-effect-traefik">
 
 
-  <meta property="og:description" content="In which I learn that sufficient logical volumes and/or snapshots can make a default Ubuntu Server installation unbootable, but there’s a very simple fix.">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2011-09-19T00:00:00-04:00">
+  <meta property="og:description" content="Traefik has changed everything, breaking TLS for this site.">
 
 
 
 
 
 
-<link rel="canonical" href="https://www.deweysasser.com/content/lvm2-linux-boot-delays">
+
+  <meta property="article:published_time" content="2022-10-17T00:00:00-04:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://www.deweysasser.com/content/second-system-effect-traefik">
 
 
 
@@ -263,15 +263,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="LVM2 and Linux boot delays">
-    <meta itemprop="description" content="In which I learn that sufficient logical volumes and/or snapshots can make a default Ubuntu Server installation unbootable, but there’s a very simple fix.">
-    <meta itemprop="datePublished" content="2011-09-19T00:00:00-04:00">
+    <meta itemprop="headline" content="Second System Effect Traefik">
+    <meta itemprop="description" content="Traefik has changed everything, breaking TLS for this site.">
+    <meta itemprop="datePublished" content="2022-10-17T00:00:00-04:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">LVM2 and Linux boot delays
+          <h1 id="page-title" class="page__title" itemprop="headline">Second System Effect Traefik
 </h1>
           
 
@@ -281,35 +281,25 @@
 
       <section class="page__content" itemprop="text">
         
-          <aside class="sidebar__right ">
-            <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#the-setup">The Setup</a></li><li><a href="#the-problem">The Problem</a></li><li><a href="#the-fix">The Fix</a></li></ul>
+        <p>Ahhh, the <a href="https://en.wikipedia.org/wiki/Second-system_effect">Second System Effect</a>,
+a perennial project killer.</p>
 
-            </nav>
-          </aside>
-        
-        <h1 id="the-setup">The Setup</h1>
+<p>For some years, this site has run in a Kubernetes cluster with several others, and
+used <a href="https://traefik.io/traefik/">Traefik Proxy</a>, which has been an excellent piece of code, to
+multiplex sites through one load balancer.</p>
 
-<p>The other night I learned an important lesson:  never do a major upgrade of a server at 11pm just before going to bed.</p>
+<p>For better or worse, my provider has just forced a kubernetes upgrade…which removed some
+deprecated APIs…on which traefik 1.7 depended.</p>
 
-<p>Nope, that wasn’t quite it.  I learned that lesson long ago, so applying my previous knowledge I created an LVM snapshot of my root partition.  If something goes wrong, no problem, I’ll use the snapshot.</p>
+<p>And, instead of maintaining the same standard API of reading annotations from standard Ingress
+objects, traefik has gone the “custom CRD” route, destroying the simple and elegant (and standard!)
+way of using it in favor of complicated and proprietary ways of specifying everything.</p>
 
-<p>The Gods listen for “no problem” when they need some amusement.</p>
+<p>I will update this page later with some details, but for now, the result is that TLS on this (and
+several other) sites are broken until I can either reconfigure everything to use their new system,
+or replace them with other methods.</p>
 
-<p>My upgrade went off without a hitch, so I rebooted and…nothing.  Grub drops me into the initram shell.  Not useful.</p>
-
-<p>So, of course, I reconfigure my grub to boot of my snapshot root.  Not an issue right?  And Grub drops me into an initram shell. What???</p>
-
-<p>Had I been more awake I would likely have pursued the “what has changed” path.  I was not more awake.  I will spare you the 4 hours of painful beating-head-against-monitor and cut right to the problem and the fix:</p>
-
-<h1 id="the-problem">The Problem</h1>
-
-<p>The problem, evidently, was that adding the snapshot on the root partition delayed the root device availability until after a timeout.  This kept confusing me as when I’d check for the root device at the initram shell it was present.  This was my primary storage server, so I have 2 volume groups and a total of 35 logical volumes.  I suspect that I was riding the edge of “too long” and I pushed myself right over.</p>
-
-<h1 id="the-fix">The Fix</h1>
-
-<p>The solution was simply to add a “rootdelay=180” to the kernel lines in grub (yes, I’m still using Grub 1.X, for just this reason).  This gives ample time for the root device to become ready before boot.  Problem solved…at 3am.</p>
+<p>I apologize for the inconvenience.  TLS is very useful, and right now we don’t have it.  Gagh!</p>
 
         
       </section>
@@ -320,7 +310,7 @@
 
 
         
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2011-09-19T00:00:00-04:00">September 19, 2011</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-10-17T00:00:00-04:00">October 17, 2022</time></p>
 
 
       </footer>
@@ -328,23 +318,22 @@
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=LVM2+and+Linux+boot+delays%20https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Flvm2-linux-boot-delays" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Second+System+Effect+Traefik%20https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Fsecond-system-effect-traefik" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Flvm2-linux-boot-delays" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Fsecond-system-effect-traefik" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Flvm2-linux-boot-delays" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Fsecond-system-effect-traefik" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/content/firefox-scrapbook-extension" class="pagination--pager" title="FireFox Scrapbook Extension
+      <a href="/content/design-principles" class="pagination--pager" title="Design Principles
 ">Previous</a>
     
     
-      <a href="/content/tool-of-month-puppet" class="pagination--pager" title="Tool of the Month:  Puppet
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 

@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>LVM2 and Linux boot delays - DeweySasser.com</title>
-<meta name="description" content="In which I learn that sufficient logical volumes and/or snapshots can make a default Ubuntu Server installation unbootable, but there’s a very simple fix.">
+<!-- begin _includes/seo.html --><title>Git Repo Inheritance - DeweySasser.com</title>
+<meta name="description" content="– slug: did you know that you can “inherit” files from other git repos, and keep them up to date?  Here’s how. categories:         git      TL;DR     Git can merge from branches that have unrelated history.   Once it’s merged, they’re no longer unrelated, and you can merge diffs   You can use this to create a set of common “mix in” files in a central location and then merge updates to other repos.   If you read the above and go “yup, got it”, you probably don’t need to read more.  Otherwise, read on…  The Problem  Sometimes you just need some boilerplate files that are the same in multiple repositories, and for tooling reasons (e.g. GitHub Actions) you can’t just reference them in a central location.  That’s fine, and that’s why GitHub has “template repositories”, right?  But templates only solve the “start off this way”, and doesn’t deal with “I need to change this file and update all the places it’s used” (i.e. the standard “inheritance” use case)">
 
 
   <meta name="author" content="Dewey Sasser">
@@ -22,26 +22,26 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="DeweySasser.com">
-<meta property="og:title" content="LVM2 and Linux boot delays">
-<meta property="og:url" content="https://www.deweysasser.com/content/lvm2-linux-boot-delays">
+<meta property="og:title" content="Git Repo Inheritance">
+<meta property="og:url" content="https://www.deweysasser.com/content/git-repo-inheritance">
 
 
-  <meta property="og:description" content="In which I learn that sufficient logical volumes and/or snapshots can make a default Ubuntu Server installation unbootable, but there’s a very simple fix.">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2011-09-19T00:00:00-04:00">
+  <meta property="og:description" content="– slug: did you know that you can “inherit” files from other git repos, and keep them up to date?  Here’s how. categories:         git      TL;DR     Git can merge from branches that have unrelated history.   Once it’s merged, they’re no longer unrelated, and you can merge diffs   You can use this to create a set of common “mix in” files in a central location and then merge updates to other repos.   If you read the above and go “yup, got it”, you probably don’t need to read more.  Otherwise, read on…  The Problem  Sometimes you just need some boilerplate files that are the same in multiple repositories, and for tooling reasons (e.g. GitHub Actions) you can’t just reference them in a central location.  That’s fine, and that’s why GitHub has “template repositories”, right?  But templates only solve the “start off this way”, and doesn’t deal with “I need to change this file and update all the places it’s used” (i.e. the standard “inheritance” use case)">
 
 
 
 
 
 
-<link rel="canonical" href="https://www.deweysasser.com/content/lvm2-linux-boot-delays">
+
+  <meta property="article:published_time" content="2022-03-09T00:00:00-05:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://www.deweysasser.com/content/git-repo-inheritance">
 
 
 
@@ -263,15 +263,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="LVM2 and Linux boot delays">
-    <meta itemprop="description" content="In which I learn that sufficient logical volumes and/or snapshots can make a default Ubuntu Server installation unbootable, but there’s a very simple fix.">
-    <meta itemprop="datePublished" content="2011-09-19T00:00:00-04:00">
+    <meta itemprop="headline" content="Git Repo Inheritance">
+    <meta itemprop="description" content="–slug: did you know that you can “inherit” files from other git repos, and keep them up to date?  Here’s how.categories:      git  TL;DR  Git can merge from branches that have unrelated history.  Once it’s merged, they’re no longer unrelated, and you can merge diffs  You can use this to create a set of common “mix in” files in a central location and then merge updates to other repos.If you read the above and go “yup, got it”, you probably don’t need to read more.Otherwise, read on…The ProblemSometimes you just need some boilerplate files that are the same in multiple repositories, and for tooling reasons (e.g. GitHub Actions) you can’t just reference them in a central location.That’s fine, and that’s why GitHub has “template repositories”, right?But templates only solve the “start off this way”, and doesn’t deal with “I need to change this file and update all the places it’s used” (i.e. the standard “inheritance” use case)">
+    <meta itemprop="datePublished" content="2022-03-09T00:00:00-05:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">LVM2 and Linux boot delays
+          <h1 id="page-title" class="page__title" itemprop="headline">Git Repo Inheritance
 </h1>
           
 
@@ -281,35 +281,34 @@
 
       <section class="page__content" itemprop="text">
         
-          <aside class="sidebar__right ">
-            <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#the-setup">The Setup</a></li><li><a href="#the-problem">The Problem</a></li><li><a href="#the-fix">The Fix</a></li></ul>
+        <p>–
+slug: did you know that you can “inherit” files from other git repos, and keep them up to date?  Here’s how.
+categories:</p>
+<ul>
+  <li>
+    <h2 id="git">git</h2>
+  </li>
+</ul>
 
-            </nav>
-          </aside>
-        
-        <h1 id="the-setup">The Setup</h1>
+<h1 id="tldr">TL;DR</h1>
 
-<p>The other night I learned an important lesson:  never do a major upgrade of a server at 11pm just before going to bed.</p>
+<ul>
+  <li>Git can merge from branches that have unrelated history.</li>
+  <li>Once it’s merged, they’re no longer unrelated, and you can merge diffs</li>
+  <li>You can use this to create a set of common “mix in” files in a central location and then merge updates to other repos.</li>
+</ul>
 
-<p>Nope, that wasn’t quite it.  I learned that lesson long ago, so applying my previous knowledge I created an LVM snapshot of my root partition.  If something goes wrong, no problem, I’ll use the snapshot.</p>
+<p>If you read the above and go “yup, got it”, you probably don’t need to read more.</p>
 
-<p>The Gods listen for “no problem” when they need some amusement.</p>
-
-<p>My upgrade went off without a hitch, so I rebooted and…nothing.  Grub drops me into the initram shell.  Not useful.</p>
-
-<p>So, of course, I reconfigure my grub to boot of my snapshot root.  Not an issue right?  And Grub drops me into an initram shell. What???</p>
-
-<p>Had I been more awake I would likely have pursued the “what has changed” path.  I was not more awake.  I will spare you the 4 hours of painful beating-head-against-monitor and cut right to the problem and the fix:</p>
+<p>Otherwise, read on…</p>
 
 <h1 id="the-problem">The Problem</h1>
 
-<p>The problem, evidently, was that adding the snapshot on the root partition delayed the root device availability until after a timeout.  This kept confusing me as when I’d check for the root device at the initram shell it was present.  This was my primary storage server, so I have 2 volume groups and a total of 35 logical volumes.  I suspect that I was riding the edge of “too long” and I pushed myself right over.</p>
+<p>Sometimes you just need some boilerplate files that are the same in multiple repositories, and for tooling reasons (e.g. GitHub Actions) you can’t just reference them in a central location.</p>
 
-<h1 id="the-fix">The Fix</h1>
+<p>That’s fine, and that’s why GitHub has <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository">“template repositories”</a>, right?</p>
 
-<p>The solution was simply to add a “rootdelay=180” to the kernel lines in grub (yes, I’m still using Grub 1.X, for just this reason).  This gives ample time for the root device to become ready before boot.  Problem solved…at 3am.</p>
+<p>But templates only solve the “start off this way”, and doesn’t deal with “I need to change this file and update all the places it’s used” (i.e. the standard “inheritance” use case)</p>
 
         
       </section>
@@ -320,7 +319,7 @@
 
 
         
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2011-09-19T00:00:00-04:00">September 19, 2011</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-03-09T00:00:00-05:00">March 9, 2022</time></p>
 
 
       </footer>
@@ -328,22 +327,22 @@
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=LVM2+and+Linux+boot+delays%20https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Flvm2-linux-boot-delays" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Git+Repo+Inheritance%20https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Fgit-repo-inheritance" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Flvm2-linux-boot-delays" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Fgit-repo-inheritance" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Flvm2-linux-boot-delays" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Fgit-repo-inheritance" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/content/firefox-scrapbook-extension" class="pagination--pager" title="FireFox Scrapbook Extension
+      <a href="/content/runbook-framework" class="pagination--pager" title="Runbook Framework
 ">Previous</a>
     
     
-      <a href="/content/tool-of-month-puppet" class="pagination--pager" title="Tool of the Month:  Puppet
+      <a href="/content/design-principles" class="pagination--pager" title="Design Principles
 ">Next</a>
     
   </nav>
