@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
   Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Laptop for Virtualization - DeweySasser.com</title>
-<meta name="description" content="This is a bit more specific than I usually get but I want to document what’s working for me.  My current needs in a laptop are:     Highly portable   Great battery life   Capable of running multiple virtual machines   Recently I changed jobs and am now taking the train to work – as such I have 1.5 hours per commute that I can turn into productive time (as I’m doing right now).  I’m really playing in the virtualization space right now, so virtualization is a big part of this.  Here’s what I’ve got running:     2 ESX hosts with 2 cores, 1G RAM each, each running a VM of it’s own   2 iSCSI storage hosts (OpenFiler and OpenE) with 768M RAM, 20G storage each   1 Win 2k8 Server running vCenter   1 Ubuntu Linux 10.04 data collection (graphite)   I also play around with various management/monitoring utilities (zenos, zabbix, nessus, puppet) which each have machines.  The laptop is sufficiently powerful that I often forget to turn off machines and don’t notice.  Here’s the laptop:     Lenovo Thinkpad x201, 2.53 GHz i3 (~$730 off of eBay with 4G RAM/128G SSD)   Crucial M4 240GB SSD ($110 from NewEgg, with USB/SATA cable)   8GB G. Skill DDR3-1333 RAM ($40 from NewEgg)   Windows 7 OS   Vmware Workstation to run the VMs   My experience:  I can work for 1.5 hrs on the train running 6 VMs (and 2 more VMs running inside of those), slam the lid to suspend when I get off the train (everything works throughout the stack with suspend and resume) and have only used about 35% of the battery.  If I don’t run VMs and just work on the native OS (as I’m doing now) I’ll probably burn about 25% of the battery in the same time.  Yes, I run Windows 7.  My previous experience with Linux on Laptops is that it’s great but doesn’t do the power management quite as well, but that experience is about older versions of Linux with older laptops.  For newer ones….I really hate gnome 3 – it just isn’t designed for the way I work – so alas if I’m going to go with a current Linux it’s a usability issue.  Eventually in my copious free time I’ll install a new Linux Desktop and see how that goes.  I’ve often forgotten to turn off VMs when I move on to other things – and I don’t really notice as the machine does not bog down.  The screen is not a desktop replacement but is very usable – I actually miss multiple monitors more than extra resolution or size.  It’s also a non-glare screen and does a good job and being visible in all lighting and not have any glare – either of which is difficult to achieve in most laptops.  I love ThinkPad keyboards and hate chicklet keys – YMMV there.">
+<meta name="description" content="This is a bit more specific than I usually get but I want to document what’s working for me.">
 
 
   <meta name="author" content="Dewey Sasser">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="https://www.deweysasser.com/content/laptop-for-virtualization">
 
 
-  <meta property="og:description" content="This is a bit more specific than I usually get but I want to document what’s working for me.  My current needs in a laptop are:     Highly portable   Great battery life   Capable of running multiple virtual machines   Recently I changed jobs and am now taking the train to work – as such I have 1.5 hours per commute that I can turn into productive time (as I’m doing right now).  I’m really playing in the virtualization space right now, so virtualization is a big part of this.  Here’s what I’ve got running:     2 ESX hosts with 2 cores, 1G RAM each, each running a VM of it’s own   2 iSCSI storage hosts (OpenFiler and OpenE) with 768M RAM, 20G storage each   1 Win 2k8 Server running vCenter   1 Ubuntu Linux 10.04 data collection (graphite)   I also play around with various management/monitoring utilities (zenos, zabbix, nessus, puppet) which each have machines.  The laptop is sufficiently powerful that I often forget to turn off machines and don’t notice.  Here’s the laptop:     Lenovo Thinkpad x201, 2.53 GHz i3 (~$730 off of eBay with 4G RAM/128G SSD)   Crucial M4 240GB SSD ($110 from NewEgg, with USB/SATA cable)   8GB G. Skill DDR3-1333 RAM ($40 from NewEgg)   Windows 7 OS   Vmware Workstation to run the VMs   My experience:  I can work for 1.5 hrs on the train running 6 VMs (and 2 more VMs running inside of those), slam the lid to suspend when I get off the train (everything works throughout the stack with suspend and resume) and have only used about 35% of the battery.  If I don’t run VMs and just work on the native OS (as I’m doing now) I’ll probably burn about 25% of the battery in the same time.  Yes, I run Windows 7.  My previous experience with Linux on Laptops is that it’s great but doesn’t do the power management quite as well, but that experience is about older versions of Linux with older laptops.  For newer ones….I really hate gnome 3 – it just isn’t designed for the way I work – so alas if I’m going to go with a current Linux it’s a usability issue.  Eventually in my copious free time I’ll install a new Linux Desktop and see how that goes.  I’ve often forgotten to turn off VMs when I move on to other things – and I don’t really notice as the machine does not bog down.  The screen is not a desktop replacement but is very usable – I actually miss multiple monitors more than extra resolution or size.  It’s also a non-glare screen and does a good job and being visible in all lighting and not have any glare – either of which is difficult to achieve in most laptops.  I love ThinkPad keyboards and hate chicklet keys – YMMV there.">
+  <meta property="og:description" content="This is a bit more specific than I usually get but I want to document what’s working for me.">
 
 
 
@@ -62,6 +62,7 @@
 
 
 
+
 <!-- end _includes/seo.html -->
 
 
@@ -78,22 +79,9 @@
 
 <!-- For all browsers -->
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
 
-<!--[if IE]>
-  <style>
-    /* old IE unsupported flexbox fixes */
-    .greedy-nav .site-title {
-      padding-right: 3em;
-    }
-    .greedy-nav button {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-    }
-  </style>
-<![endif]-->
 
 
     <!-- start custom head snippets -->
@@ -106,7 +94,6 @@
 
   <body class="layout--single">
     <nav class="skip-links">
-  <h2 class="screen-reader-text">Skip links</h2>
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
     <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
@@ -264,7 +251,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Laptop for Virtualization">
-    <meta itemprop="description" content="This is a bit more specific than I usually get but I want to document what’s working for me.My current needs in a laptop are:  Highly portable  Great battery life  Capable of running multiple virtual machinesRecently I changed jobs and am now taking the train to work – as such I have 1.5 hours per commute that I can turn into productive time (as I’m doing right now).  I’m really playing in the virtualization space right now, so virtualization is a big part of this.Here’s what I’ve got running:  2 ESX hosts with 2 cores, 1G RAM each, each running a VM of it’s own  2 iSCSI storage hosts (OpenFiler and OpenE) with 768M RAM, 20G storage each  1 Win 2k8 Server running vCenter  1 Ubuntu Linux 10.04 data collection (graphite)I also play around with various management/monitoring utilities (zenos, zabbix, nessus, puppet) which each have machines.The laptop is sufficiently powerful that I often forget to turn off machines and don’t notice.Here’s the laptop:  Lenovo Thinkpad x201, 2.53 GHz i3 (~$730 off of eBay with 4G RAM/128G SSD)  Crucial M4 240GB SSD ($110 from NewEgg, with USB/SATA cable)  8GB G. Skill DDR3-1333 RAM ($40 from NewEgg)  Windows 7 OS  Vmware Workstation to run the VMsMy experience:I can work for 1.5 hrs on the train running 6 VMs (and 2 more VMs running inside of those), slam the lid to suspend when I get off the train (everything works throughout the stack with suspend and resume) and have only used about 35% of the battery.  If I don’t run VMs and just work on the native OS (as I’m doing now) I’ll probably burn about 25% of the battery in the same time.Yes, I run Windows 7.  My previous experience with Linux on Laptops is that it’s great but doesn’t do the power management quite as well, but that experience is about older versions of Linux with older laptops.  For newer ones….I really hate gnome 3 – it just isn’t designed for the way I work – so alas if I’m going to go with a current Linux it’s a usability issue.  Eventually in my copious free time I’ll install a new Linux Desktop and see how that goes.I’ve often forgotten to turn off VMs when I move on to other things – and I don’t really notice as the machine does not bog down.The screen is not a desktop replacement but is very usable – I actually miss multiple monitors more than extra resolution or size.  It’s also a non-glare screen and does a good job and being visible in all lighting and not have any glare – either of which is difficult to achieve in most laptops.  I love ThinkPad keyboards and hate chicklet keys – YMMV there.">
+    <meta itemprop="description" content="This is a bit more specific than I usually get but I want to document what’s working for me.">
     <meta itemprop="datePublished" content="2012-06-12T00:00:00-04:00">
     
 
@@ -335,6 +322,7 @@
 
 
         
+
   <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2012-06-12T00:00:00-04:00">June 12, 2012</time></p>
 
 
@@ -393,7 +381,7 @@
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2022 DeweySasser.com. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2023 DeweySasser.com. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>

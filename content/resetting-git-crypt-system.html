@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
   Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Resetting a git-crypt system - DeweySasser.com</title>
-<meta name="description" content="The Problem  git-crypt is pretty awesome, but I’ve managed to do enough evil things to bork  the decryption keys.  Here’s how to fix it.    The Background  git-crypt allows you to encrypt some of the files in a git repository.  It supports adding other users’ GPG keys so they will be able to encrypt/decrypt the file.  It’s pretty clever, and I like it.  The basic operation is that it creates a single symmetric key (which it stores in .git/git-crypt/keys/default), then on request will use GPG to encrypt that key to the public key IDs you specify, and those are stored in .git-crypt//keys/default/0.  However, if you do sufficiently evil things in git repos, like using git filter-repo (another pretty awesome tool), it’s possible to drive git crypt into a pathological state where your keys are wrong and you can’t do anything.  In order to recover from this situation, make sure you have unencrypted copies of the files around somewhere, then:  The Fix    create a fresh clone of your repo.  In that clone, do…   save the IDs of all keys   keys=$(ls .git-crypt/keys/default/0/*.gpg | xargs -n 1 -I F basename F .gpg)      Remove the existing encrypted keys   git rm -r .git-crypt rm -rf .git/git-crypt      Reinitialize the encryption   git crypt init     Re-add the public keys which should access the encrypted files   for k in $keys; do git crypt add-gpg user $k; done           COPY in fresh, unencrypted copies of all previously encrypted files, however you do that           (Optional) rebase so that all of this stuff occurs in a single commit      git rebase -i origin/master  Note that the VI magic to “fixup” all commits into the first one is 2,$ s/pick/fixup/">
+<meta name="description" content="The Problem">
 
 
   <meta name="author" content="Dewey Sasser">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="https://www.deweysasser.com/content/resetting-git-crypt-system">
 
 
-  <meta property="og:description" content="The Problem  git-crypt is pretty awesome, but I’ve managed to do enough evil things to bork  the decryption keys.  Here’s how to fix it.    The Background  git-crypt allows you to encrypt some of the files in a git repository.  It supports adding other users’ GPG keys so they will be able to encrypt/decrypt the file.  It’s pretty clever, and I like it.  The basic operation is that it creates a single symmetric key (which it stores in .git/git-crypt/keys/default), then on request will use GPG to encrypt that key to the public key IDs you specify, and those are stored in .git-crypt//keys/default/0.  However, if you do sufficiently evil things in git repos, like using git filter-repo (another pretty awesome tool), it’s possible to drive git crypt into a pathological state where your keys are wrong and you can’t do anything.  In order to recover from this situation, make sure you have unencrypted copies of the files around somewhere, then:  The Fix    create a fresh clone of your repo.  In that clone, do…   save the IDs of all keys   keys=$(ls .git-crypt/keys/default/0/*.gpg | xargs -n 1 -I F basename F .gpg)      Remove the existing encrypted keys   git rm -r .git-crypt rm -rf .git/git-crypt      Reinitialize the encryption   git crypt init     Re-add the public keys which should access the encrypted files   for k in $keys; do git crypt add-gpg user $k; done           COPY in fresh, unencrypted copies of all previously encrypted files, however you do that           (Optional) rebase so that all of this stuff occurs in a single commit      git rebase -i origin/master  Note that the VI magic to “fixup” all commits into the first one is 2,$ s/pick/fixup/">
+  <meta property="og:description" content="The Problem">
 
 
 
@@ -62,6 +62,7 @@
 
 
 
+
 <!-- end _includes/seo.html -->
 
 
@@ -78,22 +79,9 @@
 
 <!-- For all browsers -->
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
 
-<!--[if IE]>
-  <style>
-    /* old IE unsupported flexbox fixes */
-    .greedy-nav .site-title {
-      padding-right: 3em;
-    }
-    .greedy-nav button {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-    }
-  </style>
-<![endif]-->
 
 
     <!-- start custom head snippets -->
@@ -106,7 +94,6 @@
 
   <body class="layout--single">
     <nav class="skip-links">
-  <h2 class="screen-reader-text">Skip links</h2>
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
     <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
@@ -264,7 +251,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Resetting a git-crypt system">
-    <meta itemprop="description" content="The Problemgit-crypt is pretty awesome, but I’ve managed to do enough evil things to bork the decryption keys.  Here’s how to fix it.The Backgroundgit-crypt allows you to encrypt some of the files in a git repository.  It supports adding other users’ GPG keys so they will be able to encrypt/decrypt the file.  It’s pretty clever, and I like it.The basic operation is that it creates a single symmetric key (which it stores in .git/git-crypt/keys/default), thenon request will use GPG to encrypt that key to the public key IDs you specify, and those are stored in .git-crypt//keys/default/0.However, if you do sufficiently evil things in git repos, like using git filter-repo (another pretty awesome tool), it’s possible to drive git crypt into a pathological state where your keys are wrong and you can’t do anything.In order to recover from this situation, make sure you have unencrypted copies of the files around somewhere, then:The Fix  create a fresh clone of your repo.  In that clone, do…  save the IDs of all keyskeys=$(ls .git-crypt/keys/default/0/*.gpg | xargs -n 1 -I F basename F .gpg)  Remove the existing encrypted keysgit rm -r .git-cryptrm -rf .git/git-crypt  Reinitialize the encryptiongit crypt init  Re-add the public keys which should access the encrypted filesfor k in $keys; do git crypt add-gpg user $k; done      COPY in fresh, unencrypted copies of all previously encrypted files, however you do that        (Optional) rebase so that all of this stuff occurs in a single commit  git rebase -i origin/masterNote that the VI magic to “fixup” all commits into the first one is 2,$ s/pick/fixup/">
+    <meta itemprop="description" content="The Problem">
     <meta itemprop="datePublished" content="2020-05-12T00:00:00-04:00">
     
 
@@ -360,6 +347,7 @@ on request will use GPG to encrypt that key to the public key IDs you specify, a
 
 
         
+
   <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-05-12T00:00:00-04:00">May 12, 2020</time></p>
 
 
@@ -418,7 +406,7 @@ on request will use GPG to encrypt that key to the public key IDs you specify, a
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2022 DeweySasser.com. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2023 DeweySasser.com. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>

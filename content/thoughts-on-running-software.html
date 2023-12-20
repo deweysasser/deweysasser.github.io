@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
   Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Thoughts on running software - DeweySasser.com</title>
-<meta name="description" content="I’m partially on operations guy, so, net result, I’m responsible making software run.  What exactly does this mean?  Here’s the minimum set:     RUN:  Arrange for it to run   MONITOR:  How do I find out if it stops running?   PUBLISH:  Make it available to the people who need it   ADVERTISE:  And make sure those people know about it.   Other things I might want to do depend on the quality of job I want to do (a.k.a. “Service Level Agreement” or SLA)     Durable:  ensure it keeps running after maintenance and transient problems (i.e. survive a reboot, recovers from a network outage, etc.)   Repeatable:  Make it something I can easily set up again.   Recoverable:  If something goes wrong, make sure I can get it back to where it was (this implies backup strategy)   Resilient:  “DR” – be able to keep providing services in the event of critical failures.   These lists are in rough order of importance (but sometimes things vary).  In the desktop world, the first part was mostly “slap it on a CD and they’ll tell you if it stops working” coupled with “how do we sell this thing?”.  In a SaaS environment this is somewhat different:  monitoring becomes more important (for large scale services, no one is going to call support but they’ll get on social media and tell people it’s not working).  Also, the “it depends” aspects start becoming interesting.  For any significant service, durability and resiliency become important.  Repeatability becomes important for upgrades and development.  A lot of people believe that if it’s resilient it doesn’t need to be recoverable.  Perhaps true, perhaps not – I’ve easily lost an order of magnitude more data to user mistakes than I have to systems failures, so even resilient systems might need to be recoverable.  Ultimately, what you do with each pieces depends on your requirements, but it’s worth considering all of them.">
+<meta name="description" content="I’m partially on operations guy, so, net result, I’m responsible making software run.  What exactly does this mean?">
 
 
   <meta name="author" content="Dewey Sasser">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="https://www.deweysasser.com/content/thoughts-on-running-software">
 
 
-  <meta property="og:description" content="I’m partially on operations guy, so, net result, I’m responsible making software run.  What exactly does this mean?  Here’s the minimum set:     RUN:  Arrange for it to run   MONITOR:  How do I find out if it stops running?   PUBLISH:  Make it available to the people who need it   ADVERTISE:  And make sure those people know about it.   Other things I might want to do depend on the quality of job I want to do (a.k.a. “Service Level Agreement” or SLA)     Durable:  ensure it keeps running after maintenance and transient problems (i.e. survive a reboot, recovers from a network outage, etc.)   Repeatable:  Make it something I can easily set up again.   Recoverable:  If something goes wrong, make sure I can get it back to where it was (this implies backup strategy)   Resilient:  “DR” – be able to keep providing services in the event of critical failures.   These lists are in rough order of importance (but sometimes things vary).  In the desktop world, the first part was mostly “slap it on a CD and they’ll tell you if it stops working” coupled with “how do we sell this thing?”.  In a SaaS environment this is somewhat different:  monitoring becomes more important (for large scale services, no one is going to call support but they’ll get on social media and tell people it’s not working).  Also, the “it depends” aspects start becoming interesting.  For any significant service, durability and resiliency become important.  Repeatability becomes important for upgrades and development.  A lot of people believe that if it’s resilient it doesn’t need to be recoverable.  Perhaps true, perhaps not – I’ve easily lost an order of magnitude more data to user mistakes than I have to systems failures, so even resilient systems might need to be recoverable.  Ultimately, what you do with each pieces depends on your requirements, but it’s worth considering all of them.">
+  <meta property="og:description" content="I’m partially on operations guy, so, net result, I’m responsible making software run.  What exactly does this mean?">
 
 
 
@@ -62,6 +62,7 @@
 
 
 
+
 <!-- end _includes/seo.html -->
 
 
@@ -78,22 +79,9 @@
 
 <!-- For all browsers -->
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
 
-<!--[if IE]>
-  <style>
-    /* old IE unsupported flexbox fixes */
-    .greedy-nav .site-title {
-      padding-right: 3em;
-    }
-    .greedy-nav button {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-    }
-  </style>
-<![endif]-->
 
 
     <!-- start custom head snippets -->
@@ -106,7 +94,6 @@
 
   <body class="layout--single">
     <nav class="skip-links">
-  <h2 class="screen-reader-text">Skip links</h2>
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
     <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
@@ -264,7 +251,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Thoughts on running software">
-    <meta itemprop="description" content="I’m partially on operations guy, so, net result, I’m responsible making software run.  What exactly does this mean?Here’s the minimum set:  RUN:  Arrange for it to run  MONITOR:  How do I find out if it stops running?  PUBLISH:  Make it available to the people who need it  ADVERTISE:  And make sure those people know about it.Other things I might want to do depend on the quality of job I want to do (a.k.a. “Service Level Agreement” or SLA)  Durable:  ensure it keeps running after maintenance and transient problems (i.e. survive a reboot, recovers from a network outage, etc.)  Repeatable:  Make it something I can easily set up again.  Recoverable:  If something goes wrong, make sure I can get it back to where it was (this implies backup strategy)  Resilient:  “DR” – be able to keep providing services in the event of critical failures.These lists are in rough order of importance (but sometimes things vary).In the desktop world, the first part was mostly “slap it on a CD and they’ll tell you if it stops working” coupled with “how do we sell this thing?”.  In a SaaS environment this is somewhat different:  monitoring becomes more important (for large scale services, no one is going to call support but they’ll get on social media and tell people it’s not working).  Also, the “it depends” aspects start becoming interesting.  For any significant service, durability and resiliency become important.  Repeatability becomes important for upgrades and development.A lot of people believe that if it’s resilient it doesn’t need to be recoverable.  Perhaps true, perhaps not – I’ve easily lost an order of magnitude more data to user mistakes than I have to systems failures, so even resilient systems might need to be recoverable.Ultimately, what you do with each pieces depends on your requirements, but it’s worth considering all of them.">
+    <meta itemprop="description" content="I’m partially on operations guy, so, net result, I’m responsible making software run.  What exactly does this mean?">
     <meta itemprop="datePublished" content="2014-12-09T00:00:00-05:00">
     
 
@@ -318,6 +305,7 @@
 
 
         
+
   <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2014-12-09T00:00:00-05:00">December 9, 2014</time></p>
 
 
@@ -376,7 +364,7 @@
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2022 DeweySasser.com. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2023 DeweySasser.com. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>

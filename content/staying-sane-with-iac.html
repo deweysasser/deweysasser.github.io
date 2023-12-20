@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
   Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Staying Sane with IaC - DeweySasser.com</title>
-<meta name="description" content="Infrastructure as Code is all the rage, but suffers the same problems as any other code:  it can easily become an unmanageable plate of spaghetti.  Organizing your IaC is critical but the methods are different than traditional program code.  I present an organizational pattern for IaC that has proven itself across multiple technologies in multiple cloud systems to allow isolation of concerns, stability, and controlled rollouts and maintain your sanity while doing so.  Slides for a presentation  Video of the presentation">
+<meta name="description" content="Infrastructure as Code is all the rage, but suffers the same problems as any other code:  it can easily become an unmanageable plate of spaghetti.">
 
 
   <meta name="author" content="Dewey Sasser">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="https://www.deweysasser.com/content/staying-sane-with-iac">
 
 
-  <meta property="og:description" content="Infrastructure as Code is all the rage, but suffers the same problems as any other code:  it can easily become an unmanageable plate of spaghetti.  Organizing your IaC is critical but the methods are different than traditional program code.  I present an organizational pattern for IaC that has proven itself across multiple technologies in multiple cloud systems to allow isolation of concerns, stability, and controlled rollouts and maintain your sanity while doing so.  Slides for a presentation  Video of the presentation">
+  <meta property="og:description" content="Infrastructure as Code is all the rage, but suffers the same problems as any other code:  it can easily become an unmanageable plate of spaghetti.">
 
 
 
@@ -62,6 +62,7 @@
 
 
 
+
 <!-- end _includes/seo.html -->
 
 
@@ -78,22 +79,9 @@
 
 <!-- For all browsers -->
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
 
-<!--[if IE]>
-  <style>
-    /* old IE unsupported flexbox fixes */
-    .greedy-nav .site-title {
-      padding-right: 3em;
-    }
-    .greedy-nav button {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-    }
-  </style>
-<![endif]-->
 
 
     <!-- start custom head snippets -->
@@ -106,7 +94,6 @@
 
   <body class="layout--single">
     <nav class="skip-links">
-  <h2 class="screen-reader-text">Skip links</h2>
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
     <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
@@ -264,7 +251,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Staying Sane with IaC">
-    <meta itemprop="description" content="Infrastructure as Code is all the rage, but suffers the same problems as any other code:  it can easily become an unmanageable plate of spaghetti.Organizing your IaC is critical but the methods are different than traditional program code.I present an organizational pattern for IaC that has proven itself across multiple technologies in multiple cloud systems to allow isolation of concerns, stability, and controlled rollouts and maintain your sanity while doing so.Slides for a presentationVideo of the presentation">
+    <meta itemprop="description" content="Infrastructure as Code is all the rage, but suffers the same problems as any other code:  it can easily become an unmanageable plate of spaghetti.">
     <meta itemprop="datePublished" content="2018-10-01T00:00:00-04:00">
     
 
@@ -300,6 +287,7 @@
 
 
         
+
   <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-10-01T00:00:00-04:00">October 1, 2018</time></p>
 
 
@@ -358,7 +346,7 @@
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2022 DeweySasser.com. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2023 DeweySasser.com. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>

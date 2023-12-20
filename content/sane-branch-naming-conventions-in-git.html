@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
   Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Sane branch naming conventions in GIT - DeweySasser.com</title>
-<meta name="description" content="The Problem:  The state of the branch  I need to be able to glance over a repo and determine exactly what is ready to go and what it does.  I work on a lot of different projects, and will leave a project in an intermediate state for a long time.  I also, alas, have projects for which I’m managing multiple release streams.  There isn’t just a “next” release, there is a “next release on the 5.4 branch”, “next release on the 5.5 branch”, etc.  There are any number of articles out there discussing branch naming conventions, whether to fork or push branches to shared repo (I have a mild preference for forking), but I haven’t run across much which reflects branch state.  My solution:  A “state” prefix  I’m a fan of the “/” separator, and I use whole words rather than 2 ch abs wn nmg.  (in reviewing this post, even I have a hard time understanding that last part).  Basically, with tab-completion and quick cut-n-paste, saving characters is not nearly as important as reducing cognitive load.  I use a prefix to show intention, e.g.:    feature/ – for features/improvements   bugfix/ – for bug fixes   Something I’ve recently found useful is when I’m “done” with development on a branch, I’ll rename it to “ready/&quot;.  Why don&#39;t I just merge it?  Well, I *do*, you see, but sometimes a branch developed for one release stream will be needed in another release stream...  Also, when I’m creating a pull request, it gives me a place to push my work-in-progress as I’m developing that does note update the PR (which someone might come along and decide to merge).  Effectively, when you create a PR, you’re publishing a branch.  I maintain my “working” branch and “published” branch separately.  The overall branch naming convention  So, here it is:      BRANCHNAME :: [STATE &#39;/&#39; ]? PURPOSE &#39;/&#39; [ISSUEREF &#39;-&#39;]? DESCRIPTION     STATE :: &#39;ready&#39; | &#39;deprecated&#39; | &#39;saved&#39; | &#39;archived&#39;     PURPOSE :: &#39;bugfix&#39; | &#39;feature&#39; | &#39;refactor&#39; | &#39;experiment&#39;      ISSUEREF :: &lt;some string related to the issue id, such as &quot;ABC-123&quot; or &quot;Issue-3&quot;&gt;     DESCRIPTION :: &lt;2-5 words, hyphen separated, which are semantically meaningful&gt;   Branch Lifetime  Branches start out without STATE and perhaps with a different PURPOSE.  When the state or purpose changes, they are either renamed or cloned to a branch name with the proper state.  For example, if I’m going to fix Issue #7 about the login screen, that will go on ‘bugfix/issue-7-login-screen-badness’.  When I think I’m done I’ll perform a  git branch ready/bugfix/issue-7-login-screen-badness bugfix/issue-7-login-screen-badness   Yes, that makes a copy.  Copies are easy to deal with (‘git branch –merged’).  If I’m working in a collaborative environment I might push to that name, then create a PR on the “ready/…” variation.  I’ll incorporate feedback into my working branch, then push again to the “ready/…” branch when I’m happy.  Branches are merged with “–no-ff” in GIT (I don’t work in SVN much any more).  When I’m fairly sure that a branch will need no further changes or to be merged to anywhere, I delete the branch  (yup – gone!).  As I merge with –no-ff, if I need it back I can always recreate it based on the output of “git log”. After a branch has been merged and I’m highly confident  Supporting tools  Here’s what I have right now (note that I’ll probably be adding some specialty aliases to deal with state in the near future):                                     alias.pending=!git branch –no-merged           egrep ‘^ *(bugfix           feature)’                                                           alias.all-pending=!git branch –all –no-merged           egrep ‘(bugfix           feature)’                                                           alias.not-pending=!git branch –merged           egrep ‘^ *(bugfix           feature)’                                                           alias.done=!git branch –merged           egrep “(feature           bugfix)/”                           alias.current-branch=!git rev-parse –abbrev-ref HEAD">
+<meta name="description" content="The Problem:  The state of the branch">
 
 
   <meta name="author" content="Dewey Sasser">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="https://www.deweysasser.com/content/sane-branch-naming-conventions-in-git">
 
 
-  <meta property="og:description" content="The Problem:  The state of the branch  I need to be able to glance over a repo and determine exactly what is ready to go and what it does.  I work on a lot of different projects, and will leave a project in an intermediate state for a long time.  I also, alas, have projects for which I’m managing multiple release streams.  There isn’t just a “next” release, there is a “next release on the 5.4 branch”, “next release on the 5.5 branch”, etc.  There are any number of articles out there discussing branch naming conventions, whether to fork or push branches to shared repo (I have a mild preference for forking), but I haven’t run across much which reflects branch state.  My solution:  A “state” prefix  I’m a fan of the “/” separator, and I use whole words rather than 2 ch abs wn nmg.  (in reviewing this post, even I have a hard time understanding that last part).  Basically, with tab-completion and quick cut-n-paste, saving characters is not nearly as important as reducing cognitive load.  I use a prefix to show intention, e.g.:    feature/ – for features/improvements   bugfix/ – for bug fixes   Something I’ve recently found useful is when I’m “done” with development on a branch, I’ll rename it to “ready/&quot;.  Why don&#39;t I just merge it?  Well, I *do*, you see, but sometimes a branch developed for one release stream will be needed in another release stream...  Also, when I’m creating a pull request, it gives me a place to push my work-in-progress as I’m developing that does note update the PR (which someone might come along and decide to merge).  Effectively, when you create a PR, you’re publishing a branch.  I maintain my “working” branch and “published” branch separately.  The overall branch naming convention  So, here it is:      BRANCHNAME :: [STATE &#39;/&#39; ]? PURPOSE &#39;/&#39; [ISSUEREF &#39;-&#39;]? DESCRIPTION     STATE :: &#39;ready&#39; | &#39;deprecated&#39; | &#39;saved&#39; | &#39;archived&#39;     PURPOSE :: &#39;bugfix&#39; | &#39;feature&#39; | &#39;refactor&#39; | &#39;experiment&#39;      ISSUEREF :: &lt;some string related to the issue id, such as &quot;ABC-123&quot; or &quot;Issue-3&quot;&gt;     DESCRIPTION :: &lt;2-5 words, hyphen separated, which are semantically meaningful&gt;   Branch Lifetime  Branches start out without STATE and perhaps with a different PURPOSE.  When the state or purpose changes, they are either renamed or cloned to a branch name with the proper state.  For example, if I’m going to fix Issue #7 about the login screen, that will go on ‘bugfix/issue-7-login-screen-badness’.  When I think I’m done I’ll perform a  git branch ready/bugfix/issue-7-login-screen-badness bugfix/issue-7-login-screen-badness   Yes, that makes a copy.  Copies are easy to deal with (‘git branch –merged’).  If I’m working in a collaborative environment I might push to that name, then create a PR on the “ready/…” variation.  I’ll incorporate feedback into my working branch, then push again to the “ready/…” branch when I’m happy.  Branches are merged with “–no-ff” in GIT (I don’t work in SVN much any more).  When I’m fairly sure that a branch will need no further changes or to be merged to anywhere, I delete the branch  (yup – gone!).  As I merge with –no-ff, if I need it back I can always recreate it based on the output of “git log”. After a branch has been merged and I’m highly confident  Supporting tools  Here’s what I have right now (note that I’ll probably be adding some specialty aliases to deal with state in the near future):                                     alias.pending=!git branch –no-merged           egrep ‘^ *(bugfix           feature)’                                                           alias.all-pending=!git branch –all –no-merged           egrep ‘(bugfix           feature)’                                                           alias.not-pending=!git branch –merged           egrep ‘^ *(bugfix           feature)’                                                           alias.done=!git branch –merged           egrep “(feature           bugfix)/”                           alias.current-branch=!git rev-parse –abbrev-ref HEAD">
+  <meta property="og:description" content="The Problem:  The state of the branch">
 
 
 
@@ -62,6 +62,7 @@
 
 
 
+
 <!-- end _includes/seo.html -->
 
 
@@ -78,22 +79,9 @@
 
 <!-- For all browsers -->
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
 
-<!--[if IE]>
-  <style>
-    /* old IE unsupported flexbox fixes */
-    .greedy-nav .site-title {
-      padding-right: 3em;
-    }
-    .greedy-nav button {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-    }
-  </style>
-<![endif]-->
 
 
     <!-- start custom head snippets -->
@@ -106,7 +94,6 @@
 
   <body class="layout--single">
     <nav class="skip-links">
-  <h2 class="screen-reader-text">Skip links</h2>
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
     <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
@@ -264,7 +251,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Sane branch naming conventions in GIT">
-    <meta itemprop="description" content="The Problem:  The state of the branchI need to be able to glance over a repo and determine exactly what is ready to go and what it does.I work on a lot of different projects, and will leave a project in an intermediate state for a long time.  I also, alas, have projects for which I’m managing multiple release streams.  There isn’t just a “next” release, there is a “next release on the 5.4 branch”, “next release on the 5.5 branch”, etc.There are any number of articles out there discussing branch naming conventions, whether to fork or push branches to shared repo (I have a mild preference for forking), but I haven’t run across much which reflects branch state.My solution:  A “state” prefixI’m a fan of the “/” separator, and I use whole words rather than 2 ch abs wn nmg.  (in reviewing this post, even I have a hard time understanding that last part).  Basically, with tab-completion and quick cut-n-paste, saving characters is not nearly as important as reducing cognitive load.  I use a prefix to show intention, e.g.:  feature/ – for features/improvements  bugfix/ – for bug fixesSomething I’ve recently found useful is when I’m “done” with development on a branch, I’ll rename it to “ready/&quot;.  Why don&#39;t I just merge it?  Well, I *do*, you see, but sometimes a branch developed for one release stream will be needed in another release stream...Also, when I’m creating a pull request, it gives me a place to push my work-in-progress as I’m developing that does note update the PR (which someone might come along and decide to merge).  Effectively, when you create a PR, you’re publishing a branch.  I maintain my “working” branch and “published” branch separately.The overall branch naming conventionSo, here it is:    BRANCHNAME :: [STATE &#39;/&#39; ]? PURPOSE &#39;/&#39; [ISSUEREF &#39;-&#39;]? DESCRIPTION    STATE :: &#39;ready&#39; | &#39;deprecated&#39; | &#39;saved&#39; | &#39;archived&#39;    PURPOSE :: &#39;bugfix&#39; | &#39;feature&#39; | &#39;refactor&#39; | &#39;experiment&#39;     ISSUEREF :: &lt;some string related to the issue id, such as &quot;ABC-123&quot; or &quot;Issue-3&quot;&gt;    DESCRIPTION :: &lt;2-5 words, hyphen separated, which are semantically meaningful&gt;Branch LifetimeBranches start out without STATE and perhaps with a different PURPOSE.  When the state or purpose changes, they are either renamed or cloned to a branch name with the proper state.For example, if I’m going to fix Issue #7 about the login screen, that will go on ‘bugfix/issue-7-login-screen-badness’.  When I think I’m done I’ll perform agit branch ready/bugfix/issue-7-login-screen-badness bugfix/issue-7-login-screen-badnessYes, that makes a copy.  Copies are easy to deal with (‘git branch –merged’).If I’m working in a collaborative environment I might push to that name, then create a PR on the “ready/…” variation.  I’ll incorporate feedback into my working branch, then push again to the “ready/…” branch when I’m happy.Branches are merged with “–no-ff” in GIT (I don’t work in SVN much any more).When I’m fairly sure that a branch will need no further changes or to be merged to anywhere, I delete the branch  (yup – gone!).  As I merge with –no-ff, if I need it back I can always recreate it based on the output of “git log”.After a branch has been merged and I’m highly confidentSupporting toolsHere’s what I have right now (note that I’ll probably be adding some specialty aliases to deal with state in the near future):                              alias.pending=!git branch –no-merged          egrep ‘^ *(bugfix          feature)’                                                  alias.all-pending=!git branch –all –no-merged          egrep ‘(bugfix          feature)’                                                  alias.not-pending=!git branch –merged          egrep ‘^ *(bugfix          feature)’                                                  alias.done=!git branch –merged          egrep “(feature          bugfix)/”                      alias.current-branch=!git rev-parse –abbrev-ref HEAD">
+    <meta itemprop="description" content="The Problem:  The state of the branch">
     <meta itemprop="datePublished" content="2015-07-18T00:00:00-04:00">
     
 
@@ -399,6 +386,7 @@ After a branch has been merged and I’m highly confident</p>
 
 
         
+
   <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2015-07-18T00:00:00-04:00">July 18, 2015</time></p>
 
 
@@ -457,7 +445,7 @@ After a branch has been merged and I’m highly confident</p>
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2022 DeweySasser.com. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2023 DeweySasser.com. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>

@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
   Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>An objective difference in consumer disk drives - DeweySasser.com</title>
-<meta name="description" content="I’ve finally found an objective (and quantifiable) difference in consumer hard drives.  This graph shows the last month of temperature differences in 4 drives in a server in my basement.  They are in the same chassis with the same cooling.  The 2 hotter drives are Maxtors, the 2 cooler are Western Digital.  The Maxtors are physically on top, but all drives get good airflow.  I believe brand is a better correlation than position.  (This also shows the increasing ambient temp in Massachusetts over the last month).">
+<meta name="description" content="I’ve finally found an objective (and quantifiable) difference in consumer hard drives.">
 
 
   <meta name="author" content="Dewey Sasser">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="https://www.deweysasser.com/content/objective-difference-in-consumer-disk-drives">
 
 
-  <meta property="og:description" content="I’ve finally found an objective (and quantifiable) difference in consumer hard drives.  This graph shows the last month of temperature differences in 4 drives in a server in my basement.  They are in the same chassis with the same cooling.  The 2 hotter drives are Maxtors, the 2 cooler are Western Digital.  The Maxtors are physically on top, but all drives get good airflow.  I believe brand is a better correlation than position.  (This also shows the increasing ambient temp in Massachusetts over the last month).">
+  <meta property="og:description" content="I’ve finally found an objective (and quantifiable) difference in consumer hard drives.">
 
 
 
@@ -62,6 +62,7 @@
 
 
 
+
 <!-- end _includes/seo.html -->
 
 
@@ -78,22 +79,9 @@
 
 <!-- For all browsers -->
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
 
-<!--[if IE]>
-  <style>
-    /* old IE unsupported flexbox fixes */
-    .greedy-nav .site-title {
-      padding-right: 3em;
-    }
-    .greedy-nav button {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-    }
-  </style>
-<![endif]-->
 
 
     <!-- start custom head snippets -->
@@ -106,7 +94,6 @@
 
   <body class="layout--single">
     <nav class="skip-links">
-  <h2 class="screen-reader-text">Skip links</h2>
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
     <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
@@ -264,7 +251,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="An objective difference in consumer disk drives">
-    <meta itemprop="description" content="I’ve finally found an objective (and quantifiable) difference in consumer hard drives.This graph shows the last month of temperature differences in 4 drives in a server in my basement.  They are in the same chassis with the same cooling.  The 2 hotter drives are Maxtors, the 2 cooler are Western Digital.The Maxtors are physically on top, but all drives get good airflow.  I believe brand is a better correlation than position.(This also shows the increasing ambient temp in Massachusetts over the last month).">
+    <meta itemprop="description" content="I’ve finally found an objective (and quantifiable) difference in consumer hard drives.">
     <meta itemprop="datePublished" content="2012-07-05T00:00:00-04:00">
     
 
@@ -298,6 +285,7 @@
 
 
         
+
   <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2012-07-05T00:00:00-04:00">July 5, 2012</time></p>
 
 
@@ -356,7 +344,7 @@
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2022 DeweySasser.com. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2023 DeweySasser.com. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>

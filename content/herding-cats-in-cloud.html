@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.22.0 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
   Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Herding cats in the Cloud - DeweySasser.com</title>
-<meta name="description" content="I gave my “Herding Cats…” talk at the 2017 New England VTUG Winter Warmer.  The talk covers technical, social and organizational issues for fast, agile development at large scale (~1k machines, 10ks of TPS, ~500TB transfer) in a cloud environment.  See the slides on SlideShare.net.  In conjunction with this talk I was interviewed by Silicon Angle for theCube.  See the segment here.">
+<meta name="description" content="I gave my “Herding Cats…” talk at the 2017 New England VTUG Winter Warmer.">
 
 
   <meta name="author" content="Dewey Sasser">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="https://www.deweysasser.com/content/herding-cats-in-cloud">
 
 
-  <meta property="og:description" content="I gave my “Herding Cats…” talk at the 2017 New England VTUG Winter Warmer.  The talk covers technical, social and organizational issues for fast, agile development at large scale (~1k machines, 10ks of TPS, ~500TB transfer) in a cloud environment.  See the slides on SlideShare.net.  In conjunction with this talk I was interviewed by Silicon Angle for theCube.  See the segment here.">
+  <meta property="og:description" content="I gave my “Herding Cats…” talk at the 2017 New England VTUG Winter Warmer.">
 
 
 
@@ -62,6 +62,7 @@
 
 
 
+
 <!-- end _includes/seo.html -->
 
 
@@ -78,22 +79,9 @@
 
 <!-- For all browsers -->
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
 
-<!--[if IE]>
-  <style>
-    /* old IE unsupported flexbox fixes */
-    .greedy-nav .site-title {
-      padding-right: 3em;
-    }
-    .greedy-nav button {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-    }
-  </style>
-<![endif]-->
 
 
     <!-- start custom head snippets -->
@@ -106,7 +94,6 @@
 
   <body class="layout--single">
     <nav class="skip-links">
-  <h2 class="screen-reader-text">Skip links</h2>
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
     <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
@@ -264,7 +251,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Herding cats in the Cloud">
-    <meta itemprop="description" content="I gave my “Herding Cats…” talk at the 2017 New England VTUG Winter Warmer.The talk covers technical, social and organizational issues for fast, agile development at large scale (~1k machines, 10ks of TPS, ~500TB transfer) in a cloud environment.See the slides on SlideShare.net.In conjunction with this talk I was interviewed by Silicon Angle for theCube.  See the segment here.">
+    <meta itemprop="description" content="I gave my “Herding Cats…” talk at the 2017 New England VTUG Winter Warmer.">
     <meta itemprop="datePublished" content="2017-01-25T00:00:00-05:00">
     
 
@@ -298,6 +285,7 @@
 
 
         
+
   <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-01-25T00:00:00-05:00">January 25, 2017</time></p>
 
 
@@ -356,7 +344,7 @@
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2022 DeweySasser.com. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2023 DeweySasser.com. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>
