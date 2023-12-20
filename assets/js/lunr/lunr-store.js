@@ -210,7 +210,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Principles Of Design",
-        "excerpt":"Principles of Design Some random thoughts on designing systems put the processing where the knowledge is, don’t move the knowledge to the processing Where there’s 2, there’s N Be more general keep it in the problem space as long as possible Sufficiently detailed documentation is executable DRY is good *...","categories": [],
+        "excerpt":"Some random thoughts on designing systems put the processing where the knowledge is, don’t move the knowledge to the processing Where there’s 2, there’s N Be more general keep it in the problem space as long as possible Sufficiently detailed documentation is executable DRY is good always align authority and...","categories": [],
         "tags": [],
         "url": "/content/principles-of-design",
         "teaser": null
