@@ -28,7 +28,7 @@ twitter_username: deweysasser
 github_username:  deweysasser
 
 # Build settings
-theme: minimal-mistakes-jekyll
+theme: jekyll-theme-minimal
 plugins:
   - jekyll-feed
   - jekyll-include-cache
