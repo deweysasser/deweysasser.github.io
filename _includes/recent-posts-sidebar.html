@@ -1,0 +1,17 @@
+<div class="sidebar__right" xmlns="http://www.w3.org/1999/html">
+
+    Most Recent:
+
+    <div class="entries-{{ entries_layout }}">
+        {% for post in site.posts limit:7 offset:1 %}
+        <li>
+            <span
+            {% if post.excerpt %}title="{{ post.excerpt | markdownify | strip_html | truncate: 160 }}"
+            {% endif %}
+            >
+            <a href="{{ post.url }}">{{ post.title }}</a>
+            </span>
+        </li>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,367 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.25.1 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Joel On Changes - DeweySasser.com</title>
+<meta name="description" content="Joel Spolsky wrote in &quot;Choices = Headaches&quot; in which he ranted (quite validly) for a while about the Windows Vista shutdown button. The problem is he went a bit far in his solution, and it&#39;s a common &quot;bit too far&quot;. In fact, it&#39;s exactly what Apple keeps doing as a conscious effort. In the pursuit of getting choices out of your face, he makes it impossible to make choices. Let&#39;s look at two examples: The Inadequate Feature If you&#39;ve spoken to a non-geek recently, you may have noticed that they have no idea what the difference is between &quot;sleep&quot; and &quot;hibernate.&quot; They could be trivially merged. One option down. Why do you want the power off? If you&#39;re concerned about power usage, let the power management software worry about that. It&#39;s smarter than you are. This is a great example of where the user is forced to make a choice because of system inadequatacies. What&#39;s the inadequatacy? That the battery doesn&#39;t last forever. He&#39;s right on....almost. I have a laptop that can &quot;sleep&quot; for an entire weekend -- in normal cases I&#39;d be quite happy for it to silently convert to &quot;hibernate&quot; after, say, 30 minutes. Except if I&#39;m in one of those all day conferences. Then I quite happily put my computer to sleep and want it to stay there for hours . You see, the problem is I want it to wake up immediately and hibernation is a bit slow. Once again, another inadequacy -- the system doesn&#39;t come back from hibernate quickly. Fix all that and I won&#39;t care. And while most geeks don&#39;t know the difference, ask any salesman who gives presentation on their laptop and I&#39;ll be they do . The Uncommon User Restart can be eliminated. 95% of the time you need this it&#39;s because of an installation which prompted you to restart, anyway. For the other cases, you can just turn the power off and then turn it on again. Another option goes away. Less choice, less pain. This is an example of a fundamental choice rather than a system inadequacy. He&#39;s got a good point: most users don&#39;t need to restart. I, on the other hand, rarely actually shut off my computer so as far as I&#39;m concerned I don&#39;t need &quot;Shutdown&quot;, just &quot;Restart&quot; would be quite fine. In fact, for that computer I used to manage remotely that was on the other side of the building and behind a locked door to which I didn&#39;t even have they key, not having &quot;restart&quot; would be a ROYAL PAIN IN THE... (Ever noticed that many things Windows are like this? Perhaps that&#39;s because their history is a Desktop, not a server, and their mental model is that reaching the power button is &quot;no big deal&quot;.) So, the problem is that one users annoying choice is another users required feature. This isn&#39;t a matter of &quot;Making Everybody Happy&quot; -- it&#39;s a matter of making it usable for everybody. You can take away choices and some users will never notice, for the vast majority it&#39;s overall better even though they could actually use those choices but for a few it&#39;s a Really Big Deal. The problem is that Really Big Deal features aren&#39;t confined to one small set -- they&#39;re different for everyone. The Linux operating system tends to handle this these days by having different &quot;distros&quot; -- basically, you can get a different version of Linux optimized for what you want to do with it. Microsoft, being a closed source shop, really can&#39;t deal with that method. Surely there&#39;s way to keep people from having to make choices they consider needless while allowing others to make choices they consider necessary.">
+
+
+  <meta name="author" content="Dewey Sasser">
+  
+  <meta property="article:author" content="Dewey Sasser">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="DeweySasser.com">
+<meta property="og:title" content="Joel On Changes">
+<meta property="og:url" content="https://www.deweysasser.com/content/joel-on-changes">
+
+
+  <meta property="og:description" content="Joel Spolsky wrote in &quot;Choices = Headaches&quot; in which he ranted (quite validly) for a while about the Windows Vista shutdown button. The problem is he went a bit far in his solution, and it&#39;s a common &quot;bit too far&quot;. In fact, it&#39;s exactly what Apple keeps doing as a conscious effort. In the pursuit of getting choices out of your face, he makes it impossible to make choices. Let&#39;s look at two examples: The Inadequate Feature If you&#39;ve spoken to a non-geek recently, you may have noticed that they have no idea what the difference is between &quot;sleep&quot; and &quot;hibernate.&quot; They could be trivially merged. One option down. Why do you want the power off? If you&#39;re concerned about power usage, let the power management software worry about that. It&#39;s smarter than you are. This is a great example of where the user is forced to make a choice because of system inadequatacies. What&#39;s the inadequatacy? That the battery doesn&#39;t last forever. He&#39;s right on....almost. I have a laptop that can &quot;sleep&quot; for an entire weekend -- in normal cases I&#39;d be quite happy for it to silently convert to &quot;hibernate&quot; after, say, 30 minutes. Except if I&#39;m in one of those all day conferences. Then I quite happily put my computer to sleep and want it to stay there for hours . You see, the problem is I want it to wake up immediately and hibernation is a bit slow. Once again, another inadequacy -- the system doesn&#39;t come back from hibernate quickly. Fix all that and I won&#39;t care. And while most geeks don&#39;t know the difference, ask any salesman who gives presentation on their laptop and I&#39;ll be they do . The Uncommon User Restart can be eliminated. 95% of the time you need this it&#39;s because of an installation which prompted you to restart, anyway. For the other cases, you can just turn the power off and then turn it on again. Another option goes away. Less choice, less pain. This is an example of a fundamental choice rather than a system inadequacy. He&#39;s got a good point: most users don&#39;t need to restart. I, on the other hand, rarely actually shut off my computer so as far as I&#39;m concerned I don&#39;t need &quot;Shutdown&quot;, just &quot;Restart&quot; would be quite fine. In fact, for that computer I used to manage remotely that was on the other side of the building and behind a locked door to which I didn&#39;t even have they key, not having &quot;restart&quot; would be a ROYAL PAIN IN THE... (Ever noticed that many things Windows are like this? Perhaps that&#39;s because their history is a Desktop, not a server, and their mental model is that reaching the power button is &quot;no big deal&quot;.) So, the problem is that one users annoying choice is another users required feature. This isn&#39;t a matter of &quot;Making Everybody Happy&quot; -- it&#39;s a matter of making it usable for everybody. You can take away choices and some users will never notice, for the vast majority it&#39;s overall better even though they could actually use those choices but for a few it&#39;s a Really Big Deal. The problem is that Really Big Deal features aren&#39;t confined to one small set -- they&#39;re different for everyone. The Linux operating system tends to handle this these days by having different &quot;distros&quot; -- basically, you can get a different version of Linux optimized for what you want to do with it. Microsoft, being a closed source shop, really can&#39;t deal with that method. Surely there&#39;s way to keep people from having to make choices they consider needless while allowing others to make choices they consider necessary.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2007-03-05T00:00:00-05:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://www.deweysasser.com/content/joel-on-changes">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "https://www.deweysasser.com/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="DeweySasser.com Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          DeweySasser.com
+          
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+    
+    <div class="author__avatar">
+        
+        <img src="/graphics/DeweySelfie-v2-s150x200.png" alt="Dewey Sasser" itemprop="image">
+        
+    </div>
+    
+
+    <div class="author__content">
+        
+        <h3 class="author__name" itemprop="name">Dewey Sasser</h3>
+        
+        
+        <div class="author__bio" itemprop="description">
+            <p>Cloud Architect, Software Engineer</p>
+
+        </div>
+        
+    </div>
+
+    <div class="author__urls-wrapper">
+        <button class="btn btn--inverse">Follow</button>
+        <ul class="author__urls social-icons">
+            
+
+            
+            
+            
+            <li><a href="https://github.com/deweysasser" rel="nofollow noopener noreferrer"><i class="fas fa-link" aria-hidden="true"></i><span class="label">Github</span></a></li>
+            
+            
+            
+            <li><a href="https://keybase.io/deweysasser" rel="nofollow noopener noreferrer"><i class="fas fa-link" aria-hidden="true"></i><span class="label">keybase</span></a></li>
+            
+            
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+    </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Joel On Changes">
+    <meta itemprop="description" content="Joel Spolsky wrote in &quot;Choices = Headaches&quot; in which he ranted (quite validly) for a while about the Windows Vista shutdown button.The problem is he went a bit far in his solution, and it&#39;s a common &quot;bit too far&quot;. In fact, it&#39;s exactly what Apple keeps doing as a conscious effort.In the pursuit of getting choices out of your face, he makes it impossible to make choices.Let&#39;s look at two examples:The Inadequate FeatureIf you&#39;ve spoken to a non-geek recently, you may have noticed that they have no idea what the difference is between &quot;sleep&quot; and &quot;hibernate.&quot; They could be trivially merged. One option down.Why do you want the power off? If you&#39;re concerned about power usage, let the power management software worry about that. It&#39;s smarter than you are.This is a great example of where the user is forced to make a choice because of system inadequatacies. What&#39;s the inadequatacy? That the battery doesn&#39;t last forever.He&#39;s right on....almost. I have a laptop that can &quot;sleep&quot; for an entire weekend -- in normal cases I&#39;d be quite happy for it to silently convert to &quot;hibernate&quot; after, say, 30 minutes.Except if I&#39;m in one of those all day conferences. Then I quite happily put my computer to sleep and want it to stay there for hours . You see, the problem is I want it to wake up immediately and hibernation is a bit slow.Once again, another inadequacy -- the system doesn&#39;t come back from hibernate quickly. Fix all that and I won&#39;t care.And while most geeks don&#39;t know the difference, ask any salesman who gives presentation on their laptop and I&#39;ll be they do .The Uncommon UserRestart can be eliminated. 95% of the time you need this it&#39;s because of an installation which prompted you to restart, anyway. For the other cases, you can just turn the power off and then turn it on again. Another option goes away. Less choice, less pain.This is an example of a fundamental choice rather than a system inadequacy.He&#39;s got a good point: most users don&#39;t need to restart.I, on the other hand, rarely actually shut off my computer so as far as I&#39;m concerned I don&#39;t need &quot;Shutdown&quot;, just &quot;Restart&quot; would be quite fine.In fact, for that computer I used to manage remotely that was on the other side of the building and behind a locked door to which I didn&#39;t even have they key, not having &quot;restart&quot; would be a ROYAL PAIN IN THE...(Ever noticed that many things Windows are like this? Perhaps that&#39;s because their history is a Desktop, not a server, and their mental model is that reaching the power button is &quot;no big deal&quot;.)So, the problem is that one users annoying choice is another users required feature. This isn&#39;t a matter of &quot;Making Everybody Happy&quot; -- it&#39;s a matter of making it usable for everybody. You can take away choices and some users will never notice, for the vast majority it&#39;s overall better even though they could actually use those choices but for a few it&#39;s a Really Big Deal. The problem is that Really Big Deal features aren&#39;t confined to one small set -- they&#39;re different for everyone.The Linux operating system tends to handle this these days by having different &quot;distros&quot; -- basically, you can get a different version of Linux optimized for what you want to do with it. Microsoft, being a closed source shop, really can&#39;t deal with that method.Surely there&#39;s way to keep people from having to make choices they consider needless while allowing others to make choices they consider necessary.">
+    <meta itemprop="datePublished" content="2007-03-05T00:00:00-05:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Joel On Changes
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p><a href="http://www.joelonsoftware.com/">Joel Spolsky </a>wrote in <a href="http://www.joelonsoftware.com/items/2006/11/21.html">&quot;Choices = Headaches&quot; </a>in which he ranted (quite validly) for a while about the Windows Vista shutdown button.</p>
+<p>The problem is he went a bit far in his solution, and it&#39;s a common &quot;bit too far&quot;. In fact, it&#39;s exactly what Apple keeps doing as a conscious effort.</p>
+<p>In the pursuit of getting choices out of your face, he makes it impossible to <strong>make </strong>choices.</p>
+<p>Let&#39;s look at two examples:</p>
+<h2>The Inadequate Feature</h2>
+<blockquote><p>If you&#39;ve spoken to a non-geek recently, you may have noticed that they have no idea what the difference is between &quot;sleep&quot; and &quot;hibernate.&quot; They could be trivially merged. One option down.</p></blockquote>
+<blockquote><p>Why do you want the power off? If you&#39;re concerned about power usage, let the power management software worry about that. It&#39;s smarter than you are.</p></blockquote>
+<p>This is a great example of where the user is <strong>forced </strong>to make a choice because of system inadequatacies. What&#39;s the inadequatacy? That the battery doesn&#39;t last forever.</p>
+<p>He&#39;s right on....almost. I have a laptop that can &quot;sleep&quot; for an entire weekend -- in normal cases I&#39;d be quite happy for it to silently convert to &quot;hibernate&quot; after, say, 30 minutes.</p>
+<p>Except if I&#39;m in one of those all day conferences. Then I quite happily put my computer to sleep and want it to stay there for <em>hours </em>. You see, the problem is I want it to wake up immediately and hibernation is a bit slow.</p>
+<p>Once again, another inadequacy -- the system doesn&#39;t come back from hibernate quickly. Fix all that and I won&#39;t care.</p>
+<p>And while most geeks <strong>don&#39;t </strong>know the difference, ask any salesman who gives presentation on their laptop and I&#39;ll be they <strong>do </strong>.</p>
+<h2>The Uncommon User</h2>
+<blockquote><p>Restart can be eliminated. 95% of the time you need this it&#39;s because of an installation which prompted you to restart, anyway. For the other cases, you can just turn the power off and then turn it on again. Another option goes away. Less choice, less pain.</p></blockquote>
+<p>This is an example of a fundamental choice rather than a system inadequacy.</p>
+<p>He&#39;s got a good point: most users don&#39;t need to restart.</p>
+<p>I, on the other hand, rarely actually shut off my computer so as far as I&#39;m concerned I don&#39;t need &quot;Shutdown&quot;, just &quot;Restart&quot; would be quite fine.</p>
+<p>In fact, for that computer I used to manage remotely that was on the <strong>other side of the building </strong>and <strong>behind a locked door </strong>to which I didn&#39;t even have they key, not having &quot;restart&quot; would be a ROYAL PAIN IN THE...</p>
+<p>(Ever noticed that many things Windows are like this? Perhaps that&#39;s because their history is a Desktop, not a server, and their mental model is that reaching the power button is &quot;no big deal&quot;.)</p>
+<p>So, the problem is that one users annoying choice is another users required feature. This isn&#39;t a matter of &quot;Making Everybody Happy&quot; -- it&#39;s a matter of making it usable for everybody. You can take away choices and some users will never notice, for the vast majority it&#39;s overall better even though they <strong>could </strong>actually use those choices but for a few it&#39;s a Really Big Deal. The problem is that Really Big Deal features aren&#39;t confined to one small set -- they&#39;re different for everyone.</p>
+<p>The Linux operating system tends to handle this these days by having different &quot;distros&quot; -- basically, you can get a different version of Linux optimized for what you want to do with it. Microsoft, being a closed source shop, really can&#39;t deal with that method.</p>
+<p>Surely there&#39;s way to keep people from having to make choices they consider needless while allowing others to make choices they consider necessary.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2007-03-05T00:00:00-05:00">March 5, 2007</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Joel+On+Changes%20https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Fjoel-on-changes" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Fjoel-on-changes" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.deweysasser.com/content/joel-on-changes" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/content/snapshot" class="pagination--pager" title="Automount Snapshot
+">Previous</a>
+    
+    
+      <a href="/content/rxvt" class="pagination--pager" title="RXVT
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 <a href="https://www.deweysasser.com">DeweySasser.com</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

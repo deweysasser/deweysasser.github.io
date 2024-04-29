@@ -1,0 +1,106 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: deweysasser
+spec:
+  selector:
+    site: deweysasser
+  ports:
+    - port: 80
+      name: web
+      targetPort: web
+  clusterIP: None
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deweysasser
+spec:
+  selector:
+    matchLabels:
+     site: deweysasser
+  template:
+    metadata:
+      labels:
+        site: deweysasser
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          volumeMounts:
+            - mountPath: /site
+              name: site
+            - mountPath: /etc/nginx/conf.d
+              name: nginx-conf
+          ports:
+            - containerPort: 80
+              name: web
+          livenessProbe:
+            httpGet:
+              port: 80
+          readinessProbe:
+            exec:
+              command: [ "test", "-f", "/site/index.html" ]
+          resources:
+            requests:
+              cpu: 2m
+              memory: 5m
+            limits:
+              cpu: 500m
+              memory: 50m
+        - name: updater
+          image: deweysasser/git-updater
+          volumeMounts:
+            - mountPath: /volume
+              name: site
+            - mountPath: /root/.ssh
+              name: updater-key
+          env:
+            - name: SOURCE
+              value: git@github.com:deweysasser/deweysasser.com-files
+      volumes:
+        - name: site
+          emptyDir: {}
+        - name: nginx-conf
+          configMap:
+            name: deweysasser.nginx.conf
+        - name: updater-key
+          secret:
+            secretName: deweysasser.updater.key
+            defaultMode: 0600
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: deweysasser.nginx.conf
+data:
+  default.conf: >
+    server {
+        listen       80;
+        server_name  www.deweysasser.com;
+
+        #charset koi8-r;
+        #access_log  /var/log/nginx/host.access.log  main;
+
+        location / {
+
+            root /site;
+
+            default_type "text/html";
+            try_files  $uri $uri.html $uri/index.html index.html;
+        }
+    }
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: deweysasser
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            backend:
+              serviceName: deweysasser
+              servicePort: web
+      host: www.deweysasser.com

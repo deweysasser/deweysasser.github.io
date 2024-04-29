@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://www.deweysasser.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.deweysasser.com/" rel="alternate" type="text/html" /><updated>2024-04-29T17:29:43-04:00</updated><id>https://www.deweysasser.com/feed.xml</id><title type="html">DeweySasser.com</title><subtitle>Software Engineering, Systems Engineering, and other geek pursuits</subtitle><author><name>Dewey Sasser</name></author><entry><title type="html">Second System Effect Impacts Traefik</title><link href="https://www.deweysasser.com/content/second-system-effect-impacts-traefik" rel="alternate" type="text/html" title="Second System Effect Impacts Traefik" /><published>2022-10-17T00:00:00-04:00</published><updated>2022-10-17T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/second-system-effect-impacts-traefik</id><content type="html" xml:base="https://www.deweysasser.com/content/second-system-effect-impacts-traefik"><![CDATA[<p>Ahhh, the <a href="https://en.wikipedia.org/wiki/Second-system_effect">Second System Effect</a>,
+a perennial project killer.</p>
+
+<p>For some years, this site has run in a Kubernetes cluster with several others, and
+used <a href="https://traefik.io/traefik/">Traefik Proxy</a>, which has been an excellent piece of code, to
+multiplex sites through one load balancer.</p>
+
+<p>For better or worse, my provider has just forced a kubernetes upgrade…which removed some
+deprecated APIs…on which traefik 1.7 depended.</p>
+
+<p>And, instead of maintaining the same standard API of reading annotations from standard Ingress
+objects, traefik has gone the “custom resource definition” route, destroying the simple and
+elegant (and standard!) way of using it in favor of complicated and proprietary ways of specifying
+everything.</p>
+
+<p>Of course, it’s always possible that Traefik is doing this to contribute to monetizing their
+software. My opinion on that is a topic for another day.</p>
+
+<p>I will update this page later with some details, but for now, the result is that TLS on this (and
+several other) sites are broken until I can either reconfigure everything to use their new system,
+or replace them with other methods.</p>
+
+<p>I apologize for the inconvenience. TLS is very useful, and right now we don’t have it. Gagh!</p>]]></content><author><name>Dewey Sasser</name></author><category term="admin" /><summary type="html"><![CDATA[Traefik has changed everything, breaking TLS for this site. I'm not a fan of the redesign.]]></summary></entry><entry><title type="html">Principles Of Design</title><link href="https://www.deweysasser.com/content/principles-of-design" rel="alternate" type="text/html" title="Principles Of Design" /><published>2021-05-01T00:00:00-04:00</published><updated>2021-05-01T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/principles-of-design</id><content type="html" xml:base="https://www.deweysasser.com/content/principles-of-design"><![CDATA[<p>Some random thoughts on designing systems</p>
+
+<ul>
+  <li>put the processing where the knowledge is, don’t move the knowledge to the processing</li>
+  <li>Where there’s 2, there’s N</li>
+  <li>Be more general</li>
+  <li>keep it in the problem space as long as possible</li>
+  <li>Sufficiently detailed documentation is executable</li>
+  <li>DRY is good</li>
+  <li>always align authority and responsibility</li>
+</ul>
+
+<p>(more will be added, along with explanations)</p>]]></content><author><name>Dewey Sasser</name></author><summary type="html"><![CDATA[A list of my pithy statements about designing systems. Eventually I'll write explanations here.]]></summary></entry><entry><title type="html">Runbook Framework</title><link href="https://www.deweysasser.com/content/runbook-framework" rel="alternate" type="text/html" title="Runbook Framework" /><published>2021-05-01T00:00:00-04:00</published><updated>2021-05-01T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/runbook-framework</id><content type="html" xml:base="https://www.deweysasser.com/content/runbook-framework"><![CDATA[<p><a href="https://github.com/deweysasser/runbook-framework">See Github Project</a></p>
+
+<hr />
+<h1 id="runbook-framework">Runbook-framework</h1>
+
+<p>“Any sufficiently detailed documentation is executable”
+– me</p>
+
+<h2 id="what-is-it">What is it?</h2>
+
+<p>A shell (bash) framework to implement runbook scripts that help move from fully manual to fully
+automated processes.</p>
+
+<p>Based on the clever concept of
+a <a href="https://blog.danslimmon.com/2019/07/15/do-nothing-scripting-the-key-to-gradual-automation/">Do Nothing Script</a>,
+provide some structure for the script which allows &amp; encourages documentation and useful tracking at run time.</p>
+
+<p>You write this code:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>runbook<span class="o">()</span> <span class="o">{</span>
+  step <span class="s2">"Step One"</span>
+  step <span class="s2">"Step Two, on </span><span class="nv">$env</span><span class="s2">"</span> <span class="nb">echo</span> <span class="s2">"set </span><span class="nv">$env</span><span class="s2">=</span><span class="nv">$version</span><span class="s2">"</span>
+  step <span class="s2">"Wait for something to happen"</span> <span class="nb">sleep </span>10
+  step <span class="s2">"Run a function"</span> run-function
+  step <span class="s2">"Last thing we can do automatically"</span> <span class="nb">echo</span> <span class="s2">"Version is </span><span class="nv">$version</span><span class="s2">"</span>
+  step <span class="s2">"bring it on home"</span>
+  step <span class="s2">"this one will fail"</span> fail_me
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>And you can run it and get</p>
+
+<p><img src="https://github.com/deweysasser/runbook-framework/blob/master/docs/runbooks-screenshot.png?raw=true" alt="runbook example" /></p>
+
+<p>Or if you just need to produce some documentation, you can get</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./example-runbook --version=1.2.3 -doc
+1: Step One
+2: Step Two, on staging
+3: Wait for something to happen
+4: Run a function
+5: Last thing we can do automatically
+6: bring it on home
+7: this one will fail
+$
+</code></pre></div></div>
+
+<h2 id="background">Background</h2>
+
+<p>I love automation, but often getting something “automated” is a long process, and you actually need
+to get something done now and don’t have the time to fully automate it.</p>
+
+<p>A few years ago I read
+a <a href="https://blog.danslimmon.com/2019/07/15/do-nothing-scripting-the-key-to-gradual-automation/">blog post</a>
+presenting a clever way to move from unautomated to automated processes.</p>
+
+<p>The clever key:  start with a script that does nothing other than tell you what to do. A checklist.
+Then, as time evolves, you can automate one little piece. Since the script is walking you through a
+checklist, this becomes one step that’s done for you instead of you having to do it. This is one of
+those simple and amazingly insightful ways of getting things done.</p>
+
+<p>This repository implements a small library of BASH functions to support runbooks in a consistent and
+useful way.</p>
+
+<h2 id="quickstart">Quickstart</h2>
+
+<p>Be sure to read the <a href="#important-details">“important details”</a> section.</p>
+
+<h3 id="writing-the-script">Writing the script</h3>
+
+<p>Create a script that looks like this:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="nb">source </span>runbook-framework.sh
+
+parameters p1 p2
+<span class="nv">p1</span><span class="o">=</span><span class="s2">"some default value"</span>
+
+<span class="c"># Here's where you put your actual runbook steps</span>
+runbook<span class="o">()</span> <span class="o">{</span>
+  step <span class="s2">"This is a manual step and you'll get a prompt"</span>
+  step <span class="s2">"This is an automated step"</span> some-command
+<span class="o">}</span>
+
+<span class="c"># This must be the last line in your file</span>
+main <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<p>Of course, the steps should be doing whatever it is you need.  <code class="language-plaintext highlighter-rouge">some-command</code> can be a function you
+define (I suggest later in the file, so the file starts with your runbook).</p>
+
+<p>If you leave out the command, you’ve just made a prompt. If you include the command, it will be
+executed. The status of all commands will be printed as they are executed.</p>
+
+<h3 id="running-the-script">Running the script</h3>
+
+<p>The framework provides some overall features, including</p>
+
+<ul>
+  <li>-help or -h – show how to run this runbook, including the parameters</li>
+  <li>-doc – show the checklist <em>without</em> executing it</li>
+  <li>-verbose or -v – show the output of each command as it happens</li>
+</ul>
+
+<h3 id="what-happened-to-the-output">What happened to the output?</h3>
+
+<p>The output of each step is stored away and shown only on error or on request.</p>
+
+<h3 id="important-details">Important Details</h3>
+
+<p>The script sets up bash to be pretty paranoid, specifically:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">set</span> <span class="nt">-ueo</span> pipefail
+</code></pre></div></div>
+
+<p>The short form is:  unexpanded variables will be an error, any error (that’s not in a conditional)
+will stop the script, and it counts errors in the middle of a pipeline, not just the result of the
+last command in the pipeline.</p>
+
+<h2 id="passing-parameters">Passing Parameters</h2>
+
+<p>You can set the <code class="language-plaintext highlighter-rouge">parameters</code> variable to a list of parameters you want to use in your script. They
+will be set as (global) environment variables, exactly as you type them. All names that begin with
+an underscore (‘_’) are reserved.</p>
+
+<p>When you call the script, you may pass these variables on the command line as command line options.
+If any of them are unset, the script will stop. So, if you want a default value, make sure you set
+it.</p>
+
+<h2 id="examples">Examples</h2>
+
+<h3 id="just-try-to-run-it">Just try to run it</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./example-runbook
+Parameter <span class="s1">'version'</span> required
+Usage: ./example-runbook <span class="o">[</span><span class="nt">-h</span>|-help] <span class="o">[</span><span class="nt">-show</span><span class="o">]</span> <span class="o">[</span><span class="nt">--env</span><span class="o">=</span>VALUE] <span class="nt">--version</span><span class="o">=</span>VALUE 
+Defaults:
+   <span class="nb">env</span> <span class="o">=</span> staging
+</code></pre></div></div>
+
+<h3 id="get-some-documentation-on-the-process">Get some documentation on the process</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./example-runbook  <span class="nt">--version</span><span class="o">=</span>1.2.3 <span class="nt">-doc</span>
+1: Step One
+2: Step Two, on staging
+3: Wait <span class="k">for </span>something to happen
+4: Run a <span class="k">function
+</span>5: Last thing we can <span class="k">do </span>automatically
+6: bring it on home
+7: this one will fail
+</code></pre></div></div>
+
+<h3 id="actually-run-the-runbook">Actually run the runbook</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./example-runbook  <span class="nt">--version</span><span class="o">=</span>1.2.3
+ 1: <span class="o">(</span>00:52<span class="o">)</span> Step One...<span class="o">(</span>press enter when <span class="k">done</span><span class="o">)</span> <span class="o">(</span>5 s<span class="o">)</span> DONE
+ 2: <span class="o">(</span>00:52<span class="o">)</span> Step Two, on staging... <span class="o">(</span>0 s<span class="o">)</span> DONE
+ 3: <span class="o">(</span>00:52<span class="o">)</span> Wait <span class="k">for </span>something to happen... <span class="o">(</span>10 s<span class="o">)</span> DONE
+ 4: <span class="o">(</span>00:52<span class="o">)</span> Run a <span class="k">function</span>... <span class="o">(</span>0 s<span class="o">)</span> DONE
+ 5: <span class="o">(</span>00:52<span class="o">)</span> Last thing we can <span class="k">do </span>automatically... <span class="o">(</span>0 s<span class="o">)</span> DONE
+ 6: <span class="o">(</span>00:52<span class="o">)</span> bring it on home...<span class="o">(</span>press enter when <span class="k">done</span><span class="o">)</span> <span class="o">(</span>12 s<span class="o">)</span> DONE
+ 7: <span class="o">(</span>00:53<span class="o">)</span> this one will fail... <span class="o">(</span>0 s<span class="o">)</span> FAILED
+    <span class="o">&gt;&gt;</span> it<span class="s1">'s time we stop
+    &gt;&gt; Hey, what'</span>s that sound
+    <span class="o">&gt;&gt;</span> Everybody look, what<span class="s1">'s going down?
+</span></code></pre></div></div>
+
+<h2 id="the-future">The Future</h2>
+
+<ul>
+  <li>the -doc argument should extract some documentation from the comment blocks and include it.</li>
+  <li>can we do some kind of time estimate and make that useful information? (<a href="https://github.com/deweysasser/runbook-framework/discussions/9">discussion here</a>)</li>
+</ul>
+
+<h3 id="documentation">Documentation</h3>
+
+<p>I’d like to make a “generate a fairly complete markdown document describing the process” be a feature.  The question is how to do that without obscuring the actual logic.  See <a href="https://github.com/deweysasser/runbook-framework/discussions/6">the github discussion</a></p>
+
+<h3 id="managing-state">Managing state</h3>
+
+<p>Would it be interesting to manage the current state of “a run”  in a persistent way, particularly so it could be resumed later if e.g. a step failed or something? (<a href="https://github.com/deweysasser/runbook-framework/discussions/10">discussion here</a>)</p>]]></content><author><name>Dewey Sasser</name></author><category term="shell" /><category term="sysadmin" /><category term="automation" /><summary type="html"><![CDATA[A new a shell framework to construct manual and automated runbooks]]></summary></entry><entry><title type="html">2021 Site Refresh</title><link href="https://www.deweysasser.com/content/2021-site-refresh" rel="alternate" type="text/html" title="2021 Site Refresh" /><published>2021-04-25T00:00:00-04:00</published><updated>2021-04-25T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/2021%20site%20refresh</id><content type="html" xml:base="https://www.deweysasser.com/content/2021-site-refresh"><![CDATA[<p>It’s been a while since I set up the technology behind this site, and times have changed.</p>
+
+<p>So, I’m moving it form Drupal to something else.</p>
+
+<p>I’m trying out <a href="https://jekyllrb.com/">Jekyll</a> to statically generate, and it’s pretty cool.</p>
+
+<p>I’m not sure if that’s the right long term solution or not. We’ll see. But, I
+needed something now, and it’s something.</p>
+
+<p>If you have an option on what I should use (or, better yet, what features I should support), please
+let me know.</p>
+
+<p>Some thoughts are:</p>
+<ul>
+  <li>discussions (could use disqus.com or commento.io)</li>
+  <li>a more wiki-like structure with nice cross-links (probably dokuwiki)</li>
+</ul>]]></content><author><name>Dewey Sasser</name></author><summary type="html"><![CDATA[I've refreshed the site for 2021 using Jekyll]]></summary></entry><entry><title type="html">Markdown Toc</title><link href="https://www.deweysasser.com/content/markdown-toc" rel="alternate" type="text/html" title="Markdown Toc" /><published>2021-02-24T00:00:00-05:00</published><updated>2021-02-24T00:00:00-05:00</updated><id>https://www.deweysasser.com/content/markdown-toc</id><content type="html" xml:base="https://www.deweysasser.com/content/markdown-toc"><![CDATA[<p>Introducing <a href="https://github.com/deweysasser/markdown-doc">Markdown Tables of Contents</a>.</p>
+
+<p>This project contains a script and makefile to maintain a table of contents in your markdown
+documents, along with an optional git <code class="language-plaintext highlighter-rouge">pre-commit</code> hook to keep it up to date.</p>
+
+<p>I find it useful for either long documents or long READMEs for github projects.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Markdown-doc
+
+Add tables of contents to all markdown files in this repo.
+
+## Contents
+
+* [Markdown-doc](#markdown-doc)
+  * [Contents](#contents)
+  * [Features](#features)
+  * [Usage](#usage)
+    * [Generate tables of contents](#generate-tables-of-contents)
+    * [Bulk html generation](#bulk-html-generation)
+  * [Author and Bug Reports](#author-and-bug-reports)
+  * [Notes](#notes)
+  * [TODO](#todo)
+
+## Features
+
+* Generate Tables of Contents
+* bulk translate to HTML
+* ...
+
+## Usage
+
+### Generate tables of contents
+When run on a file with a section (any level) titled "Contents" (as above), the scripts here will enable you to automatically generate and insert a Table of Contents.
+
+If no Contents section is found, the files will not be updated.
+
+This also provides git hooks to update the ToC on commit (WARNING:  the way it does so will make `git add -p` pretty useless.  Feel free to modify the hook to better suit your needs if this 
+one doesn't work for you.)
+
+To (manually) update the table of contents for all markdown files in this directory, run
+
+     make contents
+
+(or just run `make`)
+
+To set up the git hooks for this repository so that ToCs are updatted on commit, run.
+
+     make hooks
+
+### Bulk html generation
+
+`make html`
+
+all markdown files will be rendered into HTML using 'markdown' and placed in `generated/html`
+
+## Author and Bug Reports
+
+Please use GitHub issues for any bug reports or change requests
+
+## Notes
+
+The script uses `sed` and `awk` for maximum system compatability.  It was developed on MacOS, so it's expected to run anywhere with a `sed` and `awk` more recent than 1990 or so.
+
+It's also about the gnarliest piece of `sed` that I ever want to write, and could be used as the example on a slide for "why modern interpreted languages exist".
+
+## TODO
+
+* use pandoc to generate arbitrary formats
+* use a static web site generator to generate a site?
+
+</code></pre></div></div>]]></content><author><name>Dewey Sasser</name></author><category term="tools" /><category term="shell" /><summary type="html"><![CDATA[Introducing Markdown Tables of Contents.]]></summary></entry><entry><title type="html">Gnarly Sed</title><link href="https://www.deweysasser.com/content/gnarly-sed" rel="alternate" type="text/html" title="Gnarly Sed" /><published>2021-02-21T00:00:00-05:00</published><updated>2021-02-21T00:00:00-05:00</updated><id>https://www.deweysasser.com/content/gnarly-sed</id><content type="html" xml:base="https://www.deweysasser.com/content/gnarly-sed"><![CDATA[<p>Last night I wrote a script to compute a Table of Contents for Markdown documents and insert it into
+the document. It handles both syntaxes for heading blocks.  (I also wrote a git hook to run this
+script on commit.)</p>
+
+<p>It contains what is probably the most gnarly sed script I’ve ever written. I am <em>so</em> glad we’ve
+moved beyond sed.</p>
+
+<p>(However, sed is also everywhere without having to install other tools on almost any system, which
+is why I used sed and awk instead of something more modern.)</p>
+
+<p>Anyway, for your reading pleasure (or torture), here it is:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/^#/ <span class="o">{</span>
+        s/^<span class="se">\(</span><span class="c">#*\) */\1|/</span>
+        p
+        <span class="o">}</span>
+        /^--<span class="k">*</span>/ <span class="o">{</span>
+        x
+        s/^/##|/
+        p
+        <span class="o">}</span>
+        /^<span class="o">==</span><span class="k">*</span>/ <span class="o">{</span>
+        x
+        s/^/#|/
+        p
+        <span class="o">}</span>
+        h
+</code></pre></div></div>]]></content><author><name>Dewey Sasser</name></author><category term="sed" /><category term="shell" /><summary type="html"><![CDATA[Last night I wrote a script to compute a Table of Contents for Markdown documents and insert it into the document. It handles both syntaxes for heading blocks. (I also wrote a git hook to run this script on commit.)]]></summary></entry><entry><title type="html">Computer Architect</title><link href="https://www.deweysasser.com/content/computer-architect" rel="alternate" type="text/html" title="Computer Architect" /><published>2021-02-03T00:00:00-05:00</published><updated>2021-02-03T00:00:00-05:00</updated><id>https://www.deweysasser.com/content/computer-architect</id><content type="html" xml:base="https://www.deweysasser.com/content/computer-architect"><![CDATA[<p>Something that often surprises people about a Software Architect<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> role:  it’s a people job.</p>
+
+<p>Technical competence is table stakes.</p>
+
+<p>To actually play the game, it’s all about communication, advocacy, communication, evangelism, communication, persuasion, communication, relationships, and communication.</p>
+
+<p>There’s no point in designing the perfect cat tree if you can’t convince the cats to use it.
+It’s really about herding cats.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>same can be said about my current “Cloud Systems Architect” role. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>Dewey Sasser</name></author><summary type="html"><![CDATA[Something that often surprises people about a Software Architect1 role: it’s a people job. same can be said about my current “Cloud Systems Architect” role. &#8617;]]></summary></entry><entry><title type="html">Resetting a git-crypt system</title><link href="https://www.deweysasser.com/content/resetting-git-crypt-system" rel="alternate" type="text/html" title="Resetting a git-crypt system" /><published>2020-05-12T00:00:00-04:00</published><updated>2020-05-12T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/resetting%20git-crypt%20system</id><content type="html" xml:base="https://www.deweysasser.com/content/resetting-git-crypt-system"><![CDATA[<h1 id="the-problem">The Problem</h1>
+
+<p><a href="https://github.com/AGWA/git-crypt">git-crypt</a> is pretty awesome, but I’ve managed to do enough evil things to bork 
+the decryption keys.  Here’s how to fix it.</p>
+
+<!--break-->
+
+<h1 id="the-background">The Background</h1>
+
+<p><a href="https://github.com/AGWA/git-crypt">git-crypt</a> allows you to encrypt some of the files in a git repository.  It supports adding other users’ GPG keys so they will be able to encrypt/decrypt the file.  It’s pretty clever, and I like it.</p>
+
+<p>The basic operation is that it creates a single symmetric key (which it stores in <code class="language-plaintext highlighter-rouge">.git/git-crypt/keys/default</code>), then
+on request will use GPG to encrypt that key to the public key IDs you specify, and those are stored in <code class="language-plaintext highlighter-rouge">.git-crypt//keys/default/0</code>.</p>
+
+<p>However, if you do sufficiently evil things in git repos, like using <a href="https://github.com/newren/git-filter-repo">git filter-repo</a> (another pretty awesome tool), it’s possible to drive <code class="language-plaintext highlighter-rouge">git crypt</code> into a pathological state where your keys are wrong and you can’t do anything.</p>
+
+<p>In order to recover from this situation, make sure you have unencrypted copies of the files around somewhere, then:</p>
+
+<h1 id="the-fix">The Fix</h1>
+<ul>
+  <li>create a fresh clone of your repo.  In that clone, do…</li>
+  <li>save the IDs of all keys</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">keys</span><span class="o">=</span><span class="si">$(</span><span class="nb">ls</span> .git-crypt/keys/default/0/<span class="k">*</span>.gpg | xargs <span class="nt">-n</span> 1 <span class="nt">-I</span> F <span class="nb">basename </span>F .gpg<span class="si">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Remove the existing encrypted keys</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git <span class="nb">rm</span> <span class="nt">-r</span> .git-crypt
+<span class="nb">rm</span> <span class="nt">-rf</span> .git/git-crypt
+</code></pre></div></div>
+
+<ul>
+  <li>Reinitialize the encryption</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">git crypt init</code></p>
+
+<ul>
+  <li>Re-add the public keys which should access the encrypted files</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for </span>k <span class="k">in</span> <span class="nv">$keys</span><span class="p">;</span> <span class="k">do </span>git crypt add-gpg user <span class="nv">$k</span><span class="p">;</span> <span class="k">done</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>COPY in fresh, unencrypted copies of all previously encrypted files, however you do that</p>
+  </li>
+  <li>
+    <p>(Optional) rebase so that all of this stuff occurs in a single commit</p>
+  </li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase <span class="nt">-i</span> origin/master
+</code></pre></div></div>
+<p>Note that the VI magic to “fixup” all commits into the first one is <code class="language-plaintext highlighter-rouge">2,$ s/pick/fixup/</code></p>]]></content><author><name>Dewey Sasser</name></author><category term="git" /><summary type="html"><![CDATA[The Problem]]></summary></entry><entry><title type="html">The 2nd Crypto Wars</title><link href="https://www.deweysasser.com/content/2nd-crypto-wars" rel="alternate" type="text/html" title="The 2nd Crypto Wars" /><published>2019-08-15T00:00:00-04:00</published><updated>2019-08-15T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/2nd%20crypto%20wars</id><content type="html" xml:base="https://www.deweysasser.com/content/2nd-crypto-wars"><![CDATA[<p>This has been invisible to most people, but we’re now in what I call the “2nd Crypto Wars”. This is important, and your world will be impacted by it.</p>
+
+<p>The current battleground is that the Government wants the ability to see your banking communication, your chats, your Alexa snippets…  They won’t do that, of course.  They’ll only use it on the bad guys, they promise.  You should be happy that they can see everything because they’ll protect you from [insert boogie-man du jour].</p>
+
+<p>The occasional criminal who breaks the system and vacuums out a few bank accounts is a small price to pay for allowing the government to pursue terrorists, drug dealers, and child pornographers. (They always seem to use child porn as a boogie man.  After all, there’s no one who can stand up and defend it, not even Roy Moore.). Government abuse of this system is, of course, not something to worry about at all.</p>
+
+<p>After all, we’re talking about iPhones and nanny cams, not nuclear launch codes.</p>
+
+<p>The problem with this is that, actually, no — much the same technology secures it all, from your Facebook Messenger to political communications between legislators to military communications.  The DoD may buy $500 hammers, but they buy off-the-shelf communication equipment from Cisco, GE, etc. (because, frankly, that stuff is damn good and they can’t really do better with a bespoke system).  I use this technology daily to secure everything from political information to credit cards.  When something breaks in these systems, whole companies can fail and real people are out of jobs.</p>
+
+<p>The DoJ keeps has always maintained that we can put in a backdoor that only they can use, and only when their motivations and pure and just and on the side of right.</p>
+
+<p>A.G. Barr has recently shown a change in Government strategy, and that’s progress.  He’s given up on the delusion that you can have your cake while he eats it. His speech admitted some of the consequences (less security for you) instead of pretending they don’t exist, and he’s claiming it’s worth the cost to get the result (more security for you). So, we can now at least discuss things in the  world of reality instead of fantasy.</p>
+
+<p>Big Brother may be watching over you, but Big Brother can’t see everywhere.  One of the primary purposes of Government (in the modern world) is to provide security for its citizens, so this is a legitimate concern.  How much do you want him to and what does it cost you?  That’s now the discussion.</p>
+
+<p>For further reading, <a href="https://en.wikipedia.org/wiki/Bruce_Schneier">Bruce Schneier</a> has his own <a href="https://www.schneier.com/blog/archives/2019/08/attorney_genera.html">take</a>.</p>]]></content><author><name>Dewey Sasser</name></author><category term="crypto" /><summary type="html"><![CDATA[This has been invisible to most people, but we’re now in what I call the “2nd Crypto Wars”. This is important, and your world will be impacted by it.]]></summary></entry><entry><title type="html">Staying Sane with IaC</title><link href="https://www.deweysasser.com/content/staying-sane-with-iac" rel="alternate" type="text/html" title="Staying Sane with IaC" /><published>2018-10-01T00:00:00-04:00</published><updated>2018-10-01T00:00:00-04:00</updated><id>https://www.deweysasser.com/content/staying%20sane%20with%20iac</id><content type="html" xml:base="https://www.deweysasser.com/content/staying-sane-with-iac"><![CDATA[<p>Infrastructure as Code is all the rage, but suffers the same problems as any other code:  it can easily become an unmanageable plate of spaghetti.</p>
+
+<p>Organizing your IaC is critical but the methods are different than traditional program code.</p>
+
+<p>I present an organizational pattern for IaC that has proven itself across multiple technologies in multiple cloud systems to allow isolation of concerns, stability, and controlled rollouts and maintain your sanity while doing so.</p>
+
+<p><a href="https://docs.google.com/presentation/d/1jzpibs9zXzMdHQJ4mK6P7w7m2aRUMFtH6q67ncXKIw/edit?usp=sharing">Slides for a presentation</a></p>
+
+<p><a href="https://www.youtube.com/watch?v=LqAjwyxDeuc">Video of the presentation</a></p>]]></content><author><name>Dewey Sasser</name></author><category term="aws" /><summary type="html"><![CDATA[Infrastructure as Code is all the rage, but suffers the same problems as any other code: it can easily become an unmanageable plate of spaghetti.]]></summary></entry></feed>

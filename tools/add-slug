@@ -1,0 +1,21 @@
+#!/bin/bash
+set -ueo pipefail
+
+# add a slug line to each post
+
+process() {
+  if ! grep -s "^slug" "$1" ; then
+    title="$(awk '/title:/{$1=""; print $nf}' "$1" | tr -d "\r\n")"
+    slug="$(echo $title | tr ' ' "\n" | grep -v -i -E '^(a|the)' | tr "\n" ' ' | tr "[:upper:]" "[:lower:]")"
+
+    echo "$1"
+    echo "title: $title"
+    echo "slug: $slug"
+    sed -i.bak -e "/^title:/a slug: $slug" "$1"
+fi
+}
+
+
+for f in "$@" ; do
+  process "$f"
+done

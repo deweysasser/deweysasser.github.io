@@ -1,0 +1,47 @@
+---
+layout: single
+---
+
+{{ content }}
+
+<div class="sidebar__right">
+    <h1>Topics</h1>
+    {% assign tags = site.categories | sort %}
+    <ul class="taxonomy__index">
+
+    {% for tag in tags %}
+    <span class="site-tag">
+    <a href="/categories/{{ tag | first | slugify }}/"
+       style="font-size: {{ tag | last | size  |  times: 20 | plus: 60  }}%">
+            {{ tag[0] | replace:'-', ' ' }} ({{ tag | last | size }})
+    </a>
+</span>
+    {% endfor %}
+    </ul>
+
+    <p>Site Search</p>
+    <form method="get" action="https://www.google.com/search" target="_blank">
+        <input type="hidden" name="sitesearch" value="{{site.url}}" />
+        <input type="text" name="q" maxlength="255" placeholder="Search with Google" />
+    </form>
+
+</div>
+
+<div class="main">
+
+<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Posts" }}</h3>
+
+{% if paginator %}
+{% assign posts = paginator.posts %}
+{% else %}
+{% assign posts = site.posts %}
+{% endif %}
+
+{% assign entries_layout = page.entries_layout | default: 'list' %}
+<div class="entries-{{ entries_layout }}">
+    {% for post in posts %}
+    {% include archive-single.html type=entries_layout %}
+    {% endfor %}
+</div>
+</div>
+{% include paginator.html %}
