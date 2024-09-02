@@ -1,4 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://www.deweysasser.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.deweysasser.com/" rel="alternate" type="text/html" /><updated>2024-09-02T04:57:36+00:00</updated><id>https://www.deweysasser.com/feed.xml</id><title type="html">DeweySasser.com</title><subtitle>Software Engineering, Systems Engineering, and other geek pursuits</subtitle><author><name>Dewey Sasser</name></author><entry><title type="html">Second System Effect Impacts Traefik</title><link href="https://www.deweysasser.com/content/second-system-effect-impacts-traefik" rel="alternate" type="text/html" title="Second System Effect Impacts Traefik" /><published>2022-10-17T00:00:00+00:00</published><updated>2022-10-17T00:00:00+00:00</updated><id>https://www.deweysasser.com/content/second-system-effect-impacts-traefik</id><content type="html" xml:base="https://www.deweysasser.com/content/second-system-effect-impacts-traefik"><![CDATA[<p>Ahhh, the <a href="https://en.wikipedia.org/wiki/Second-system_effect">Second System Effect</a>,
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://www.deweysasser.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.deweysasser.com/" rel="alternate" type="text/html" /><updated>2024-09-02T05:05:03+00:00</updated><id>https://www.deweysasser.com/feed.xml</id><title type="html">DeweySasser.com</title><subtitle>Software Engineering, Systems Engineering, and other geek pursuits</subtitle><author><name>Dewey Sasser</name></author><entry><title type="html">New Publishing Workflow</title><link href="https://www.deweysasser.com/content/new-publishing-workflow" rel="alternate" type="text/html" title="New Publishing Workflow" /><published>2024-09-02T00:00:00+00:00</published><updated>2024-09-02T00:00:00+00:00</updated><id>https://www.deweysasser.com/content/new-publishing-workflow</id><content type="html" xml:base="https://www.deweysasser.com/content/new-publishing-workflow"><![CDATA[<p>So this site now has a new publishing workflow.  Hopefully this will reduce friction and encourage me to write more.</p>
+
+<p>I have a <a href="https://jekyllrb.com/">Jekyll</a> based builder with site contents in a private github repo.  I use <a href="https://obsidian.md/">Obsidian</a> to edit it, because Obsidian.</p>
+
+<p>When I’m happy with a page, I push it to my private repo.  I have an action set up that will then build the site with the following docker file:</p>
+
+<div class="language-Dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="w"> </span><span class="s">ruby:3.3</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">builder  </span>
+<span class="k">WORKDIR</span><span class="s"> /site  </span>
+<span class="k">ADD</span><span class="s">  Gemfile Gemfile.lock ./  </span>
+<span class="k">RUN </span>bundle <span class="nb">install</span>
+</code></pre></div></div>
+
+<p>and then I publish it using <a href="https://pages.github.com/">Github Pages</a>, using this workflow:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Makefile CI</span>  
+  
+<span class="na">on</span><span class="pi">:</span>  
+  <span class="na">push</span><span class="pi">:</span>  
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="s2">"</span><span class="s">main"</span> <span class="pi">]</span>  
+  <span class="na">pull_request</span><span class="pi">:</span>  
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="s2">"</span><span class="s">main"</span> <span class="pi">]</span>  
+  
+<span class="na">jobs</span><span class="pi">:</span>  
+  <span class="na">build</span><span class="pi">:</span>  
+  
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>  
+  
+    <span class="na">steps</span><span class="pi">:</span>  
+    <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v4</span>  
+  
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build Site</span>  
+      <span class="na">run</span><span class="pi">:</span> <span class="s">make</span>  
+  
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Push directory to another repository</span>  
+      <span class="na">uses</span><span class="pi">:</span> <span class="s">cpina/github-action-push-to-another-repository@v1.7.2</span>  
+      <span class="na">env</span><span class="pi">:</span>  
+        <span class="na">SSH_DEPLOY_KEY</span><span class="pi">:</span> <span class="s">$</span>  
+      <span class="na">with</span><span class="pi">:</span>  
+          <span class="na">user-email</span><span class="pi">:</span> <span class="s1">'</span><span class="s">dewey@deweysasser.com'</span>  
+          <span class="na">destination-repository-name</span><span class="pi">:</span> <span class="s1">'</span><span class="s">deweysasser.github.io'</span>  
+          <span class="na">destination-github-username</span><span class="pi">:</span> <span class="s1">'</span><span class="s">deweysasser'</span>  
+          <span class="na">source-directory</span><span class="pi">:</span> <span class="s1">'</span><span class="s">_site'</span>  
+          <span class="na">target-branch</span><span class="pi">:</span> <span class="s1">'</span><span class="s">main'</span>
+</code></pre></div></div>
+
+<p>Obviously, I have a <code class="language-plaintext highlighter-rouge">Makefile</code> to stitch this all together, but that only does a <code class="language-plaintext highlighter-rouge">docker build</code>, then a <code class="language-plaintext highlighter-rouge">docker run</code> with the current path mapped into the container, so it can produce the site output.  I <em>could</em> do that in straight up ruby on GitHub Actions, but I want the same build process locally as in GHA, and this keeps it nice and consistent.</p>]]></content><author><name>Dewey Sasser</name></author><summary type="html"><![CDATA[So this site now has a new publishing workflow. Hopefully this will reduce friction and encourage me to write more.]]></summary></entry><entry><title type="html">Second System Effect Impacts Traefik</title><link href="https://www.deweysasser.com/content/second-system-effect-impacts-traefik" rel="alternate" type="text/html" title="Second System Effect Impacts Traefik" /><published>2022-10-17T00:00:00+00:00</published><updated>2022-10-17T00:00:00+00:00</updated><id>https://www.deweysasser.com/content/second-system-effect-impacts-traefik</id><content type="html" xml:base="https://www.deweysasser.com/content/second-system-effect-impacts-traefik"><![CDATA[<p>Ahhh, the <a href="https://en.wikipedia.org/wiki/Second-system_effect">Second System Effect</a>,
 a perennial project killer.</p>
 
 <p>For some years, this site has run in a Kubernetes cluster with several others, and
@@ -414,12 +459,4 @@ on request will use GPG to encrypt that key to the public key IDs you specify, a
 
 <p>Big Brother may be watching over you, but Big Brother can’t see everywhere.  One of the primary purposes of Government (in the modern world) is to provide security for its citizens, so this is a legitimate concern.  How much do you want him to and what does it cost you?  That’s now the discussion.</p>
 
-<p>For further reading, <a href="https://en.wikipedia.org/wiki/Bruce_Schneier">Bruce Schneier</a> has his own <a href="https://www.schneier.com/blog/archives/2019/08/attorney_genera.html">take</a>.</p>]]></content><author><name>Dewey Sasser</name></author><category term="crypto" /><summary type="html"><![CDATA[This has been invisible to most people, but we’re now in what I call the “2nd Crypto Wars”. This is important, and your world will be impacted by it.]]></summary></entry><entry><title type="html">Staying Sane with IaC</title><link href="https://www.deweysasser.com/content/staying-sane-with-iac" rel="alternate" type="text/html" title="Staying Sane with IaC" /><published>2018-10-01T00:00:00+00:00</published><updated>2018-10-01T00:00:00+00:00</updated><id>https://www.deweysasser.com/content/staying%20sane%20with%20iac</id><content type="html" xml:base="https://www.deweysasser.com/content/staying-sane-with-iac"><![CDATA[<p>Infrastructure as Code is all the rage, but suffers the same problems as any other code:  it can easily become an unmanageable plate of spaghetti.</p>
-
-<p>Organizing your IaC is critical but the methods are different than traditional program code.</p>
-
-<p>I present an organizational pattern for IaC that has proven itself across multiple technologies in multiple cloud systems to allow isolation of concerns, stability, and controlled rollouts and maintain your sanity while doing so.</p>
-
-<p><a href="https://docs.google.com/presentation/d/1jzpibs9zXzMdHQJ4mK6P7w7m2aRUMFtH6q67ncXKIw/edit?usp=sharing">Slides for a presentation</a></p>
-
-<p><a href="https://www.youtube.com/watch?v=LqAjwyxDeuc">Video of the presentation</a></p>]]></content><author><name>Dewey Sasser</name></author><category term="aws" /><summary type="html"><![CDATA[Infrastructure as Code is all the rage, but suffers the same problems as any other code: it can easily become an unmanageable plate of spaghetti.]]></summary></entry></feed>
+<p>For further reading, <a href="https://en.wikipedia.org/wiki/Bruce_Schneier">Bruce Schneier</a> has his own <a href="https://www.schneier.com/blog/archives/2019/08/attorney_genera.html">take</a>.</p>]]></content><author><name>Dewey Sasser</name></author><category term="crypto" /><summary type="html"><![CDATA[This has been invisible to most people, but we’re now in what I call the “2nd Crypto Wars”. This is important, and your world will be impacted by it.]]></summary></entry></feed>
