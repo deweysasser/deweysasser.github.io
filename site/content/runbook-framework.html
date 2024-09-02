@@ -1,0 +1,533 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Runbook Framework - DeweySasser.com</title>
+<meta name="description" content="A new a shell framework to construct manual and automated runbooks">
+
+
+  <meta name="author" content="Dewey Sasser">
+  
+  <meta property="article:author" content="Dewey Sasser">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="DeweySasser.com">
+<meta property="og:title" content="Runbook Framework">
+<meta property="og:url" content="https://www.deweysasser.com/content/runbook-framework">
+
+
+  <meta property="og:description" content="A new a shell framework to construct manual and automated runbooks">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-05-01T00:00:00+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://www.deweysasser.com/content/runbook-framework">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="DeweySasser.com Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          DeweySasser.com
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/page/projects"
+                
+                
+              >Projects</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/categories"
+                
+                
+              >By Category</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/about-dewey"
+                
+                
+              >About Dewey</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+    
+    <div class="author__avatar">
+        
+        <img src="/graphics/DeweySelfie-v2-s150x200.png" alt="Dewey Sasser" itemprop="image">
+        
+    </div>
+    
+
+    <div class="author__content">
+        
+        <h3 class="author__name" itemprop="name">Dewey Sasser</h3>
+        
+        
+        <div class="author__bio" itemprop="description">
+            <p>Cloud Architect, Software Engineer</p>
+
+        </div>
+        
+    </div>
+
+    <div class="author__urls-wrapper">
+        <button class="btn btn--inverse">Follow</button>
+        <ul class="author__urls social-icons">
+            
+
+            
+            
+            
+            <li><a href="https://github.com/deweysasser" rel="nofollow noopener noreferrer"><i class="fas fa-link" aria-hidden="true"></i><span class="label">Github</span></a></li>
+            
+            
+            
+            <li><a href="https://keybase.io/deweysasser" rel="nofollow noopener noreferrer"><i class="fas fa-link" aria-hidden="true"></i><span class="label">keybase</span></a></li>
+            
+            
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+    </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Runbook Framework">
+    <meta itemprop="description" content="A new a shell framework to construct manual and automated runbooks">
+    <meta itemprop="datePublished" content="2021-05-01T00:00:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p><a href="https://github.com/deweysasser/runbook-framework">See Github Project</a></p>
+
+<hr />
+<h1 id="runbook-framework">Runbook-framework</h1>
+
+<p>“Any sufficiently detailed documentation is executable”
+– me</p>
+
+<h2 id="what-is-it">What is it?</h2>
+
+<p>A shell (bash) framework to implement runbook scripts that help move from fully manual to fully
+automated processes.</p>
+
+<p>Based on the clever concept of
+a <a href="https://blog.danslimmon.com/2019/07/15/do-nothing-scripting-the-key-to-gradual-automation/">Do Nothing Script</a>,
+provide some structure for the script which allows &amp; encourages documentation and useful tracking at run time.</p>
+
+<p>You write this code:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>runbook<span class="o">()</span> <span class="o">{</span>
+  step <span class="s2">"Step One"</span>
+  step <span class="s2">"Step Two, on </span><span class="nv">$env</span><span class="s2">"</span> <span class="nb">echo</span> <span class="s2">"set </span><span class="nv">$env</span><span class="s2">=</span><span class="nv">$version</span><span class="s2">"</span>
+  step <span class="s2">"Wait for something to happen"</span> <span class="nb">sleep </span>10
+  step <span class="s2">"Run a function"</span> run-function
+  step <span class="s2">"Last thing we can do automatically"</span> <span class="nb">echo</span> <span class="s2">"Version is </span><span class="nv">$version</span><span class="s2">"</span>
+  step <span class="s2">"bring it on home"</span>
+  step <span class="s2">"this one will fail"</span> fail_me
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>And you can run it and get</p>
+
+<p><img src="https://github.com/deweysasser/runbook-framework/blob/master/docs/runbooks-screenshot.png?raw=true" alt="runbook example" /></p>
+
+<p>Or if you just need to produce some documentation, you can get</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./example-runbook --version=1.2.3 -doc
+1: Step One
+2: Step Two, on staging
+3: Wait for something to happen
+4: Run a function
+5: Last thing we can do automatically
+6: bring it on home
+7: this one will fail
+$
+</code></pre></div></div>
+
+<h2 id="background">Background</h2>
+
+<p>I love automation, but often getting something “automated” is a long process, and you actually need
+to get something done now and don’t have the time to fully automate it.</p>
+
+<p>A few years ago I read
+a <a href="https://blog.danslimmon.com/2019/07/15/do-nothing-scripting-the-key-to-gradual-automation/">blog post</a>
+presenting a clever way to move from unautomated to automated processes.</p>
+
+<p>The clever key:  start with a script that does nothing other than tell you what to do. A checklist.
+Then, as time evolves, you can automate one little piece. Since the script is walking you through a
+checklist, this becomes one step that’s done for you instead of you having to do it. This is one of
+those simple and amazingly insightful ways of getting things done.</p>
+
+<p>This repository implements a small library of BASH functions to support runbooks in a consistent and
+useful way.</p>
+
+<h2 id="quickstart">Quickstart</h2>
+
+<p>Be sure to read the <a href="#important-details">“important details”</a> section.</p>
+
+<h3 id="writing-the-script">Writing the script</h3>
+
+<p>Create a script that looks like this:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="nb">source </span>runbook-framework.sh
+
+parameters p1 p2
+<span class="nv">p1</span><span class="o">=</span><span class="s2">"some default value"</span>
+
+<span class="c"># Here's where you put your actual runbook steps</span>
+runbook<span class="o">()</span> <span class="o">{</span>
+  step <span class="s2">"This is a manual step and you'll get a prompt"</span>
+  step <span class="s2">"This is an automated step"</span> some-command
+<span class="o">}</span>
+
+<span class="c"># This must be the last line in your file</span>
+main <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<p>Of course, the steps should be doing whatever it is you need.  <code class="language-plaintext highlighter-rouge">some-command</code> can be a function you
+define (I suggest later in the file, so the file starts with your runbook).</p>
+
+<p>If you leave out the command, you’ve just made a prompt. If you include the command, it will be
+executed. The status of all commands will be printed as they are executed.</p>
+
+<h3 id="running-the-script">Running the script</h3>
+
+<p>The framework provides some overall features, including</p>
+
+<ul>
+  <li>-help or -h – show how to run this runbook, including the parameters</li>
+  <li>-doc – show the checklist <em>without</em> executing it</li>
+  <li>-verbose or -v – show the output of each command as it happens</li>
+</ul>
+
+<h3 id="what-happened-to-the-output">What happened to the output?</h3>
+
+<p>The output of each step is stored away and shown only on error or on request.</p>
+
+<h3 id="important-details">Important Details</h3>
+
+<p>The script sets up bash to be pretty paranoid, specifically:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">set</span> <span class="nt">-ueo</span> pipefail
+</code></pre></div></div>
+
+<p>The short form is:  unexpanded variables will be an error, any error (that’s not in a conditional)
+will stop the script, and it counts errors in the middle of a pipeline, not just the result of the
+last command in the pipeline.</p>
+
+<h2 id="passing-parameters">Passing Parameters</h2>
+
+<p>You can set the <code class="language-plaintext highlighter-rouge">parameters</code> variable to a list of parameters you want to use in your script. They
+will be set as (global) environment variables, exactly as you type them. All names that begin with
+an underscore (‘_’) are reserved.</p>
+
+<p>When you call the script, you may pass these variables on the command line as command line options.
+If any of them are unset, the script will stop. So, if you want a default value, make sure you set
+it.</p>
+
+<h2 id="examples">Examples</h2>
+
+<h3 id="just-try-to-run-it">Just try to run it</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./example-runbook
+Parameter <span class="s1">'version'</span> required
+Usage: ./example-runbook <span class="o">[</span><span class="nt">-h</span>|-help] <span class="o">[</span><span class="nt">-show</span><span class="o">]</span> <span class="o">[</span><span class="nt">--env</span><span class="o">=</span>VALUE] <span class="nt">--version</span><span class="o">=</span>VALUE 
+Defaults:
+   <span class="nb">env</span> <span class="o">=</span> staging
+</code></pre></div></div>
+
+<h3 id="get-some-documentation-on-the-process">Get some documentation on the process</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./example-runbook  <span class="nt">--version</span><span class="o">=</span>1.2.3 <span class="nt">-doc</span>
+1: Step One
+2: Step Two, on staging
+3: Wait <span class="k">for </span>something to happen
+4: Run a <span class="k">function
+</span>5: Last thing we can <span class="k">do </span>automatically
+6: bring it on home
+7: this one will fail
+</code></pre></div></div>
+
+<h3 id="actually-run-the-runbook">Actually run the runbook</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./example-runbook  <span class="nt">--version</span><span class="o">=</span>1.2.3
+ 1: <span class="o">(</span>00:52<span class="o">)</span> Step One...<span class="o">(</span>press enter when <span class="k">done</span><span class="o">)</span> <span class="o">(</span>5 s<span class="o">)</span> DONE
+ 2: <span class="o">(</span>00:52<span class="o">)</span> Step Two, on staging... <span class="o">(</span>0 s<span class="o">)</span> DONE
+ 3: <span class="o">(</span>00:52<span class="o">)</span> Wait <span class="k">for </span>something to happen... <span class="o">(</span>10 s<span class="o">)</span> DONE
+ 4: <span class="o">(</span>00:52<span class="o">)</span> Run a <span class="k">function</span>... <span class="o">(</span>0 s<span class="o">)</span> DONE
+ 5: <span class="o">(</span>00:52<span class="o">)</span> Last thing we can <span class="k">do </span>automatically... <span class="o">(</span>0 s<span class="o">)</span> DONE
+ 6: <span class="o">(</span>00:52<span class="o">)</span> bring it on home...<span class="o">(</span>press enter when <span class="k">done</span><span class="o">)</span> <span class="o">(</span>12 s<span class="o">)</span> DONE
+ 7: <span class="o">(</span>00:53<span class="o">)</span> this one will fail... <span class="o">(</span>0 s<span class="o">)</span> FAILED
+    <span class="o">&gt;&gt;</span> it<span class="s1">'s time we stop
+    &gt;&gt; Hey, what'</span>s that sound
+    <span class="o">&gt;&gt;</span> Everybody look, what<span class="s1">'s going down?
+</span></code></pre></div></div>
+
+<h2 id="the-future">The Future</h2>
+
+<ul>
+  <li>the -doc argument should extract some documentation from the comment blocks and include it.</li>
+  <li>can we do some kind of time estimate and make that useful information? (<a href="https://github.com/deweysasser/runbook-framework/discussions/9">discussion here</a>)</li>
+</ul>
+
+<h3 id="documentation">Documentation</h3>
+
+<p>I’d like to make a “generate a fairly complete markdown document describing the process” be a feature.  The question is how to do that without obscuring the actual logic.  See <a href="https://github.com/deweysasser/runbook-framework/discussions/6">the github discussion</a></p>
+
+<h3 id="managing-state">Managing state</h3>
+
+<p>Would it be interesting to manage the current state of “a run”  in a persistent way, particularly so it could be resumed later if e.g. a step failed or something? (<a href="https://github.com/deweysasser/runbook-framework/discussions/10">discussion here</a>)</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2021-05-01T00:00:00+00:00">May 1, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Runbook+Framework%20https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Frunbook-framework" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Frunbook-framework" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.deweysasser.com/content/runbook-framework" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/content/principles-of-design" class="pagination--pager" title="Principles Of Design
+">Previous</a>
+    
+    
+      <a href="/content/second-system-effect-impacts-traefik" class="pagination--pager" title="Second System Effect Impacts Traefik
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 <a href="https://www.deweysasser.com">DeweySasser.com</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

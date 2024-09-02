@@ -1,0 +1,467 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Terraform Workspaces vs SCM Branches - DeweySasser.com</title>
+<meta name="description" content="TL;DR:  Workspaces and branches serve different purposes.  An SCM branch is an alternet set of code.  A Terraform workspace is an alternate location to apply code.  You should use the difference to…">
+
+
+  <meta name="author" content="Dewey Sasser">
+  
+  <meta property="article:author" content="Dewey Sasser">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="DeweySasser.com">
+<meta property="og:title" content="Terraform Workspaces vs SCM Branches">
+<meta property="og:url" content="https://www.deweysasser.com/content/terraform-workspaces-vs-scm-branches">
+
+
+  <meta property="og:description" content="TL;DR:  Workspaces and branches serve different purposes.  An SCM branch is an alternet set of code.  A Terraform workspace is an alternate location to apply code.  You should use the difference to…">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2018-04-09T00:00:00+00:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://www.deweysasser.com/content/terraform-workspaces-vs-scm-branches">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="DeweySasser.com Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          DeweySasser.com
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/page/projects"
+                
+                
+              >Projects</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/categories"
+                
+                
+              >By Category</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/about-dewey"
+                
+                
+              >About Dewey</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+    
+    <div class="author__avatar">
+        
+        <img src="/graphics/DeweySelfie-v2-s150x200.png" alt="Dewey Sasser" itemprop="image">
+        
+    </div>
+    
+
+    <div class="author__content">
+        
+        <h3 class="author__name" itemprop="name">Dewey Sasser</h3>
+        
+        
+        <div class="author__bio" itemprop="description">
+            <p>Cloud Architect, Software Engineer</p>
+
+        </div>
+        
+    </div>
+
+    <div class="author__urls-wrapper">
+        <button class="btn btn--inverse">Follow</button>
+        <ul class="author__urls social-icons">
+            
+
+            
+            
+            
+            <li><a href="https://github.com/deweysasser" rel="nofollow noopener noreferrer"><i class="fas fa-link" aria-hidden="true"></i><span class="label">Github</span></a></li>
+            
+            
+            
+            <li><a href="https://keybase.io/deweysasser" rel="nofollow noopener noreferrer"><i class="fas fa-link" aria-hidden="true"></i><span class="label">keybase</span></a></li>
+            
+            
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+        </ul>
+    </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Terraform Workspaces vs SCM Branches">
+    <meta itemprop="description" content="TL;DR:  Workspaces and branches serve different purposes.  An SCMbranch is an alternet set of code.  A Terraform workspace is analternate location to apply code.You should use the difference to…">
+    <meta itemprop="datePublished" content="2018-04-09T00:00:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Terraform Workspaces vs SCM Branches
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#overview">Overview</a></li><li><a href="#assumptions">Assumptions</a></li><li><a href="#scm-branches">SCM Branches</a></li><li><a href="#terraform-workspaces">Terraform Workspaces</a></li><li><a href="#an-example-of-a-practical-difference">An example of a practical difference</a></li></ul>
+            </nav>
+          </aside>
+        
+        <p>TL;DR:  Workspaces and branches serve different purposes.  An SCM
+branch is an alternet set of code.  A Terraform workspace is an
+alternate location to apply code.</p>
+
+<h3 id="overview">Overview</h3>
+
+<p>At first glance, terraform workspaces look like just a poor repeat of
+branches in your SCM tool.  So, why do you need them?</p>
+
+<p>Because they’re about branching a different thing.</p>
+
+<p>Yes, you could achieve similar results using only SCM branches but
+you’d be folding 2 different concepts into the same mechanism, making
+keeping track of the result error prone and complicated.</p>
+
+<h3 id="assumptions">Assumptions</h3>
+
+<p>This thinking assumes that you test (or at least want to test) all
+changes in a non-production location (hereafter called a “sandbox”).
+It assumes that changes are developed and evaluated and only applied
+to actual production once the full consequences are understood.</p>
+
+<p>One common practice is to have a special sandbox called “staging” that
+is designed to be as much like production as possible and provides a
+final verification that changes for production will
+work.</p>
+
+<h3 id="scm-branches">SCM Branches</h3>
+
+<p>The purpose of SCM branches are to create an alternate set of source
+code.  It appears that each set of source code might correspond to a
+target environment, but that’s not true for 2 reasons:</p>
+
+<p>1) you might want to develop different features in different SCM branches,
+and those features will eventually be applied to the same target
+location (or locations).</p>
+
+<p>2) You want application of your production changes to be fully
+exercised in a sandbox first.  Using SCM branches for this creates a
+greater possibility that the code is different, resulting in surprises
+in production.  Effectively, ensuring that code is not
+(unintentionally) different in sandbox and production environments
+becomes a manual process.</p>
+
+<p>Of course, you need a way of distinguishing your sandbox from your
+production, and differences can creep in anyway.</p>
+
+<h3 id="terraform-workspaces">Terraform Workspaces</h3>
+
+<p>Terraform workspaces are branches in the <em>target</em> environment.
+Functionally, you’re using a separate Terraform state file, which can
+be shared between several users (or could be entirely separate).
+Semantically, you’re separating out the location to which the
+terraform templates are applied and tested.</p>
+
+<p>Also, I’ve found it useful to use a different variables file across
+different workspaces, to account for differences in e.g. IP blocks or
+target DNS zones.</p>
+
+<h3 id="an-example-of-a-practical-difference">An example of a practical difference</h3>
+
+<p>Here’s how things can go, using workspaces and branches for separate
+concepts.</p>
+
+<p>NOTE:  in this section I’m using <code class="language-plaintext highlighter-rouge">git</code> conventions for SCM but the
+concepts are equally applicable to other SCM tools.</p>
+
+<p>You have a production branch of code (we’ll call this <code class="language-plaintext highlighter-rouge">master</code> branch).  You
+want to make a change, so you make a branch (we’ll call this
+<code class="language-plaintext highlighter-rouge">feature</code>).  You develop your changes on <code class="language-plaintext highlighter-rouge">feature</code> and apply it to the
+<code class="language-plaintext highlighter-rouge">sandbox</code> <em>workspace</em>, mutating some infrastructure that is local to
+your development effort.</p>
+
+<p>At this point you have changes in branch <code class="language-plaintext highlighter-rouge">feature</code> that have been
+validated in a private <code class="language-plaintext highlighter-rouge">sandbox</code> deployment.</p>
+
+<p>When you’re happy with how things are working out in the <code class="language-plaintext highlighter-rouge">sandbox</code> branch
+area, you commit (or merge) your code to the <code class="language-plaintext highlighter-rouge">master</code> branch.  It is
+now queued for production.</p>
+
+<p>You then change to the ‘staging’ <em>workspace</em> and apply your <code class="language-plaintext highlighter-rouge">master</code>
+branch to make changes.  You can observe the behaviors in staging to
+both verify that it does what you want and verify how it will impact
+your production services availability.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Staging</code> differs from the previous develop sandbox in that it is, as
+much as possible, a clean duplicate of production (without any cruft
+caused by testing multiple development attempts, and perhaps with a
+more production like set of data).</p>
+
+<p>Changes applied in <code class="language-plaintext highlighter-rouge">staging</code> are a good predictor for how they will
+work in <code class="language-plaintext highlighter-rouge">production</code>.</p>
+
+<p>At this point you have changes in branch <code class="language-plaintext highlighter-rouge">master</code> that have been
+validated in a private <code class="language-plaintext highlighter-rouge">staging</code> <em>workspace</em> (e.g. a deployment).
+You’re about to apply the exact same changes to your <code class="language-plaintext highlighter-rouge">production</code>
+<em>workspace</em>.  You know they’re the same because they’re produced by
+the <em>exact</em> same code (of course, conditionals based on different
+variables can produce different results.  It behooves you to minimize
+conditionals for this reason.)</p>
+
+<p>At this point you can (if necessary) schedule maintenance and apply
+your <code class="language-plaintext highlighter-rouge">master</code> branch to your <code class="language-plaintext highlighter-rouge">production</code> <em>workspace</em>, which
+presumably makes the changes available to end users.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2018-04-09T00:00:00+00:00">April 9, 2018</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Terraform+Workspaces+vs+SCM+Branches%20https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Fterraform-workspaces-vs-scm-branches" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Fterraform-workspaces-vs-scm-branches" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.deweysasser.com/content/terraform-workspaces-vs-scm-branches" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/content/feeling-scrummy" class="pagination--pager" title="Feeling Scrummy?
+">Previous</a>
+    
+    
+      <a href="/content/google-next-networking" class="pagination--pager" title="Google Next:  Networking
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2024 <a href="https://www.deweysasser.com">DeweySasser.com</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
