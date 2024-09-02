@@ -232,4 +232,10 @@ var store = [{
         "tags": [],
         "url": "/content/new-publishing-workflow",
         "teaser": null
+      },{
+        "title": "Recent GitHub Projects",
+        "excerpt":"I’ve been doing work in Golang and writing some things for Kubernetes that I haven’t indexed here.  See my projects for details.  ","categories": [],
+        "tags": [],
+        "url": "/content/github-projects",
+        "teaser": null
       }]
