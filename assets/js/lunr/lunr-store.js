@@ -228,7 +228,7 @@ var store = [{
         "teaser": null
       },{
         "title": "New Publishing Workflow",
-        "excerpt":"So this site now has a new publishing workflow. Hopefully this will reduce friction and encourage me to write more. I have a Jekyll based builder with site contents in a private github repo. I use Obsidian to edit it, because Obsidian. When I’m happy with a page, I push...","categories": [],
+        "excerpt":"This site now has a new publishing workflow. Hopefully this will reduce friction and encourage me to write more. I have a Jekyll based builder with site contents in a private github repo. I use Obsidian to edit it, because Obsidian. When I’m happy with a page, I push it...","categories": [],
         "tags": [],
         "url": "/content/new-publishing-workflow",
         "teaser": null

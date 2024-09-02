@@ -11,7 +11,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>New Publishing Workflow - DeweySasser.com</title>
-<meta name="description" content="So this site now has a new publishing workflow.  Hopefully this will reduce friction and encourage me to write more.">
+<meta name="description" content="This site now has a new publishing workflow.  Hopefully this will reduce friction and encourage me to write more.">
 
 
   <meta name="author" content="Dewey Sasser">
@@ -27,7 +27,7 @@
 <meta property="og:url" content="https://www.deweysasser.com/content/new-publishing-workflow">
 
 
-  <meta property="og:description" content="So this site now has a new publishing workflow.  Hopefully this will reduce friction and encourage me to write more.">
+  <meta property="og:description" content="This site now has a new publishing workflow.  Hopefully this will reduce friction and encourage me to write more.">
 
 
 
@@ -249,7 +249,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="New Publishing Workflow">
-    <meta itemprop="description" content="So this site now has a new publishing workflow.  Hopefully this will reduce friction and encourage me to write more.">
+    <meta itemprop="description" content="This site now has a new publishing workflow.  Hopefully this will reduce friction and encourage me to write more.">
     <meta itemprop="datePublished" content="2024-09-02T00:00:00+00:00">
     
 
@@ -267,7 +267,7 @@
       <section class="page__content" itemprop="text">
         
         
-<p>So this site now has a new publishing workflow.  Hopefully this will reduce friction and encourage me to write more.</p>
+<p>This site now has a new publishing workflow.  Hopefully this will reduce friction and encourage me to write more.</p>
 
 <p>I have a <a href="https://jekyllrb.com/">Jekyll</a> based builder with site contents in a private github repo.  I use <a href="https://obsidian.md/">Obsidian</a> to edit it, because Obsidian.</p>
 
@@ -314,6 +314,23 @@
 
 <p>Obviously, I have a <code class="language-plaintext highlighter-rouge">Makefile</code> to stitch this all together, but that only does a <code class="language-plaintext highlighter-rouge">docker build</code>, then a <code class="language-plaintext highlighter-rouge">docker run</code> with the current path mapped into the container, so it can produce the site output.  I <em>could</em> do that in straight up ruby on GitHub Actions, but I want the same build process locally as in GHA, and this keeps it nice and consistent.</p>
 
+<p>Once the generated site is committed to the public site repo, I use the default Action to publish a static site.</p>
+
+<h1 id="potential-improvements">Potential improvements</h1>
+
+<ul>
+  <li>use the <a href="https://github.com/Enveloppe">Obsidian Enveloppe</a> plugin to allow me to use all of the rich set of Obsidian rendering in my blog.</li>
+  <li>use the Obsidian Git Plugin to automate the commits</li>
+</ul>
+
+<p>These two approaches are likely in conflict, so I probably won’t do both.  I’ll likely go with the latter choice until I <em>need</em> something like <a href="https://blacksmithgu.github.io/obsidian-dataview/">Dataview</a> (which is utterly awesome for doing things in Obsidian).</p>
+
+<ul>
+  <li>deploy the site directly from my private repo</li>
+  <li>make my private repo the public one</li>
+</ul>
+
+<p>I’m currently on a free GitHub plan, so I can’t have pages associated with a private site, but…there’s really nothing private in my public site (though I should scrutinize that before committing to it), so I will quite probably at some point make the <em>source</em> public, and not just the site.</p>
 
         
       </section>
