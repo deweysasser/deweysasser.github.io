@@ -1,10 +1,11 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
-  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
 -->
+
 <html lang="en" class="no-js">
   <head>
     <meta charset="utf-8">
@@ -34,7 +35,7 @@
 
 
 
-  <meta property="article:published_time" content="2014-09-23T00:00:00-04:00">
+  <meta property="article:published_time" content="2014-09-23T00:00:00+00:00">
 
 
 
@@ -46,16 +47,7 @@
 
 
 
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    
-      "@type": "Person",
-      "name": null,
-      "url": "https://www.deweysasser.com/"
-    
-  }
-</script>
+
 
 
 
@@ -68,19 +60,17 @@
 
 
   <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="DeweySasser.com Feed">
-
-
-<!-- https://t.co/dKP3o1e -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script>
+<script type="text/javascript">
   document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
 </script>
 
 <!-- For all browsers -->
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
 
 
 
@@ -101,10 +91,6 @@
   </ul>
 </nav>
 
-    <!--[if lt IE 9]>
-<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
-<![endif]-->
-
     
 
 <div class="masthead">
@@ -117,11 +103,23 @@
           
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="/page/projects">Projects</a>
+              <a
+                href="/page/projects"
+                
+                
+              >Projects</a>
             </li><li class="masthead__menu-item">
-              <a href="/categories">By Category</a>
+              <a
+                href="/categories"
+                
+                
+              >By Category</a>
             </li><li class="masthead__menu-item">
-              <a href="/about-dewey">About Dewey</a>
+              <a
+                href="/about-dewey"
+                
+                
+              >About Dewey</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -235,7 +233,7 @@
 
             <!--
   <li>
-    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
       <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
     </a>
   </li>
@@ -252,7 +250,7 @@
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Notes and Summary from DevOps Days Boston 2014">
     <meta itemprop="description" content="These are my notes from DevOps Days Boston in 2014.  See the section entitled “Dewey’s Summary” for, well, just that.  The rest is pretty much raw notes.I’m not expecting this page to be generally useful to the public but want to share it with some specific people.  If it is generally useful, bonus!">
-    <meta itemprop="datePublished" content="2014-09-23T00:00:00-04:00">
+    <meta itemprop="datePublished" content="2014-09-23T00:00:00+00:00">
     
 
     <div class="page__inner-wrap">
@@ -272,7 +270,6 @@
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
               <ul class="toc__menu"><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#talks-day-1">Talks, Day 1</a><ul><li><a href="#the-value-of-feedback---johnryding">The Value of Feedback - JohnRyding</a></li><li><a href="#our-long-road-to-self-service-cloud-management--deployment---kevinamorin">Our long road to self service cloud management &amp; deployment - KevinAmorin</a></li><li><a href="#infrastructure-testing-grey-matter---anthonyspring">Infrastructure Testing: Grey Matter - AnthonySpring</a></li></ul></li><li><a href="#micro-talks">Micro talks</a><ul><li><a href="#driving-change">Driving change</a></li><li><a href="#maximize-terminal-information-density">Maximize terminal information density</a></li><li><a href="#shipbuilding-and-failed-software-projects">Shipbuilding and failed software projects</a></li><li><a href="#leadership-lessons-from-the-marines">Leadership lessons from the Marines</a></li><li><a href="#chef">Chef</a></li></ul></li></ul></li><li><a href="#breakout-sessions-day-1">Breakout Sessions, Day 1</a><ul><li><a href="#immutable-servers">Immutable servers</a></li><li><a href="#windows-devops-tools">Windows Devops Tools</a></li></ul></li></ul></li><li><a href="#talks-day-2">Talks, Day 2</a><ul><li><a href="#the-power-of-conflict---nikolaskatsimpras">The Power of Conflict - NikolasKatsimpras</a></li><li><a href="#intro-to-coreos-get-ahead-of-the-curve-new-ways-to-deploy-and-manage-applications-at-scale---kelseyhightower">Intro to CoreOS: Get Ahead of The Curve, New Ways to Deploy and Manage Applications at Scale - KelseyHightower</a></li><li><a href="#metrics-driven-development---davejosephson">Metrics Driven Development - DaveJosephson</a></li><li><a href="#running-graphite-at-scale---andrewkenney">Running Graphite at Scale - AndrewKenney</a></li></ul></li><li><a href="#breakout-sessions-day-2">Breakout Sessions, Day 2</a><ul><li><a href="#jenkins-ephemeral-builds">Jenkins ephemeral builds</a></li><li><a href="#the-devops-echo-chamber-do-we-spend-too-much-time-listening-to-ourselves">The Devops Echo chamber: do we spend too much time listening to ourselves?</a></li><li><a href="#config-tool-throwdown-chef-vs-puppet-vs-salt-vs-ansible">Config tool throwdown (Chef vs. Puppet vs. Salt vs Ansible)</a></li></ul></li></ul>
-
             </nav>
           </aside>
         
@@ -700,8 +697,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2014-09-23T00:00:00-04:00">September 23, 2014</time></p>
-
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2014-09-23T00:00:00+00:00">September 23, 2014</time></p>
 
       </footer>
 
@@ -712,7 +708,7 @@
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Fnotes-summary-from-devops-days-boston-2014" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.deweysasser.com%2Fcontent%2Fnotes-summary-from-devops-days-boston-2014" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.deweysasser.com/content/notes-summary-from-devops-days-boston-2014" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
@@ -737,6 +733,7 @@
   
 </div>
 
+      
     </div>
 
     
@@ -758,14 +755,13 @@
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2023 DeweySasser.com. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2024 <a href="https://www.deweysasser.com">DeweySasser.com</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>
 
     
   <script src="/assets/js/main.min.js"></script>
-
 
 
 
